@@ -8,7 +8,6 @@ class CreateWeapons < ActiveRecord::Migration
       t.integer :rof
       t.integer :aoe
       t.integer :pow
-      t.references :unit
 
       t.timestamps
     end
