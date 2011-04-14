@@ -1,4 +1,6 @@
 WmApp::Application.routes.draw do
+  resources :units
+  resources :unit_types
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
