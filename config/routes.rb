@@ -1,4 +1,6 @@
 WmApp::Application.routes.draw do
+  root :to => "factions#index"
+
   resources :units do
     resources :weapons
   end
