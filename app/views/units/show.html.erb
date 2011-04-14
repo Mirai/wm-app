@@ -23,6 +23,16 @@
 <br />
 Point cost: <%= @unit.cost %>
 
+<h2>Weapons</h2>
+<% @unit.weapons.each do |weapon| %>
+	<%= weapon.name %>
+	<% if weapon.wtype %>
+		<%= render :partial => 'weapons/ranged', :locals => { :weapon => weapon } %>
+	<% else %>
+		<%= render :partial => 'weapons/melee', :locals => { :weapon => weapon } %>
+	<% end %>
+<% end %>
+
 <br />
 
 <%= link_to 'Edit', edit_unit_path(@unit) %> | <%= link_to 'Back', units_path %>
