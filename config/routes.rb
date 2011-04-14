@@ -1,11 +1,12 @@
 WmApp::Application.routes.draw do
   root :to => "factions#index"
 
-  resources :units do
-    resources :weapons
-  end
-  
+  resources :units
   resources :unit_types
+  resources :factions
+  resources :weapons
+  resources :spells
+  resources :feats
   
   match 'cygnar' => 'unit_types#cygnar'
   # The priority is based upon order of creation:
