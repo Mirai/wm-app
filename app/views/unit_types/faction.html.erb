@@ -1,0 +1,6 @@
+<% @unit_types.each do |unit_type| %>
+	<h2><%= unit_type.name %></h2>
+	<% unit_type.units.each do |unit| %>
+		<%= link_to unit.name, unit %><br />
+	<% end %>
+<% end %>

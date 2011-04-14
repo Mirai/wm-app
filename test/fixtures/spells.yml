@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  cost: 1
+  rng: 1
+  aoe: 1
+  pow: 1
+  up: false
+  off: false
+
+two:
+  name: MyString
+  cost: 1
+  rng: 1
+  aoe: 1
+  pow: 1
+  up: false
+  off: false

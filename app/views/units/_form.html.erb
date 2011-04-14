@@ -11,6 +11,9 @@
 	<% end %>
 
 	<div class="field">
+		<%= collection_select(:unit, :faction_id, Faction.all, :id, :name) %>
+	</div>
+	<div class="field">
 		<%= collection_select(:unit, :unit_type_id, UnitType.all, :id, :name, :prompt => true)%>
 	</div>
 	<div class="field">

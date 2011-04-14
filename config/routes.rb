@@ -4,6 +4,8 @@ WmApp::Application.routes.draw do
   end
   
   resources :unit_types
+  
+  match 'cygnar' => 'unit_types#cygnar'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

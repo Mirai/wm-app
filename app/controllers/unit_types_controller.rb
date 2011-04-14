@@ -37,5 +37,11 @@ class UnitTypesController < ApplicationController
     
     redirect_to(unit_types_path)
   end
+  
+  def cygnar
+    @unit_types = UnitType.all
+    
+    render 'faction'
+  end
 
 end

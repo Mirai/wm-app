@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  type: 1
+  rng: 1
+  rof: 1
+  aoe: 1
+  power: 1
+  unit: 
+
+two:
+  name: MyString
+  type: 1
+  rng: 1
+  rof: 1
+  aoe: 1
+  power: 1
+  unit: 
