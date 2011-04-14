@@ -1,7 +1,6 @@
 class UnitsController < ApplicationController
   def new
     @unit = Unit.new
-    @unit_types = UnitType.all
   end
   
   def create

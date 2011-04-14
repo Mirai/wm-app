@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110414155049) do
+ActiveRecord::Schema.define(:version => 20110414162519) do
 
   create_table "unit_types", :force => true do |t|
     t.string   "name"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(:version => 20110414155049) do
     t.integer  "cost"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "unit_type_id"
   end
 
 end
