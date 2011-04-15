@@ -2,7 +2,7 @@
 
 <%= @unit.faction.name %> <%= @unit.unit_type.name %>
 
-<table border="1">
+<table>
 	<tr>
 		<th>SPD</th>
 		<th>STR</th>
@@ -26,17 +26,17 @@ Point cost: <%= @unit.cost %>
 <h2>Weapons</h2>
 <% @unit.weapons.each do |weapon| %>
 	<%= weapon.name %>
-	<% if weapon.wtype %>
+	<% if weapon.ranged %>
 		<%= render :partial => 'weapons/ranged', :locals => { :weapon => weapon } %>
 	<% else %>
-		<%= render :partial => 'weapons/melee', :locals => { :weapon => weapon } %>
+		<%= render :partial => 'weapons/melee', :locals => { :weapon => weapon, :str => @unit.str } %>
 	<% end %>
 <% end %>
 
 <h4>Feat: <%= @unit.feat.name %></h4>
 <p><%= @unit.feat.desc %></p>
 
-<table border="1">
+<table>
 	<tr>
 		<th>SPELLS</th>
 		<th>COST</th>
@@ -52,10 +52,10 @@ Point cost: <%= @unit.cost %>
 		<td><%= spell.name %></td>
 		<td><%= spell.cost %></td>
 		<td><%= spell.rng %></td>
-		<td><%= spell.aoe %></td>
-		<td><%= spell.pow %></td>
-		<td><%= spell.up %></td>
-		<td><%= spell.off %></td>
+		<td><%= statDash spell.aoe %></td>
+		<td><%= statDash spell.pow %></td>
+		<td><%= bool2Affirm spell.up %></td>
+		<td><%= bool2Affirm spell.off %></td>
 	</tr>
 	<tr>
 		<td colspan="7"><%= spell.desc %></td>

@@ -1,7 +1,9 @@
 module WeaponsHelper
-  def melee_weapon
-  end
-  
-  def range_weapon
+  def weaponType ranged
+    if ranged
+      "Ranged"
+    else
+      "Melee"
+    end
   end
 end

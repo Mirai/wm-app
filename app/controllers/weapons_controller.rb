@@ -1,8 +1,4 @@
-class WeaponsController < ApplicationController
-  def index
-    @weapons = Weapon.all
-  end
-  
+class WeaponsController < ApplicationController  
   def new
     @weapon = Weapon.new
   end
@@ -15,5 +11,13 @@ class WeaponsController < ApplicationController
     else
       render :action => 'new'
     end
+  end
+  
+  def index
+    @weapons = Weapon.order(:name)
+  end
+  
+  def show
+    @weapon = Weapon.find(params[:id])
   end
 end
