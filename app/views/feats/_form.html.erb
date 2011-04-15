@@ -1,0 +1,28 @@
+<%= form_for @feat do |f| %>
+	
+	<% if @feat.errors.any? %>
+	<div id="errorExplanation">
+		<h2><%= pluralize(@feat.errors.count, "error") %> prohibited this unit from being saved:</h2>
+		<ul>
+		<% @feat.errors.full_messages.each do |msg| %>
+			<li><%= msg %></li>
+		<% end %>
+		</ul>
+	</div>
+	<% end %>
+
+	<div class="field">
+		<%= collection_select(:feat, :unit_id, Unit.all, :id, :name) %>
+	</div>
+	<div class="field">
+		<%= f.label :name %><br />
+		<%= f.text_field :name %>
+	</div>
+	<div class="field">
+		<%= f.label :desc %><br />
+		<%= f.text_area :desc %>
+	</div>
+	<div class="actions">
+		<%= f.submit %>
+	</div>
+<% end %>

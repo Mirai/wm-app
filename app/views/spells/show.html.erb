@@ -1,0 +1,26 @@
+<p></p>
+<table border="1">
+	<tr>
+		<th>SPELL</th>
+		<th>COST</th>
+		<th>RNG</th>
+		<th>AOE</th>
+		<th>POW</th>
+		<th>UP</th>
+		<th>OFF</th>
+	</tr>
+	<tr>
+		<td><%= @spell.name %></td>
+		<td><%= @spell.cost %></td>
+		<td><%= @spell.rng %></td>
+		<td><%= statDash @spell.aoe %></td>
+		<td><%= statDash @spell.pow %></td>
+		<td><%= bool2Affirm @spell.up %></td>
+		<td><%= bool2Affirm @spell.off %></td>
+	</tr>
+	<tr>
+		<td colspan="7"><%= @spell.desc %></td>
+	</tr>
+</table>
+
+<%= link_to 'Back', spells_path %>

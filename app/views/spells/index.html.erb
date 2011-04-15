@@ -1,5 +1,22 @@
 <h1>Spells</h1>
 
+<table>
+	<tr>
+		<th>Spell</th>
+		<th></th>
+		<th></th>
+		<th></th>
+	</tr>
 <% @spells.each do |spell| %>
-	<%= spell.name %><br />
+	<tr>
+		<td><%= spell.name %></td>
+		<td><%= link_to 'Show', spell %></td>
+		<td><%= link_to 'Edit', edit_spell_path(spell) %></td>
+		<td><%= link_to 'Delete', spell, :confirmation => "Are you sure?", :method => :destroy %></td>
+	</tr>
 <% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Spell', new_spell_path %>

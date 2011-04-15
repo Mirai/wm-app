@@ -1,0 +1,49 @@
+<%= form_for @spell do |f| %>
+	
+	<% if @spell.errors.any? %>
+	<div id="errorExplanation">
+		<h2><%= pluralize(@spell.errors.count, "error") %> prohibited this unit from being saved:</h2>
+		<ul>
+		<% @spell.errors.full_messages.each do |msg| %>
+			<li><%= msg %></li>
+		<% end %>
+		</ul>
+	</div>
+	<% end %>
+
+	<div class="field">
+		<%= f.label :name %><br />
+		<%= f.text_field :name %>
+	</div>
+	<div class="field">
+		<%= f.label :cost %><br />
+		<%= f.text_field :cost %>
+	</div>
+	<div class="field">
+		<%= f.label :rng %><br />
+		<%= f.text_field :rng %>
+	</div>
+	<div class="field">
+		<%= f.label :aoe %><br />
+		<%= f.text_field :pow %>
+	</div>
+	<div class="field">
+		<%= f.label :pow %><br />
+		<%= f.text_field :pow %>
+	</div>
+	<div class="field">
+		<%= f.label :up %><br />
+		<%= f.check_box :up %>
+	</div>
+	<div class="field">
+		<%= f.label :off %><br />
+		<%= f.check_box :off %>
+	</div>
+	<div class="field">
+		<%= f.label :desc %><br />
+		<%= f.text_area :desc %>
+	</div>
+	<div class="actions">
+		<%= f.submit %>
+	</div>
+<% end %>
