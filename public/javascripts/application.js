@@ -2,13 +2,18 @@
 // This file is automatically included by javascript_include_tag :defaults
 
 $(document).ready(function() {
-	//$('#extra').css('display','none');
+	if($('#weapon_ranged').is(':checked')) {
+		// nothing
+	} else {
+		$('#ranged_fields').css('display', 'none');
+	}
+	//$('#weapon_ranged:not(:checked)').css('display', 'none');
 	
-	$('#weapon_ranged').click(function() {
+	$('#weapon_ranged').click(function() {		
 		if($('#weapon_ranged').is(':checked')) {
-			$('#extra').html("");
+			$('#ranged_fields').show("fast");
 		} else {
-			$('#extra').html("<%= render 'ranged_form' %>");
+			$('#ranged_fields').hide("fast");
 		}
 	})
 });

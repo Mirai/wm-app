@@ -13,11 +13,32 @@ class WeaponsController < ApplicationController
     end
   end
   
+  def edit
+    @weapon = Weapon.find(params[:id])
+  end
+  
+  def update
+    @weapon = Weapon.find(params[:id])
+    
+    if(@weapon.update_attributes(params[:weapon]))
+      redirect_to weapons_path, :notice => "Weapon successfully updated."
+    else
+      render :action => :edit
+    end
+  end
+  
   def index
     @weapons = Weapon.order(:name)
   end
   
   def show
     @weapon = Weapon.find(params[:id])
+  end
+  
+  def destroy
+    @weapon = Weapon.find(params[:id])
+    @weapon.destroy
+    
+    redirect_to weapons_path
   end
 end

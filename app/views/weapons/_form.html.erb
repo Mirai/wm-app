@@ -1,9 +1,33 @@
 <%= form_for @weapon do |f| %>
 	<div class="field">
+		<%= f.label :name %><br />
+		<%= f.text_field :name %>
+	</div>
+	<div class="field">
 		<%= f.label :ranged %><br />
 		<%= f.check_box :ranged %>
 	</div>
 	
-	<div id="extra">
+	<div id="ranged_fields">
+		<div class="field">
+			<%= f.label :rng %><br />
+			<%= f.text_field :rng %>
+		</div>
+		<div class="field">
+			<%= f.label :rof %><br />
+			<%= f.text_field :rof %>
+		</div>
+		<div class="field">
+			<%= f.label :aoe %><br />
+			<%= f.text_field :aoe %>
+		</div>
+	</div>
+	
+	<div class="field">
+		<%= f.label :pow %><br />
+		<%= f.text_field :pow %>
+	</div>
+	<div class="actions">
+		<%= f.submit %>
 	</div>
 <% end %>
