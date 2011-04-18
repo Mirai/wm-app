@@ -28,8 +28,10 @@ class UnitsController < ApplicationController
   end
   
   def index
-    @unit_types = UnitType.all
-    @units = Unit.all
+    @unit_types = UnitType.where("id != 1 AND id != 2 AND id != 3")
+    @warcasters = Unit.where("unit_type_id = 1")
+    @warjacks = Unit.where("unit_type_id = 1 OR 2")
+    @troops = Unit.where("unit_type_id != 1 AND unit_type_id != 2 AND unit_type_id != 3")
   end
   
   def show

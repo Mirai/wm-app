@@ -1,32 +1,16 @@
 <h1>Units</h1>
 
-<%# @unit_types.each do |unit_type| %>
-
-	<h3><%#= unit_type.name %></h3>
-
-<table>
-  <tr>
-    <th>Name</th>
-	<th>Faction</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-    
-<%# unit_type.units.each do |unit| %>
-<% @units.each do |unit | %>
+<h3>Warcasters</h3>
 	
-  <tr>
-    <td><%= unit.name %></td>
-	<td><%= unit.faction.name %></td>
-    <td><%= link_to 'Show', unit %></td>
-    <td><%= link_to 'Edit', edit_unit_path(unit) %></td>
-    <td><%= link_to 'Delete', unit, :confirm => "Are you sure?", :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
+<%= render :partial => 'units/unit', :locals => { :units => @warcasters } %>
 
-<%# end %>
+<h3>Warjacks</h3>
+
+<%= render :partial => 'units/unit', :locals => { :units => @warjacks } %>
+
+<h3>Troops</h3>
+
+<%= render :partial => 'units/unit', :locals => { :units => @troops } %>
 
 <br />
 
