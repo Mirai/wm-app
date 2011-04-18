@@ -4,4 +4,6 @@ class Unit < ActiveRecord::Base
   has_and_belongs_to_many :weapons
   has_one :feat
   has_and_belongs_to_many :spells
+  has_and_belongs_to_many :warcasters
+  has_and_belongs_to_many :warjacks
 end

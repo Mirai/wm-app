@@ -1,3 +1,3 @@
 <% @factions.each do |faction| %>
-	<h3><%= link_to faction.name, units_path %></h3>
+	<h3><%= link_to faction.name, faction.name.downcase %></h3>
 <% end %>

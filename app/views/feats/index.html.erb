@@ -11,7 +11,7 @@
 
 <% @feats.each do |feat| %>
 	<tr>
-		<td></td>
+		<td><%= feat.unit.name %></td>
 		<td><%= feat.name %></td>
 		<td><%= link_to 'Show', feat %></td>
 		<td><%= link_to 'Edit', edit_feat_path(feat) %></td>

@@ -28,6 +28,7 @@ class UnitsController < ApplicationController
   end
   
   def index
+    @unit_types = UnitType.all
     @units = Unit.all
   end
   

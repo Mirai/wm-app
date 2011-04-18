@@ -1,0 +1,2 @@
+module KhadorHelper
+end

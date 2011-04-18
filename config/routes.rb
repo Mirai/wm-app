@@ -8,7 +8,9 @@ WmApp::Application.routes.draw do
   resources :spells
   resources :feats
   
-  match 'cygnar' => 'unit_types#cygnar'
+  #resources :cygnars
+  match 'cygnar' => 'cygnar#index'
+  match 'khador' => 'khador#index'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
