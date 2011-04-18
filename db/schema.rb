@@ -10,18 +10,10 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110418145930) do
+ActiveRecord::Schema.define(:version => 20110418214310) do
 
   create_table "factions", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "feats", :force => true do |t|
-    t.string   "name"
-    t.text     "desc"
-    t.integer  "unit_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -86,6 +78,8 @@ ActiveRecord::Schema.define(:version => 20110418145930) do
     t.integer  "wj_points"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "feat_name"
+    t.text     "feat_desc"
   end
 
   create_table "warjacks", :force => true do |t|
