@@ -1,0 +1,26 @@
+<table>
+	<tr>
+		<th>SPELLS</th>
+		<th>COST</th>
+		<th>RNG</th>
+		<th>AOE</th>
+		<th>POW</th>
+		<th>UP</th>
+		<th>OFF</th>
+	</tr>
+
+<% spells.each do |spell| %>
+	<tr>
+		<td><%= spell.name %></td>
+		<td><%= spell.cost %></td>
+		<td><%= spell.rng %></td>
+		<td><%= statDash spell.aoe %></td>
+		<td><%= statDash spell.pow %></td>
+		<td><%= bool2Affirm spell.up %></td>
+		<td><%= bool2Affirm spell.off %></td>
+	</tr>
+	<tr>
+		<td colspan="7"><%= spell.desc %></td>
+	</tr>
+<% end %>
+</table>
