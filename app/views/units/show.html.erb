@@ -3,7 +3,9 @@
 <%= @unit.faction.name %> <%= @unit.unit_type.name %>
 
 <%= render :partial => 'stats', :locals => { :unit => @unit } %>
-Point cost: <%= @unit.cost %><br />
+<% if !@unit.warcaster? %>
+	Point cost: <%= @unit.cost %><br />
+<% end %>
 
 <%= render :partial => 'weapons/stats', :locals => { :unit => @unit } %>
 <%= form_tag :action => 'add_weapon' do %>
@@ -12,8 +14,12 @@ Point cost: <%= @unit.cost %><br />
 	<%= submit_tag "Add Weapon" %>
 <% end %>
 
-<h4>Feat: <%#= @unit.feat.name %></h4>
-<p><%#= @unit.feat.desc %></p>
+<% if @unit.warcaster? %>
+	<% @unit.warcasters.each do |feat| %>
+	<h4>Feat: <%= feat.feat_name %></h4>
+	<p><%= feat.feat_desc %></p>
+	<% end %>
+<% end %>
 
 <%= render :partial => 'spells/stats', :locals => { :spells => @unit.spells } %>
 <%= form_tag :action => 'add_spell' do %>
