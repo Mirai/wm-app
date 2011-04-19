@@ -1,8 +1,18 @@
-<div class="field">
-	<%= f.label :focus %><br />
-	<%= f.text_field :focus %>
-</div>
-<div class="field">
-	<%= f.label :wj_points %><br />
-	<%= f.text_field :wj_points %>
-</div>
+<%= fields_for @unit.warcaster do |form| %>
+	<div class="field">
+		<%= form.label :focus %><br />
+		<%= form.text_field :focus %>
+	</div>
+	<div class="field">
+		<%= form.label :wj_points %><br />
+		<%= form.text_field :wj_points %>
+	</div>
+	<div class="field">
+		<%= form.label :feat_name %><br />
+		<%= form.text_field :feat_name %>
+	</div>
+	<div class="field">
+		<%= form.label :feat_desc %><br />
+		<%= form.text_area :feat_desc %>
+	</div>
+<% end %>

@@ -1,10 +1,15 @@
 class UnitsController < ApplicationController
   def new
     @unit = Unit.new
+    @unit.warcaster = Warcaster.new
   end
   
   def create
     @unit = Unit.new(params[:unit])
+    
+    if @unit.unit_type_id == 1
+      @unit.warcaster = Warcaster.new(params[:warcaster])
+    end
     
     if @unit.save
       redirect_to(@unit, :notice => "Unit successfully created.")
@@ -20,7 +25,7 @@ class UnitsController < ApplicationController
   def update
     @unit = Unit.find(params[:id])
     
-    if @unit.update_attributes(params[:unit])
+    if @unit.update_attributes(params[:unit]) && @unit.warcaster.update_attributes(params[:warcaster])
       redirect_to(@unit, :notice => "Unit was successfully updated.")
     else
       render :action => 'edit'
