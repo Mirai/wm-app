@@ -15,10 +15,11 @@
 <% end %>
 
 <% if @unit.warcaster? %>
-	<% @unit.warcasters.each do |feat| %>
-	<h4>Feat: <%= feat.feat_name %></h4>
-	<p><%= feat.feat_desc %></p>
-	<% end %>
+	Focus: <%= @unit.warcaster.focus %><br />
+	Warjack Points: +<%= @unit.warcaster.wj_points %>
+	
+	<h4>Feat: <%= @unit.warcaster.feat_name %></h4>
+	<p><%= @unit.warcaster.feat_desc %></p>
 <% end %>
 
 <%= render :partial => 'spells/stats', :locals => { :spells => @unit.spells } %>
