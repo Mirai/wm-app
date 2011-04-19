@@ -36,6 +36,8 @@ class UnitsController < ApplicationController
   
   def show
     @unit = Unit.find(params[:id])
+    @available_weapons = Weapon.all - @unit.weapons
+    @available_spells = Spell.all - @unit.spells
   end
   
   def destroy
@@ -43,5 +45,19 @@ class UnitsController < ApplicationController
     @unit.destroy
     
     redirect_to(units_url)
+  end
+  
+  def add_weapon
+    @unit = Unit.find(params[:unit][:id])
+    @unit.weapons << Weapon.find(params[:unit][:weapons])
+    
+    redirect_to @unit, :notice => "Weapon successfully added."
+  end
+  
+  def add_spell
+    @unit = Unit.find(params[:unit][:id])
+    @unit.spells << Spell.find(params[:unit][:spells])
+    
+    redirect_to @unit, :notice => "Spell successfully added."
   end
 end
