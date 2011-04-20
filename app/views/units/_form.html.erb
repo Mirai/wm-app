@@ -55,6 +55,17 @@
 		<%= f.label :cost %><br />
 		<%= f.text_field :cost %>
 	</div>
+	<div class="field">
+		<%= f.label :damage %><br />
+		<%= f.text_field :damage %>
+	</div>
+	<div class="field">
+		<%= f.label :field_allowance %><br />
+		<%= f.select :field_allowance, [['Character/1', 'C'], ['2', 2], ['3', 3], ['4', 4], ['Unlimited', 'U']] %>
+	</div>
+	<div class="field">
+		<%= f.label :base %><br />
+		<%= f.select :base, [['Small', 'Small'], ['Medium', 'Medium'], ['Large', 'Large']] %>
 	<div class="actions">
 		<%= f.submit %>
 	</div>

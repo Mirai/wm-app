@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110419192208) do
+ActiveRecord::Schema.define(:version => 20110420144236) do
 
   create_table "factions", :force => true do |t|
     t.string   "name"
@@ -56,6 +56,9 @@ ActiveRecord::Schema.define(:version => 20110419192208) do
     t.datetime "updated_at"
     t.integer  "unit_type_id"
     t.integer  "faction_id"
+    t.integer  "damage"
+    t.string   "field_allowance"
+    t.string   "base"
   end
 
   create_table "units_weapons", :id => false, :force => true do |t|

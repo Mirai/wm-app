@@ -16,8 +16,15 @@
 
 <% if @unit.warcaster? %>
 	Focus: <%= @unit.warcaster.focus %><br />
-	Warjack Points: +<%= @unit.warcaster.wj_points %>
-	
+<% end %>
+Damage: <%= @unit.damage %><br />
+Field Allowance: <%= @unit.field_allowance %><br />
+<% if @unit.warcaster? %>
+	Warjack Points: +<%= @unit.warcaster.wj_points %><br />
+<% end %>
+<%= @unit.base %> Base
+
+<% if @unit.warcaster? %>	
 	<h4>Feat: <%= @unit.warcaster.feat_name %></h4>
 	<p><%= @unit.warcaster.feat_desc %></p>
 <% end %>
