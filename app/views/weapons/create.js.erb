@@ -1,2 +1,1 @@
-//$.post('unit/add_weapon', <%= @weapon %>);
-//return false;
+$('#unit_weapons').append("<option value='<%= @weapon.id %>' selected='selected'><%= @weapon.name %></option>");

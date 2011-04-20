@@ -12,7 +12,10 @@ class SpellsController < ApplicationController
     @spell = Spell.new(params[:spell])
     
     if @spell.save
-      redirect_to spells_path, :notice => "Spell successfully created."
+      respond_to do |format|
+        format.html { redirect_to spells_path, :notice => "Spell successfully created." }
+        format.js
+      end
     else
       render :action => 'new'
     end

@@ -44,13 +44,12 @@ $(document).ready(function() {
 		})
 	//})
 
-	/*$('#x_newspell').contents(function() {
-		$('#new_spell').submit(function() {
-			//$.post($(this).attr('action'), $(this).serialize(), null, "script");
-			//return false;
-			alert("test");
+	//$('#x_newspell').contents(function() {
+		$('#new_spell').live('submit', function() {
+			$.post($(this).attr('action'), $(this).serialize(), null, "script");
+			return false;
 		})
-	})*/
+	//})
 		
 	$(function() { $('a[rel=updater]').ajaxUpdater() })
 });
