@@ -24,29 +24,33 @@ $.fn.ajaxUpdater = function(options) {
 }
 
 
-$(document).ready(function() {
+$(document).ready(function() {	
 	if($('#weapon_ranged').is(':checked')) {
-		// nothing
-	} else {
-		$('#ranged_fields').css('display', 'none');
+		$('#ranged_fields').css('display', 'block');
 	}
-	//$('#weapon_ranged:not(:checked)').css('display', 'none');
 	
-	$('#weapon_ranged').click(function() {		
-		if($('#weapon_ranged').is(':checked')) {
+	$('#weapon_ranged').live('click', function() {		
+		if($(this).is(':checked')) {
 			$('#ranged_fields').show("fast");
 		} else {
 			$('#ranged_fields').hide("fast");
 		}
 	})
 	
-	$(function() { $('a[rel=updater]').ajaxUpdater() })
-	
-	$('#x_addspell').contents(function() {
+	//$('#x_newweapon').contents(function() {
+		$('#new_weapon').live('submit', function() {
+			$.post($(this).attr('action'), $(this).serialize(), null, "script");
+			return false;
+		})
+	//})
+
+	/*$('#x_newspell').contents(function() {
 		$('#new_spell').submit(function() {
 			//$.post($(this).attr('action'), $(this).serialize(), null, "script");
 			//return false;
 			alert("test");
 		})
-	})
+	})*/
+		
+	$(function() { $('a[rel=updater]').ajaxUpdater() })
 });

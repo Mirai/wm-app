@@ -12,7 +12,10 @@ class WeaponsController < ApplicationController
     @weapon = Weapon.new(params[:weapon])
     
     if @weapon.save
-      redirect_to weapons_path, :notice => "Weapon successfully created."
+      respond_to do |format|
+        format.html { redirect_to weapons_path, :notice => "Weapon successfully created." }
+        format.js
+      end
     else
       render :action => 'new'
     end
