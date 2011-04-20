@@ -1,6 +1,11 @@
 class SpellsController < ApplicationController
   def new
     @spell = Spell.new
+    
+    respond_to do |format|
+      format.html
+      format.js { render :partial => 'form' }
+    end
   end
   
   def create

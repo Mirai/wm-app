@@ -13,6 +13,8 @@
 	<%= collection_select(:unit, :weapons, @available_weapons, :id, :name) %>
 	<%= submit_tag "Add Weapon" %>
 <% end %>
+<%= link_to 'New Weapon', new_weapon_path, :id => 'newweapon', :rel => 'updater' %>
+<div id="x_newweapon"></div>
 
 <% if @unit.warcaster? %>
 	Focus: <%= @unit.warcaster.focus %><br />
@@ -35,6 +37,8 @@ Field Allowance: <%= @unit.field_allowance %><br />
 	<%= collection_select(:unit, :spells, @available_spells, :id, :name) %>
 	<%= submit_tag "Add Spell" %>
 <% end %>
+<%= link_to 'New Spell', new_spell_path, :id => 'newspell', :rel => 'updater' %>
+<div id="x_newspell"></div>
 
 <br />
 

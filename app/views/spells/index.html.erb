@@ -12,7 +12,7 @@
 		<td><%= spell.name %></td>
 		<td><%= link_to 'Show', spell %></td>
 		<td><%= link_to 'Edit', edit_spell_path(spell) %></td>
-		<td><%= link_to 'Delete', spell, :confirmation => "Are you sure?", :method => :destroy %></td>
+		<td><%= link_to 'Delete', spell, :confirm => "Are you sure?", :method => :delete %></td>
 	</tr>
 <% end %>
 </table>

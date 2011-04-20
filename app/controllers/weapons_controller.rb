@@ -1,6 +1,11 @@
 class WeaponsController < ApplicationController  
   def new
     @weapon = Weapon.new
+    
+    respond_to do |format|
+      format.html
+      format.js { render :partial => 'form' }
+    end
   end
   
   def create

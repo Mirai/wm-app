@@ -14,7 +14,7 @@
 		<td><%= weaponType weapon.ranged %></td>
 		<td><%= link_to 'Show', weapon %></td>
 		<td><%= link_to 'Edit', edit_weapon_path(weapon) %></td>
-		<td><%= link_to 'Delete', weapon, :confirmation => "Are you sure?", :method => :delete %></td>
+		<td><%= link_to 'Delete', weapon, :confirm => "Are you sure?", :method => :delete %></td>
 	</tr>
 <% end %>
 </table>
