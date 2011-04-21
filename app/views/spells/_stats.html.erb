@@ -1,6 +1,6 @@
-<table>
+<table class="stat_table">
 	<tr>
-		<th>SPELLS</th>
+		<th class="left_align">SPELLS</th>
 		<th>COST</th>
 		<th>RNG</th>
 		<th>AOE</th>
@@ -11,7 +11,7 @@
 
 <% spells.each do |spell| %>
 	<tr>
-		<td><%= spell.name %></td>
+		<td class="left_align"><%= spell.name %></td>
 		<td><%= spell.cost %></td>
 		<td><%= spell.rng %></td>
 		<td><%= statDash spell.aoe %></td>
@@ -20,7 +20,7 @@
 		<td><%= bool2Affirm spell.off %></td>
 	</tr>
 	<tr>
-		<td colspan="7"><%= spell.desc %></td>
+		<td colspan="7" class="left_align"><%= spell.desc %></td>
 	</tr>
 <% end %>
 </table>

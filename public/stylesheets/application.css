@@ -73,3 +73,11 @@ a {
 .error_messages ul {
   margin: 0;
 }
+
+.stat_table {
+	text-align: center;
+}
+
+.stat_table .left_align {
+	text-align: left;
+}
