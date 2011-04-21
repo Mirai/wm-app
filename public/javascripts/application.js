@@ -18,6 +18,7 @@ $.fn.ajaxUpdater = function(options) {
 
       $.get(this.href, function(data) {
         $($dom_id).html(data)
+		$($dom_id).append('<a id="cancel" href="javascript:void()">Cancel</a>')
       })
     })
   })
@@ -42,12 +43,20 @@ $(document).ready(function() {
 			$.post($(this).attr('action'), $(this).serialize(), null, "script");
 			return false;
 		})
+		
+		$('#cancel').live('click', function() {
+			$('#x_newweapon').html('');
+		})
 	})
 
 	$('#x_newspell').each(function() {
 		$('#new_spell').live('submit', function() {
 			$.post($(this).attr('action'), $(this).serialize(), null, "script");
 			return false;
+		})
+		
+		$('#cancel').live('click', function() {
+			$('#x_newspell').html('');
 		})
 	})
 	
