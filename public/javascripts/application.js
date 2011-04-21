@@ -37,19 +37,19 @@ $(document).ready(function() {
 		}
 	})
 	
-	//$('#x_newweapon').contents(function() {
+	$('#x_newweapon').each(function() {
 		$('#new_weapon').live('submit', function() {
 			$.post($(this).attr('action'), $(this).serialize(), null, "script");
 			return false;
 		})
-	//})
+	})
 
-	//$('#x_newspell').contents(function() {
+	$('#x_newspell').each(function() {
 		$('#new_spell').live('submit', function() {
 			$.post($(this).attr('action'), $(this).serialize(), null, "script");
 			return false;
 		})
-	//})
+	})
 		
 	$(function() { $('a[rel=updater]').ajaxUpdater() })
 });

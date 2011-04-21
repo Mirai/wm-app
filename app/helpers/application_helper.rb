@@ -8,7 +8,7 @@ module ApplicationHelper
   end
   
   def statDash stat
-    if stat.nil?
+    if stat.to_s.empty?
       '-'
     else
       stat
