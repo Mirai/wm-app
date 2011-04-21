@@ -16,6 +16,8 @@ WmApp::Application.routes.draw do
   #resources :cygnars
   match 'cygnar' => 'cygnar#index'
   match 'khador' => 'khador#index'
+  match 'protectorateofmenoth' => 'protectorate#index'
+  match 'cryx' => 'cryx#index'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
