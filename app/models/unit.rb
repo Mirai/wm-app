@@ -4,7 +4,7 @@ class Unit < ActiveRecord::Base
   has_and_belongs_to_many :weapons
   has_and_belongs_to_many :spells
   has_one :warcaster, :dependent => :destroy
-  has_one :warjacks
+  has_one :warjack, :dependent => :destroy
   
   def warcaster?
     return true if self.unit_type_id == 1

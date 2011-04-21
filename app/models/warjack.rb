@@ -1,3 +1,3 @@
 class Warjack < ActiveRecord::Base
-  belongs_to :units
+  belongs_to :unit
 end
