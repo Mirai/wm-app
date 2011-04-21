@@ -2,6 +2,11 @@ class UnitsController < ApplicationController
   def new
     @unit = Unit.new
     @unit.warcaster = Warcaster.new
+    
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
   
   def create
@@ -20,6 +25,11 @@ class UnitsController < ApplicationController
   
   def edit
     @unit = Unit.find(params[:id])
+    
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
   
   def update

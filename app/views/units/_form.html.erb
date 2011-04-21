@@ -20,9 +20,9 @@
 		<%= f.label :name %><br />
 		<%= f.text_field :name %>
 	</div>
-	<%# if @unit.warcaster? %>
-		<%= render :partial => 'warcasters/form' %>
-	<%# end %>
+	<div id="additional_fields">
+		<%#= render :partial => 'warcasters/form' %>
+	</div>
 	<div class="field">
 		<%= f.label :spd %><br />
 		<%= f.text_field :spd %>

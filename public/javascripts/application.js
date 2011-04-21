@@ -50,6 +50,12 @@ $(document).ready(function() {
 			return false;
 		})
 	})
+	
+	$('#unit_unit_type_id').change(function() {
+		$.get($(location).attr('href') + '?unit_type=' + $(this).val(), null, null, "script");
+		return false;
+	})
+	$('#unit_unit_type_id').trigger('change');
 		
 	$(function() { $('a[rel=updater]').ajaxUpdater() })
 });
