@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110420144236) do
+ActiveRecord::Schema.define(:version => 20110421154909) do
 
   create_table "factions", :force => true do |t|
     t.string   "name"
@@ -20,9 +20,9 @@ ActiveRecord::Schema.define(:version => 20110420144236) do
 
   create_table "spells", :force => true do |t|
     t.string   "name"
-    t.integer  "cost"
-    t.integer  "rng"
-    t.integer  "aoe"
+    t.string   "cost"
+    t.string   "rng"
+    t.string   "aoe"
     t.integer  "pow"
     t.boolean  "up"
     t.boolean  "off"
