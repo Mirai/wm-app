@@ -13,6 +13,8 @@ WmApp::Application.routes.draw do
   resources :spells
   resources :feats
   
+  resources :warcasters, :warjacks
+  
   match 'cygnar' => 'cygnar#index'
   match 'khador' => 'khador#index'
   match 'protectorateofmenoth' => 'protectorate#index'

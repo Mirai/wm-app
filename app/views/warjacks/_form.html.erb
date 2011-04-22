@@ -1,11 +1,10 @@
 <%= fields_for @unit.warjack do |form| %>
 	<div class="field">
 		<%= form.label :left_hand %><br />
-		<%= form.text_field :left_hand %>
+		<%= collection_select :form, :left_hand_id, Weapon.all, :id, :name %>
 	</div>
 	<div class="field">
 		<%= form.label :right_hand %><br />
-		<%= form.text_field :right_hand %>
-	</div>
+		<%= collection_select :form, :right_hand_id, Weapon.all, :id, :name %>
 	</div>
 <% end %>
