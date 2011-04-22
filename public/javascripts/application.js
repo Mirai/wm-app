@@ -26,6 +26,7 @@ $.fn.ajaxUpdater = function(options) {
 
 
 $(document).ready(function() {	
+	//show and hide the extra ranged weapon fields
 	if($('#weapon_ranged').is(':checked')) {
 		$('#ranged_fields').css('display', 'block');
 	}
@@ -38,6 +39,8 @@ $(document).ready(function() {
 		}
 	})
 	
+	
+	//when the new weapon form is submitted on the unit page
 	$('#x_newweapon').each(function() {
 		$('#new_weapon').live('submit', function() {
 			$.post($(this).attr('action'), $(this).serialize(), null, "script");
@@ -49,6 +52,7 @@ $(document).ready(function() {
 		})
 	})
 
+	//when the new spell form is submitted on the unit page
 	$('#x_newspell').each(function() {
 		$('#new_spell').live('submit', function() {
 			$.post($(this).attr('action'), $(this).serialize(), null, "script");
@@ -60,6 +64,7 @@ $(document).ready(function() {
 		})
 	})
 	
+	//add the extra unit type options to the unit form
 	$('#unit_unit_type_id').change(function() {
 		$.get($(location).attr('href') + '?unit_type=' + $(this).val(), null, null, "script");
 		return false;
