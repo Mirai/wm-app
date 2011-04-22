@@ -51,8 +51,8 @@ class UnitsController < ApplicationController
   
   def show
     @unit = Unit.find(params[:id])
-    @available_weapons = Weapon.all - @unit.weapons
-    @available_spells = Spell.all - @unit.spells
+    @available_weapons = Weapon.order(:name) - @unit.weapons
+    @available_spells = Spell.order(:name) - @unit.spells
   end
   
   def destroy
@@ -64,15 +64,23 @@ class UnitsController < ApplicationController
   
   def add_weapon
     @unit = Unit.find(params[:unit][:id])
-    @unit.weapons << Weapon.find(params[:unit][:weapons])
+    @weapon = Weapon.find(params[:unit][:weapons])
+    @unit.weapons << @weapon
     
-    redirect_to @unit, :notice => "Weapon successfully added."
+    respond_to do |format|
+      format.html { redirect_to @unit, :notice => "Weapon successfully added." }
+      format.js
+    end
   end
   
   def add_spell
     @unit = Unit.find(params[:unit][:id])
-    @unit.spells << Spell.find(params[:unit][:spells])
+    @spell = Spell.find(params[:unit][:spells])
+    @unit.spells << @spell
     
-    redirect_to @unit, :notice => "Spell successfully added."
+    respond_to do |format|
+      format.html { redirect_to @unit, :notice => "Spell successfully added." }
+      format.js
+    end
   end
 end

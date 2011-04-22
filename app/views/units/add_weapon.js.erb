@@ -1,0 +1,7 @@
+if(<%= @weapon.ranged %>) {
+	$('#weapons_stats').append("<%= escape_javascript(render :partial => 'weapons/ranged', :locals => { :weapon => @weapon }) %>");
+} else {
+	$('#weapons_stats').append("<%= escape_javascript(render :partial => 'weapons/melee', :locals => { :weapon => @weapon, :str => @unit.str }) %>");
+}
+
+$("#unit_weapons option[value='<%= @weapon.id %>']").remove();

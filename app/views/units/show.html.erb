@@ -7,8 +7,10 @@
 	Point cost: <%= @unit.cost %><br />
 <% end %>
 
-<%= render :partial => 'weapons/stats', :locals => { :unit => @unit } %>
-<%= form_tag :action => 'add_weapon' do %>
+<div id="weapons_stats">
+	<%= render :partial => 'weapons/stats', :locals => { :unit => @unit } %>
+</div>
+<%= form_tag add_weapon_units_path, :class => 'unit_addition' do %>
 	<%= hidden_field 'unit', 'id' %>
 	<%= collection_select(:unit, :weapons, @available_weapons, :id, :name) %>
 	<%= submit_tag "Add Weapon" %>
@@ -32,7 +34,7 @@ Field Allowance: <%= @unit.field_allowance %><br />
 <% end %>
 
 <%= render :partial => 'spells/stats', :locals => { :spells => @unit.spells } %>
-<%= form_tag :action => 'add_spell' do %>
+<%= form_tag add_spell_units_path, :class => 'unit_addition' do %>
 	<%= hidden_field 'unit', 'id' %>
 	<%= collection_select(:unit, :spells, @available_spells, :id, :name) %>
 	<%= submit_tag "Add Spell" %>

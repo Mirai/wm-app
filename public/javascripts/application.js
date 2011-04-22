@@ -64,6 +64,12 @@ $(document).ready(function() {
 		})
 	})
 	
+	//when add spell or add weapon submitted on unit page
+	$('.unit_addition').submit(function() {
+		$.post($(this).attr('action'), $(this).serialize(), null, "script");
+		return false;
+	})
+	
 	//add the extra unit type options to the unit form
 	$('#unit_unit_type_id').change(function() {
 		$.get($(location).attr('href') + '?unit_type=' + $(this).val(), null, null, "script");

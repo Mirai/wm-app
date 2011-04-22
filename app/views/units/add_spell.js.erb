@@ -1,0 +1,3 @@
+$('#spell_stats > tbody').append('<tr><td class="left_align"><%= @spell.name %></td><td><%= @spell.cost %></td><td><%= @spell.rng %></td><td><%= statDash @spell.aoe %></td><td><%= statDash @spell.pow %></td><td><%= bool2Affirm @spell.up %></td><td><%= bool2Affirm @spell.off %></td></tr><tr><td class="left_align" colspan="7"><%= @spell.desc %></td></tr>');
+
+$("#unit_spells option[value='<%= @spell.id %>']").remove();
