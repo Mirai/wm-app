@@ -29,8 +29,24 @@ Field Allowance: <%= @unit.field_allowance %><br />
 <%= @unit.base %> Base
 
 <% if @unit.warcaster? %>	
-	<h4>Feat: <%= @unit.warcaster.feat_name %></h4>
+	<h2>Feat: <%= @unit.warcaster.feat_name %></h2>
 	<p><%= @unit.warcaster.feat_desc %></p>
+<% end %>
+
+<% if !@unit.rules.empty? %>
+	<h2><%= @unit.short_name %></h2>
+	<% @unit.rules.each do |rule| %>
+		<p><strong><%= rule.name %> - </strong><%= rule.desc %></p>
+	<% end %>
+<% end %>
+
+<% @unit.weapons.each do |weapon| %>
+	<% if !weapon.abilities.empty? %>
+		<h2><%= weapon.name %></h2>
+		<% weapon.abilities.each do |ability| %>
+			<p><strong><%= ability.name %> - </strong><%= ability.desc %></p>
+		<% end %>
+	<% end %>
 <% end %>
 
 <%= render :partial => 'spells/stats', :locals => { :spells => @unit.spells } %>

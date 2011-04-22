@@ -10,12 +10,36 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110421154909) do
+ActiveRecord::Schema.define(:version => 20110422185445) do
+
+  create_table "abilities", :force => true do |t|
+    t.string   "name"
+    t.text     "desc"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "abilities_weapons", :id => false, :force => true do |t|
+    t.integer "ability_id"
+    t.integer "weapon_id"
+  end
 
   create_table "factions", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "rules", :force => true do |t|
+    t.string   "name"
+    t.text     "desc"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "rules_units", :id => false, :force => true do |t|
+    t.integer "rule_id"
+    t.integer "unit_id"
   end
 
   create_table "spells", :force => true do |t|
@@ -59,6 +83,7 @@ ActiveRecord::Schema.define(:version => 20110421154909) do
     t.integer  "damage"
     t.string   "field_allowance"
     t.string   "base"
+    t.string   "short_name"
   end
 
   create_table "units_weapons", :id => false, :force => true do |t|
