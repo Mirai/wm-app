@@ -7,6 +7,7 @@ class Unit < ActiveRecord::Base
   accepts_nested_attributes_for :warcaster
   has_one :warjack, :dependent => :destroy
   accepts_nested_attributes_for :warjack
+  has_and_belongs_to_many :squads
   has_and_belongs_to_many :rules
   
   def warcaster?

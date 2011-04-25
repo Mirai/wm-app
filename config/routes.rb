@@ -14,7 +14,7 @@ WmApp::Application.routes.draw do
   resources :feats
   resources :abilities
   
-  resources :warcasters, :warjacks
+  resources :warcasters, :warjacks, :squads
   
   match 'cygnar' => 'cygnar#index'
   match 'khador' => 'khador#index'

@@ -1,0 +1,17 @@
+<h1><%= @squad.name %></h1>
+
+<%= @squad.faction.name %>
+
+<% @squad.units.each do |unit| %>
+	<%= render :partial => 'units/stats', :locals => { :unit => unit } %>
+<% end %>
+
+<% @squad.units.each do |unit| %>
+	<%= unit.short_name %>'s Damage: <%= unit.damage %><br />
+<% end %>
+Field Allowance: <%= @squad.field_allowance %><br />
+<%= @squad.units.first.base %> Base
+
+<br />
+
+<%= link_to 'Edit', edit_squad_path(@squad) %> | <%= link_to @squad.faction.name, '/' + @squad.faction.name.downcase.gsub(/\s+/, "") %> | <%= link_to 'All Units', units_path %>

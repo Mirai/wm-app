@@ -10,8 +10,4 @@
 
 <h3>Troops</h3>
 
-<%= render :partial => 'units/unit', :locals => { :units => @troops } %>
-
-<br />
-
-<%= link_to 'New Unit', new_unit_path %>
+<%= render :partial => 'squads/list', :locals => { :units => @troops } %>
