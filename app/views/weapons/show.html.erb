@@ -5,4 +5,6 @@
 	<%= render :partial => 'melee', :locals => { :weapon => @weapon, :str => 0 } %>
 <% end %>
 
+<%= render :partial => 'abilities', :locals => { :weapon => @weapon } %>
+
 <%= link_to 'Back', weapons_path %>

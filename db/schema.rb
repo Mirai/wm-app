@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110422213925) do
+ActiveRecord::Schema.define(:version => 20110425211031) do
 
   create_table "abilities", :force => true do |t|
     t.string   "name"
@@ -99,6 +99,7 @@ ActiveRecord::Schema.define(:version => 20110422213925) do
     t.string   "feat_name"
     t.text     "feat_desc"
     t.integer  "unit_id"
+    t.boolean  "epic"
   end
 
   create_table "warjacks", :force => true do |t|
