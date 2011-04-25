@@ -1,4 +1,5 @@
-<%= fields_for @unit.warcaster do |form| %>
+<%= f.fields_for :warcaster do |form| %>
+	<%= f.hidden_field :unit_type_id, :value => unit_type %>
 	<div class="field">
 		<%= form.label :focus %><br />
 		<%= form.text_field :focus %>

@@ -4,7 +4,9 @@ class Unit < ActiveRecord::Base
   has_and_belongs_to_many :weapons
   has_and_belongs_to_many :spells
   has_one :warcaster, :dependent => :destroy
+  accepts_nested_attributes_for :warcaster
   has_one :warjack, :dependent => :destroy
+  accepts_nested_attributes_for :warjack
   has_and_belongs_to_many :rules
   
   def warcaster?

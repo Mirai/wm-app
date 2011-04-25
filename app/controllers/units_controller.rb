@@ -1,47 +1,4 @@
 class UnitsController < ApplicationController
-  def new
-    @unit = Unit.new
-    @unit.warcaster = Warcaster.new
-    
-    respond_to do |format|
-      format.html
-      format.js
-    end
-  end
-  
-  def create
-    @unit = Unit.new(params[:unit])
-    
-    if @unit.unit_type_id == 1
-      @unit.warcaster = Warcaster.new(params[:warcaster])
-    end
-    
-    if @unit.save
-      redirect_to(@unit, :notice => "Unit successfully created.")
-    else
-      render :action => 'new'
-    end
-  end
-  
-  def edit
-    @unit = Unit.find(params[:id])
-    
-    respond_to do |format|
-      format.html
-      format.js
-    end
-  end
-  
-  def update
-    @unit = Unit.find(params[:id])
-    
-    if @unit.update_attributes(params[:unit]) && @unit.warcaster.update_attributes(params[:warcaster])
-      redirect_to(@unit, :notice => "Unit was successfully updated.")
-    else
-      render :action => 'edit'
-    end
-  end
-  
   def index
     @unit_types = UnitType.where("id != 1 AND id != 2 AND id != 3")
     @warcasters = Unit.where("unit_type_id = 1")

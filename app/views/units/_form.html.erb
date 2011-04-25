@@ -1,4 +1,4 @@
-<%= form_for @unit, :url => { :controller => type_name, :action => 'create' } do |f| %>
+<%= form_for @unit, :url => { :controller => type_name, :action => action } do |f| %>
 	<% if @unit.errors.any? %>
 	<div id="errorExplanation">
 		<h2><%= pluralize(@unit.errors.count, "error") %> prohibited this unit from being saved:</h2>
@@ -14,9 +14,6 @@
 		<%= collection_select(:unit, :faction_id, Faction.all, :id, :name) %>
 	</div>
 	<div class="field">
-		<%= f.hidden_field :unit_type_id, :value => unit_type %>
-	</div>
-	<div class="field">
 		<%= f.label :name %><br />
 		<%= f.text_field :name %>
 	</div>
@@ -25,7 +22,7 @@
 		<%= f.text_field :short_name %>
 	</div>
 	<div id="additional_fields">
-		<%= render :partial => type_name + '/form' %>
+		<%= render :partial => type_name + '/form', :locals => { :f => f, :unit_type => unit_type } %>
 	</div>
 	<div class="field">
 		<%= f.label :spd %><br />

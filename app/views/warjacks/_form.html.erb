@@ -1,10 +1,15 @@
-<%= fields_for @unit.warjack do |form| %>
+<div class="field">
+	<%= f.label :unit_type %><br />
+	<%= f.collection_select :unit_type_id, UnitType.find(2, 3), :id, :name %>
+</div>
+
+<%= f.fields_for :warjack do |form| %>	
 	<div class="field">
 		<%= form.label :left_hand %><br />
-		<%= collection_select :form, :left_hand_id, Weapon.all, :id, :name %>
+		<%= form.collection_select :left_hand_id, Weapon.order(:name), :id, :name %>
 	</div>
 	<div class="field">
 		<%= form.label :right_hand %><br />
-		<%= collection_select :form, :right_hand_id, Weapon.all, :id, :name %>
+		<%= form.collection_select :right_hand_id, Weapon.order(:name), :id, :name %>
 	</div>
 <% end %>
