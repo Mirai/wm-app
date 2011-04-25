@@ -12,7 +12,7 @@
   <tr>
     <td><%= unit.name %></td>
 	<td><%= unit.faction.name %></td>
-    <td><%= link_to 'Show', unit %></td>
+    <td><%= link_to 'Show', warcaster_path(unit) %></td>
     <td><%= link_to 'Edit', edit_warcaster_path(unit) %></td>
     <td><%= link_to 'Delete', unit, :confirm => "Are you sure?", :method => :delete %></td>
   </tr>

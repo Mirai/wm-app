@@ -1,0 +1,56 @@
+<h1><%= @unit.name %></h1>
+
+<%= @unit.faction.name %> <%= @unit.unit_type.name %>
+
+<%= render :partial => 'units/stats', :locals => { :unit => @unit } %>
+
+<div id="weapons_stats">
+	<% @unit.weapons.each do |weapon| %>
+		<%= render :partial => 'weapons/stats', :locals => { :unit_str => @unit.str, :weapon => weapon } %>
+	<% end %>
+</div>
+<%= form_tag add_weapon_units_path, :class => 'unit_addition' do %>
+	<%= hidden_field 'unit', 'id' %>
+	<%= collection_select(:unit, :weapons, @available_weapons, :id, :name) %>
+	<%= submit_tag "Add Weapon" %>
+<% end %>
+<%= link_to 'New Weapon', new_weapon_path, :id => 'newweapon', :rel => 'updater' %>
+<div id="x_newweapon"></div>
+
+Focus: <%= @unit.warcaster.focus %><br />
+Damage: <%= @unit.damage %><br />
+Field Allowance: <%= @unit.field_allowance %><br />
+Warjack Points: +<%= @unit.warcaster.wj_points %><br />
+<%= @unit.base %> Base
+
+<h2>Feat: <%= @unit.warcaster.feat_name %></h2>
+<p><%= @unit.warcaster.feat_desc %></p>
+
+<% if !@unit.rules.empty? %>
+	<h2><%= @unit.short_name %></h2>
+	<% @unit.rules.each do |rule| %>
+		<p><strong><%= rule.name %> - </strong><%= rule.desc %></p>
+	<% end %>
+<% end %>
+
+<% @unit.weapons.each do |weapon| %>
+	<% if !weapon.abilities.empty? %>
+		<h2><%= weapon.name %></h2>
+		<% weapon.abilities.each do |ability| %>
+			<p><strong><%= ability.name %> - </strong><%= ability.desc %></p>
+		<% end %>
+	<% end %>
+<% end %>
+
+<%= render :partial => 'spells/stats', :locals => { :spells => @unit.spells } %>
+<%= form_tag add_spell_units_path, :class => 'unit_addition' do %>
+	<%= hidden_field 'unit', 'id' %>
+	<%= collection_select(:unit, :spells, @available_spells, :id, :name) %>
+	<%= submit_tag "Add Spell" %>
+<% end %>
+<%= link_to 'New Spell', new_spell_path, :id => 'newspell', :rel => 'updater' %>
+<div id="x_newspell"></div>
+
+<br />
+
+<%= link_to 'Edit', edit_warcaster_path(@unit) %> | <%= link_to @unit.faction.name, '/' + @unit.faction.name.downcase.gsub(/\s+/, "") %> | <%= link_to 'All Units', units_path %>

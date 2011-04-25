@@ -81,3 +81,13 @@ a {
 .stat_table .left_align {
 	text-align: left;
 }
+
+.warjack_weapon .weapon_hand {
+	float: left;
+	text-align: center;
+	padding-top: 25px;
+}
+
+.warjack_weapon .weapon_stats {
+	margin-left: 15px;
+}

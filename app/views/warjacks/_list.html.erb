@@ -14,7 +14,7 @@
     <td><%= unit.name %></td>
 	<td><%= unit.unit_type.name %></td>
 	<td><%= unit.faction.name %></td>
-    <td><%= link_to 'Show', unit %></td>
+    <td><%= link_to 'Show', warjack_path(unit) %></td>
     <td><%= link_to 'Edit', edit_warjack_path(unit) %></td>
     <td><%= link_to 'Delete', unit, :confirm => "Are you sure?", :method => :delete %></td>
   </tr>
