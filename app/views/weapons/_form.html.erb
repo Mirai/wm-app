@@ -27,6 +27,11 @@
 		<%= f.label :pow %><br />
 		<%= f.text_field :pow %>
 	</div>
+	
+	<div class="field">
+		<%= f.label :abilities %><br />
+		<%= f.collection_select :ability_ids, Ability.order(:name), :id, :name, {}, :multiple => true %>
+	</div>
 	<div class="actions">
 		<%= f.submit %>
 	</div>
