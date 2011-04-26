@@ -6,7 +6,7 @@
 
 <%= render :partial => 'units/stats', :locals => { :unit => @unit } %>
 
-<div id="weapons_stats">
+<div id="weapons_stats_<%= unit.id %>">
 	<% @unit.weapons.each do |weapon| %>
 		<%= render :partial => 'weapons/stats', :locals => { :unit_str => @unit.str, :weapon => weapon } %>
 	<% end %>

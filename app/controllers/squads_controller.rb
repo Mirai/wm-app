@@ -31,5 +31,6 @@ class SquadsController < ApplicationController
   
   def show
     @squad = Squad.find(params[:id])
+    @unique_weapons
   end
 end
