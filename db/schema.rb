@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110426174932) do
+ActiveRecord::Schema.define(:version => 20110426203855) do
 
   create_table "abilities", :force => true do |t|
     t.string   "name"
@@ -72,9 +72,12 @@ ActiveRecord::Schema.define(:version => 20110426174932) do
     t.string   "name"
     t.integer  "faction_id"
     t.string   "field_allowance"
-    t.integer  "cost"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "min_models"
+    t.integer  "min_cost"
+    t.integer  "max_models"
+    t.integer  "max_cost"
   end
 
   create_table "squads_units", :id => false, :force => true do |t|

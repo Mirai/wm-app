@@ -1,0 +1,76 @@
+<%= form_for @squad do |f| %>
+	<div class="field">
+		<%= f.label :name %><br />
+		<%= f.text_field :name %>
+	</div>
+	<div class="field">
+		<%= f.label :faction %><br />
+		<%= f.collection_select :faction, Faction.all, :id, :name %>
+	</div>
+	<div class="field">
+		<%= f.label :field_allowance %><br />
+		<%= f.select :field_allowance, [['Character', 'C'], ['1', 1], ['2', 2], ['3', 3], ['4', 4], ['Unlimited', 'U']] %>
+	</div>
+	<div class="field">
+		<%= f.label :min_models %><br />
+		<%= f.text_field :min_models %>
+	</div>
+	<div class="field">
+		<%= f.label :min_cost %><br />
+		<%= f.text_field :min_cost%>
+	</div>
+	<div class="field">
+		<%= f.label :max_models %><br />
+		<%= f.text_field :max_models %>
+	</div>
+	<div class="field">
+		<%= f.label :max_cost %><br />
+		<%= f.text_field :max_cost %>
+	</div>
+	<%= f.fields_for :units do |builder| %>
+		<p class="unit_fields">
+			<div class="field">
+				<%= builder.hidden_field :_destroy %>
+				<%= link_to_function 'Remove', 'remove_fields(this)' %>
+			<div class="field">
+				<%= builder.label :name %><br />
+				<%= builder.text_field :name %>
+			</div>
+			<div class="field">
+				<%= builder.label :short_name %><br />
+				<%= builder.text_field :short_name %>
+			</div>
+			<div class="field">
+				<%= builder.label :spd %><br />
+				<%= builder.text_field :spd %>
+			</div>
+			<div class="field">
+				<%= builder.label :str %><br />
+				<%= builder.text_field :str %>
+			</div>
+			<div class="field">
+				<%= builder.label :mat %><br />
+				<%= builder.text_field :mat %>
+			</div>
+			<div class="field">
+				<%= builder.label :rat %><br />
+				<%= builder.text_field :rat %>
+			</div>
+			<div class="field">
+				<%= builder.label :def %><br />
+				<%= builder.text_field :def %>
+			</div>
+			<div class="field">
+				<%= builder.label :arm %><br />
+				<%= builder.text_field :arm %>
+			</div>
+			<div class="field">
+				<%= builder.label :cmd %><br />
+				<%= builder.text_field :cmd %>
+			</div>
+		</p>
+	<% end %>
+	<div class="actions">
+		<%= f.submit %>
+	</div>
+<% end %>

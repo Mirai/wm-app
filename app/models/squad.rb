@@ -1,6 +1,7 @@
 class Squad < ActiveRecord::Base
   belongs_to :faction
   has_and_belongs_to_many :units
+  accepts_nested_attributes_for :units, :allow_destroy => true
   
   def unique_weapons
     unique_weapons = []

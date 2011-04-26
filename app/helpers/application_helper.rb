@@ -13,5 +13,5 @@ module ApplicationHelper
     else
       stat
     end
-  end
+  end 
 end

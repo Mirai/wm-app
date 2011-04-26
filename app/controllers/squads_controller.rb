@@ -1,29 +1,28 @@
 class SquadsController < ApplicationController
   def new
-    @unit = Unit.new
-    @unit.build_squad
+    @squad = Squad.new
+    3.times { @squad.units.build }
   end
   
   def create
-    @unit = Unit.new(params[:unit])
+    @squad = Squad.new(params[:squad])
     
-    if @unit.save
-      redirect_to(warjack_path(@unit), :notice => "Unit successfully created.")
+    if @squad.save
+      redirect_to(@squad, :notice => "Squad successfully created.")
     else
       render :action => 'new'
     end
   end
   
   def edit
-    @unit = Unit.find(params[:id])
-    @unit.build_squad if @unit.squad.nil?
+    @squad = Squad.find(params[:id])
   end
   
   def update
-    @unit = Unit.find(params[:id])
+    @squad = Squad.find(params[:id])
     
-    if @unit.update_attributes(params[:unit])
-      redirect_to(warjack_path(@unit), :notice => "Unit was successfully updated.")
+    if @squad.update_attributes(params[:unit])
+      redirect_to(@squad, :notice => "Unit was successfully updated.")
     else
       render :action => 'edit'
     end
@@ -31,6 +30,5 @@ class SquadsController < ApplicationController
   
   def show
     @squad = Squad.find(params[:id])
-    @unique_weapons
   end
 end
