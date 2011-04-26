@@ -1,7 +1,8 @@
 class Unit < ActiveRecord::Base
   belongs_to :faction
   belongs_to :unit_type
-  has_and_belongs_to_many :weapons
+  has_many :equips
+  has_many :weapons, :through => :equips
   has_and_belongs_to_many :spells
   has_one :warcaster, :dependent => :destroy
   accepts_nested_attributes_for :warcaster

@@ -1,0 +1,6 @@
+<% if !unit.rules.empty? %>
+	<h2><%= unit.short_name %></h2>
+	<% unit.rules.each do |rule| %>
+		<p><strong><%= rule.name %> - </strong><%= rule.desc %></p>
+	<% end %>
+<% end %>

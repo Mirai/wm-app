@@ -4,37 +4,22 @@
 
 <%= render :partial => 'units/stats', :locals => { :unit => @unit } %>
 
-<div id="weapons_stats_<%= unit.id %>">
-	<% @unit.weapons.each do |weapon| %>
-		<%= render :partial => 'weapons/stats', :locals => { :unit_str => @unit.str, :weapon => weapon } %>
-	<% end %>
-</div>
+<%= render :partial => 'units/weapons', :locals => { :unit => @unit } %>
 
 <%= render :partial => 'weapon', :locals => { :hand => 'L', :weapon => @unit.warjack.left_hand, :unit_str => @unit.str } %><br />
 <%= render :partial => 'weapon', :locals => { :hand => 'R', :weapon => @unit.warjack.right_hand, :unit_str => @unit.str } %>
-
-<%= form_tag add_weapon_units_path, :class => 'unit_addition' do %>
-	<%= hidden_field 'unit', 'id' %>
-	<%= collection_select(:unit, :weapons, Weapon.order(:name), :id, :name) %>
-	<%= submit_tag "Add Weapon" %>
-<% end %>
-<%= link_to 'New Weapon', new_weapon_path, :id => 'newweapon', :rel => 'updater' %>
-<div id="x_newweapon"></div>
 
 Field Allowance: <%= @unit.field_allowance %><br />
 Point Cost: <%= @unit.cost %><br />
 <%= @unit.base %> Base
 
-<% if !@unit.rules.empty? %>
-	<h2><%= @unit.short_name %></h2>
-	<% @unit.rules.each do |rule| %>
-		<p><strong><%= rule.name %> - </strong><%= rule.desc %></p>
-	<% end %>
-<% end %>
+<%= render :partial => 'units/rules', :locals => { :unit => @unit } %>
 
-<% @unit.weapons.each do |weapon| %>
-	<%= render :partial => 'weapons/abilities', :locals => { :weapon => weapon } %>
-<% end %>
+<div id="weapon_abilities">
+	<% @unit.weapons.each do |weapon| %>
+		<%= render :partial => 'weapons/abilities', :locals => { :weapon => weapon } %>
+	<% end %>
+</div>
 
 <%= render :partial => 'weapons/abilities', :locals => { :weapon => @unit.warjack.left_hand } %>
 <%= render :partial => 'weapons/abilities', :locals => { :weapon => @unit.warjack.right_hand } %>

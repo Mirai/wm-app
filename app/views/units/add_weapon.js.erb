@@ -1,7 +1,8 @@
-if(<%= @weapon.ranged %>) {
-	$("#weapons_stats_<%= @unit.id %>").append("<%= escape_javascript(render :partial => 'weapons/ranged', :locals => { :weapon => @weapon }) %>");
+if(<%= @equip.weapon.ranged %>) {
+	$("#weapons_stats_<%= @equip.unit.id %>").append("<%= escape_javascript(render :partial => 'weapons/ranged', :locals => { :weapon => @equip.weapon }) %>");
 } else {
-	$("#weapons_stats_<%= @unit.id %>").append("<%= escape_javascript(render :partial => 'weapons/melee', :locals => { :weapon => @weapon, :str => @unit.str }) %>");
+	$("#weapons_stats_<%= @equip.unit.id %>").append("<%= escape_javascript(render :partial => 'weapons/melee', :locals => { :weapon => @equip.weapon, :str => @equip.unit.str }) %>");
 }
 
-$("#unit_weapons option[value='<%= @weapon.id %>']").remove();
+$("#unit_weapons_<%= @equip.unit.id %> option[value='<%= @equip.weapon.id %>']").remove();
+$("#weapon_abilities").append("<%= escape_javascript(render :partial => 'weapons/abilities', :locals => { :weapon => @equip.weapon }) %>");

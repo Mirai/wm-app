@@ -1,5 +1,5 @@
 <% if weapon.ranged %>
-	<%= render :partial => 'weapons/ranged', :locals => { :weapon => weapon } %>
+	<%= render :partial => 'weapons/ranged', :locals => { :weapon => weapon, :x2 => x2 } %>
 <% else %>
-	<%= render :partial => 'weapons/melee', :locals => { :weapon => weapon, :str => unit_str } %>
+	<%= render :partial => 'weapons/melee', :locals => { :weapon => weapon, :str => unit_str, :x2 => x2 } %>
 <% end %>

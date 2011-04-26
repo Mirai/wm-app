@@ -19,9 +19,11 @@ class UnitsController < ApplicationController
   end
   
   def add_weapon
-    @unit = Unit.find(params[:unit][:id])
-    @weapon = Weapon.find(params[:unit][:weapons])
-    @unit.weapons << @weapon
+    @equip = Equip.new
+    @equip.unit_id = params[:unit][:id]
+    @equip.weapon_id = params[:unit][:weapons]
+    @equip.x2 = params[:equip][:x2]
+    @equip.save
     
     respond_to do |format|
       format.html { redirect_to @unit, :notice => "Weapon successfully added." }
