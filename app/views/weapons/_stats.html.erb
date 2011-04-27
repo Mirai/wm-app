@@ -1,5 +1,12 @@
-<% if weapon.ranged %>
-	<%= render :partial => 'weapons/ranged', :locals => { :weapon => weapon, :x2 => x2 } %>
-<% else %>
-	<%= render :partial => 'weapons/melee', :locals => { :weapon => weapon, :str => unit_str, :x2 => x2 } %>
-<% end %>
+<div class="warjack_weapon">
+	<div class="weapon_hand">
+		<%= hand %>
+	</div>	
+	<div class="weapon_stats">
+		<% if weapon.ranged %>
+			<%= render :partial => 'weapons/ranged', :locals => { :weapon => weapon, :x2 => x2 } %>
+		<% else %>
+			<%= render :partial => 'weapons/melee', :locals => { :weapon => weapon, :str => unit_str, :x2 => x2 } %>
+		<% end %>
+	</div>
+</div>

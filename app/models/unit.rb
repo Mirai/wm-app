@@ -20,4 +20,14 @@ class Unit < ActiveRecord::Base
     return true if self.unit_type_id == 2 || self.unit_type_id == 3
     return false
   end
+  
+  def unique_weapons
+    unique_weapons = []
+    
+    self.weapons.each do |weapon|
+      unique_weapons << weapon
+    end
+    
+    unique_weapons.uniq
+  end
 end

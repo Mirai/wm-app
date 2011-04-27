@@ -4,12 +4,5 @@
 </div>
 
 <%= f.fields_for :warjack do |form| %>	
-	<div class="field">
-		<%= form.label :left_hand %><br />
-		<%= form.collection_select :left_hand_id, Weapon.order(:name), :id, :name %>
-	</div>
-	<div class="field">
-		<%= form.label :right_hand %><br />
-		<%= form.collection_select :right_hand_id, Weapon.order(:name), :id, :name %>
-	</div>
+	
 <% end %>

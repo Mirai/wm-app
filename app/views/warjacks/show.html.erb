@@ -6,9 +6,6 @@
 
 <%= render :partial => 'units/weapons', :locals => { :unit => @unit } %>
 
-<%= render :partial => 'weapon', :locals => { :hand => 'L', :weapon => @unit.warjack.left_hand, :unit_str => @unit.str } %><br />
-<%= render :partial => 'weapon', :locals => { :hand => 'R', :weapon => @unit.warjack.right_hand, :unit_str => @unit.str } %>
-
 Field Allowance: <%= @unit.field_allowance %><br />
 Point Cost: <%= @unit.cost %><br />
 <%= @unit.base %> Base
@@ -16,13 +13,10 @@ Point Cost: <%= @unit.cost %><br />
 <%= render :partial => 'units/rules', :locals => { :unit => @unit } %>
 
 <div id="weapon_abilities">
-	<% @unit.weapons.each do |weapon| %>
+	<% @unit.unique_weapons.each do |weapon| %>
 		<%= render :partial => 'weapons/abilities', :locals => { :weapon => weapon } %>
 	<% end %>
 </div>
-
-<%= render :partial => 'weapons/abilities', :locals => { :weapon => @unit.warjack.left_hand } %>
-<%= render :partial => 'weapons/abilities', :locals => { :weapon => @unit.warjack.right_hand } %>
 
 <br />
 

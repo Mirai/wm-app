@@ -22,6 +22,7 @@ class UnitsController < ApplicationController
     @equip = Equip.new
     @equip.unit_id = params[:unit][:id]
     @equip.weapon_id = params[:unit][:weapons]
+    @equip.hand = params[:equip][:hand]
     @equip.x2 = params[:equip][:x2]
     @equip.save
     

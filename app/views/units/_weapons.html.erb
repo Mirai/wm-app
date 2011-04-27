@@ -1,11 +1,12 @@
 <div id="weapons_stats_<%= unit.id %>">
 	<% unit.equips.each do |equip| %>
-		<%= render :partial => 'weapons/stats', :locals => { :unit_str => unit.str, :weapon => equip.weapon, :x2 => equip.x2 } %>
+		<%= render :partial => 'weapons/stats', :locals => { :unit_str => unit.str, :weapon => equip.weapon, :x2 => equip.x2, :hand => equip.hand } %>
 	<% end %>
 </div>
 <%= form_tag add_weapon_units_path, :class => 'unit_addition' do %>
 	<%= hidden_field 'unit', 'id', :value => unit.id %>
 	<%= collection_select(:unit, :weapons, Weapon.order(:name), :id, :name, {}, { :id => "unit_weapons_#{unit.id}" }) %>
+	<%= select(:equip, :hand, [['No Hand', ''], ['Left', 'L'], ['Right', 'R']]) %>
 	X2? <%= check_box(:equip, :x2) %>
 	<%= submit_tag "Add Weapon" %>
 <% end %>
