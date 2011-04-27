@@ -21,7 +21,7 @@ class SquadsController < ApplicationController
   def update
     @squad = Squad.find(params[:id])
     
-    if @squad.update_attributes(params[:unit])
+    if @squad.update_attributes(params[:squad])
       redirect_to(@squad, :notice => "Unit was successfully updated.")
     else
       render :action => 'edit'

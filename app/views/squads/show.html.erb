@@ -8,10 +8,12 @@
 	<%= render :partial => 'units/weapons', :locals => { :unit => unit } %>
 <% end %>
 
-<% @squad.units.each do |unit| %>
-	<%= sanitize "#{unit.name}'s Damage: #{unit.damage}<br />" if unit.damage > 1 %>
-<% end %>
+<%= squad_damage @squad %>
 Field Allowance: <%= @squad.field_allowance %><br />
+<%= @squad.min_models %>: <%= @squad.min_cost %><br />
+<% if !@squad.max_models.empty? %>
+	<%= @squad.max_models %>: <%= @squad.max_cost %><br />
+<% end %>
 <%= @squad.units.first.base %> Base
 
 <% @squad.units.each do |unit| %>

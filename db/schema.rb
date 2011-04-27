@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110426203855) do
+ActiveRecord::Schema.define(:version => 20110427203619) do
 
   create_table "abilities", :force => true do |t|
     t.string   "name"
@@ -74,10 +74,10 @@ ActiveRecord::Schema.define(:version => 20110426203855) do
     t.string   "field_allowance"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "min_models"
-    t.integer  "min_cost"
-    t.integer  "max_models"
-    t.integer  "max_cost"
+    t.string   "min_models"
+    t.string   "min_cost"
+    t.string   "max_models"
+    t.string   "max_cost"
   end
 
   create_table "squads_units", :id => false, :force => true do |t|
