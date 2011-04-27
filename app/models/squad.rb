@@ -3,6 +3,8 @@ class Squad < ActiveRecord::Base
   has_and_belongs_to_many :units
   accepts_nested_attributes_for :units, :allow_destroy => true
   
+  before_destroy :destroy_units
+  
   def unique_weapons
     unique_weapons = []
     
@@ -14,4 +16,11 @@ class Squad < ActiveRecord::Base
     
     unique_weapons.uniq
   end
+  
+  private
+    def destroy_units
+      self.units.each do |unit|
+        unit.destroy
+      end
+    end
 end

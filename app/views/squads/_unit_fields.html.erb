@@ -1,17 +1,7 @@
-<%= form_for @unit, :url => { :controller => type_name, :action => action } do |f| %>
-	<% if @unit.errors.any? %>
-	<div id="errorExplanation">
-		<h2><%= pluralize(@unit.errors.count, "error") %> prohibited this unit from being saved:</h2>
-		<ul>
-		<% @unit.errors.full_messages.each do |msg| %>
-			<li><%= msg %></li>
-		<% end %>
-		</ul>
-	</div>
-	<% end %>
-
+<div class="unit_fields">
 	<div class="field">
-		<%= collection_select(:unit, :faction_id, Faction.all, :id, :name) %>
+		<%= f.hidden_field :_destroy %>
+		<%= link_to_function 'Remove', 'remove_fields(this)' %>
 	</div>
 	<div class="field">
 		<%= f.label :name %><br />
@@ -20,9 +10,6 @@
 	<div class="field">
 		<%= f.label :short_name %><br />
 		<%= f.text_field :short_name %>
-	</div>
-	<div id="additional_fields">
-		<%= render :partial => type_name + '/form', :locals => { :f => f, :unit_type => unit_type } %>
 	</div>
 	<div class="field">
 		<%= f.label :spd %><br />
@@ -57,18 +44,7 @@
 		<%= f.text_field :damage %>
 	</div>
 	<div class="field">
-		<%= f.label :field_allowance %><br />
-		<%= f.select :field_allowance, [['Character', 'C'], ['1', 1], ['2', 2], ['3', 3], ['4', 4], ['Unlimited', 'U']] %>
-	</div>
-	<div class="field">
-		<%= f.label :cost %><br />
-		<%= f.text_field :cost %>
-	</div>
-	<div class="field">
 		<%= f.label :base %><br />
 		<%= f.select :base, [['Small', 'Small'], ['Medium', 'Medium'], ['Large', 'Large']] %>
 	</div>
-	<div class="actions">
-		<%= f.submit %>
-	</div>
-<% end %>
+</div>

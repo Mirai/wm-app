@@ -5,7 +5,7 @@
 	</div>
 	<div class="field">
 		<%= f.label :faction %><br />
-		<%= f.collection_select :faction, Faction.all, :id, :name %>
+		<%= f.collection_select :faction_id, Faction.all, :id, :name %>
 	</div>
 	<div class="field">
 		<%= f.label :field_allowance %><br />
@@ -28,48 +28,9 @@
 		<%= f.text_field :max_cost %>
 	</div>
 	<%= f.fields_for :units do |builder| %>
-		<p class="unit_fields">
-			<div class="field">
-				<%= builder.hidden_field :_destroy %>
-				<%= link_to_function 'Remove', 'remove_fields(this)' %>
-			<div class="field">
-				<%= builder.label :name %><br />
-				<%= builder.text_field :name %>
-			</div>
-			<div class="field">
-				<%= builder.label :short_name %><br />
-				<%= builder.text_field :short_name %>
-			</div>
-			<div class="field">
-				<%= builder.label :spd %><br />
-				<%= builder.text_field :spd %>
-			</div>
-			<div class="field">
-				<%= builder.label :str %><br />
-				<%= builder.text_field :str %>
-			</div>
-			<div class="field">
-				<%= builder.label :mat %><br />
-				<%= builder.text_field :mat %>
-			</div>
-			<div class="field">
-				<%= builder.label :rat %><br />
-				<%= builder.text_field :rat %>
-			</div>
-			<div class="field">
-				<%= builder.label :def %><br />
-				<%= builder.text_field :def %>
-			</div>
-			<div class="field">
-				<%= builder.label :arm %><br />
-				<%= builder.text_field :arm %>
-			</div>
-			<div class="field">
-				<%= builder.label :cmd %><br />
-				<%= builder.text_field :cmd %>
-			</div>
-		</p>
+		<%= render :partial => 'unit_fields', :locals => { :f => builder } %>
 	<% end %>
+	<p><%= link_to_add_fields "Add Model", f, :units %></p>
 	<div class="actions">
 		<%= f.submit %>
 	</div>

@@ -24,6 +24,16 @@ $.fn.ajaxUpdater = function(options) {
   })
 }
 
+function remove_fields(link) {  
+	$(link).prev("input[type=hidden]").val("1");  
+    $(link).closest(".unit_fields").hide();  
+}
+
+function add_fields(link, association, content) {  
+    var new_id = new Date().getTime();  
+    var regexp = new RegExp("new_" + association, "g");  
+    $(link).parent().before(content.replace(regexp, new_id));  
+}
 
 $(document).ready(function() {	
 	//show and hide the extra ranged weapon fields
@@ -69,17 +79,6 @@ $(document).ready(function() {
 		$.post($(this).attr('action'), $(this).serialize(), null, "script");
 		return false;
 	})
-	
-	function remove_fields(link) {  
-		$(link).prev("input[type=hidden]").val("1");  
-	    $(link).closest(".field").hide();  
-	}
-	
-	function add_fields(link, association, content) {  
-	    var new_id = new Date().getTime();  
-	    var regexp = new RegExp("new_" + association, "g");  
-	    $(link).parent().before(content.replace(regexp, new_id));  
-	}
 		
 	$(function() { $('a[rel=updater]').ajaxUpdater() })
 });

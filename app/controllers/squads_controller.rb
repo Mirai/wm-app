@@ -1,7 +1,7 @@
 class SquadsController < ApplicationController
   def new
     @squad = Squad.new
-    3.times { @squad.units.build }
+    @squad.units.build
   end
   
   def create
@@ -30,5 +30,12 @@ class SquadsController < ApplicationController
   
   def show
     @squad = Squad.find(params[:id])
+  end
+  
+  def destroy
+    @squad = Squad.find(params[:id])
+    @squad.destroy
+    
+    redirect_to units_path
   end
 end
