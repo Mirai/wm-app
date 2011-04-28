@@ -2,7 +2,7 @@ class SquadsController < ApplicationController
   def new
     @squad = Squad.new
     @squad.units.build    
-    @squad_types = UnitType.where("unit_type_id != 1 AND unit_type_id != 2 AND unit_type_id != 3").order(:name)
+    @squad_types = UnitType.where("id != 1 AND id != 2 AND id != 3")
   end
   
   def create
@@ -17,7 +17,7 @@ class SquadsController < ApplicationController
   
   def edit
     @squad = Squad.find(params[:id])
-    @squad_types = UnitType.where("id != 1 AND id != 2 AND id != 3").order(:name)
+    @squad_types = UnitType.where("id != 1 AND id != 2 AND id != 3")
   end
   
   def update

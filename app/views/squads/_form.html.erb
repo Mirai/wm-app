@@ -9,7 +9,13 @@
 	</div>
 	<div class="field">
 		<%= f.label :unit_type %><br />
-		<%= f.collection_select :unit_type_id, @squad_types, :id, :name, { :selected => 4 } %>
+		<%= f.collection_select :unit_type_id, @squad_types, :id, :name %>
+	</div>
+	<div class="field">
+		<%= f.label :unit_attachment %>? <%= f.check_box :unit_attachment %>
+	</div>
+	<div class="field">
+		<%= f.label :weapon_attachment %>? <%= f.check_box :weapon_attachment %>
 	</div>
 	<div class="field">
 		<%= f.label :field_allowance %><br />

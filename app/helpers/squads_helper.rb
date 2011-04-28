@@ -1,4 +1,28 @@
 module SquadsHelper
+  def squad_type squad
+    html = squad.unit_type.name
+    
+    if squad.unit_attachment
+      if html == "Unit"
+        html += " Attachment"
+      else
+        html += " Unit Attachment"
+      end
+    else
+      if squad.weapon_attachment
+        if html == "Unit"
+          html = " Weapon Attachment"
+        else
+          html += " Weapon Attachment"
+        end
+      else    
+        html += " Unit" if html != "Unit"
+      end
+    end
+    
+    html
+  end
+  
   def squad_damage squad
     html = ""
     prev_unit = ""
