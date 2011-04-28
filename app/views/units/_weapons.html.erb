@@ -5,7 +5,7 @@
 </div>
 <%= form_tag add_weapon_units_path, :class => 'unit_addition' do %>
 	<%= hidden_field 'unit', 'id', :value => unit.id %>
-	<%= collection_select(:unit, :weapons, Weapon.order(:name), :id, :name, {}, { :id => "unit_weapons_#{unit.id}" }) %>
+	<%= collection_select(:unit, :weapons, Weapon.order(:name), :id, :name) %>
 	<%= select(:equip, :hand, [['No Hand', ''], ['Left', 'L'], ['Right', 'R']]) %>
 	X2? <%= check_box(:equip, :x2) %>
 	<%= submit_tag "Add Weapon" %>
