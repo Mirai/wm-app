@@ -24,9 +24,9 @@ $.fn.ajaxUpdater = function(options) {
   })
 }
 
-function remove_fields(link) {  
+function remove_fields(link, class) {  
 	$(link).prev("input[type=hidden]").val("1");  
-    $(link).closest(".unit_fields").hide();  
+    $(link).closest("." + class).hide();  
 }
 
 function add_fields(link, association, content) {  

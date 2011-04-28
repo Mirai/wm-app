@@ -1,6 +1,6 @@
 <h1><%= @squad.name %></h1>
 
-<%= @squad.faction.name %>
+<%= @squad.faction.name %> <%= @squad.unit_type.name %>
 
 <% @squad.units.each do |unit| %>
 	<%= render :partial => 'units/stats', :locals => { :unit => unit } %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110427212943) do
+ActiveRecord::Schema.define(:version => 20110428160636) do
 
   create_table "abilities", :force => true do |t|
     t.string   "name"
@@ -39,16 +39,24 @@ ActiveRecord::Schema.define(:version => 20110427212943) do
     t.datetime "updated_at"
   end
 
-  create_table "rules", :force => true do |t|
+  create_table "orders", :force => true do |t|
     t.string   "name"
     t.text     "desc"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "rules_units", :id => false, :force => true do |t|
-    t.integer "rule_id"
+  create_table "orders_units", :id => false, :force => true do |t|
+    t.integer "order_id"
     t.integer "unit_id"
+  end
+
+  create_table "rules", :force => true do |t|
+    t.string   "name"
+    t.text     "desc"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "unit_id"
   end
 
   create_table "spells", :force => true do |t|
@@ -79,6 +87,7 @@ ActiveRecord::Schema.define(:version => 20110427212943) do
     t.string   "min_cost"
     t.string   "max_models"
     t.string   "max_cost"
+    t.integer  "unit_type_id"
   end
 
   create_table "squads_units", :id => false, :force => true do |t|

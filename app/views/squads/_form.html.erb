@@ -8,6 +8,10 @@
 		<%= f.collection_select :faction_id, Faction.all, :id, :name %>
 	</div>
 	<div class="field">
+		<%= f.label :unit_type %><br />
+		<%= f.collection_select :unit_type_id, @squad_types, :id, :name, { :selected => 4 } %>
+	</div>
+	<div class="field">
 		<%= f.label :field_allowance %><br />
 		<%= f.select :field_allowance, [['Character', 'C'], ['1', 1], ['2', 2], ['3', 3], ['4', 4], ['Unlimited', 'U']] %>
 	</div>
@@ -30,7 +34,7 @@
 	<%= f.fields_for :units do |builder| %>
 		<%= render :partial => 'unit_fields', :locals => { :f => builder } %>
 	<% end %>
-	<p><%= link_to_add_fields "Add Model", f, :units %></p>
+	<p><%= link_to_add_fields "Add Model", f, :units, 'squads' %></p>
 	<div class="actions">
 		<%= f.submit %>
 	</div>

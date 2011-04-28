@@ -9,7 +9,9 @@ class Unit < ActiveRecord::Base
   has_one :warjack, :dependent => :destroy
   accepts_nested_attributes_for :warjack
   has_and_belongs_to_many :squads
-  has_and_belongs_to_many :rules
+  has_many :rules
+  accepts_nested_attributes_for :rules, :allow_destroy => true
+  has_and_belongs_to_many :orders
   
   def warcaster?
     return true if self.unit_type_id == 1

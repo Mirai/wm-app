@@ -3,9 +3,7 @@
 	<% weapon.abilities.each do |ability| %>
 		<p>
 			<strong><%= ability.name %></strong>
-			<% if !ability.desc.empty? %>
-				- <%= ability.desc %>
-			<% end %>
+			<%= " - #{ability.desc}" if !ability.desc.empty? %>
 		</p>
 	<% end %>
 <% end %>

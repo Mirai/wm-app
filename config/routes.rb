@@ -13,6 +13,7 @@ WmApp::Application.routes.draw do
   resources :spells
   resources :feats
   resources :abilities
+  resources :orders
   
   resources :warcasters, :warjacks, :squads
   

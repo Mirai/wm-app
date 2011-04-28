@@ -68,6 +68,14 @@
 		<%= f.label :base %><br />
 		<%= f.select :base, [['Small', 'Small'], ['Medium', 'Medium'], ['Large', 'Large']] %>
 	</div>
+	<div class="field">
+		<%= f.label :orders %><br />
+		<%= f.collection_select :order_ids, Order.order(:name), :id, :name, {}, :multiple => true %>
+	</div>
+	<%= f.fields_for :rules do |builder| %>
+		<%= render :partial => 'units/rule_fields', :locals => { :f => builder } %>
+	<% end %>
+	<p><%= link_to_add_fields "Add Rule", f, :rules, 'units' %></p>
 	<div class="actions">
 		<%= f.submit %>
 	</div>

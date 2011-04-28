@@ -2,7 +2,7 @@ class UnitsController < ApplicationController
   def index
     @warcasters = Unit.where("unit_type_id = 1").order(:short_name)
     @warjacks = Unit.where("unit_type_id = 2 OR unit_type_id = 3").order(:unit_type_id, :name)
-    @troops = Squad.all
+    @troops = Squad.order(:name)
   end
   
   def show
