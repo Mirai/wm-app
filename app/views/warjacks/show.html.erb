@@ -1,6 +1,8 @@
 <h1><%= @unit.name %></h1>
 
-<%= @unit.faction.name %> <%= @unit.unit_type.name %>
+<%= @unit.faction.name %> 
+<%= 'Character' if @unit.field_allowance == 'C' %>
+<%= @unit.unit_type.name %>
 
 <%= render :partial => 'units/stats', :locals => { :unit => @unit } %>
 
