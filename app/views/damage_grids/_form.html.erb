@@ -1,0 +1,78 @@
+<%= form_for @grid do |f| %>
+	<div class="field">
+		<%= f.label :name %><br />
+		<%= f.text_field :name %>
+	</div>
+	<table>
+		<tr>
+			<th>1</th>
+			<th>2</th>
+			<th>3</th>
+			<th>4</th>
+			<th>5</th>
+			<th>6</th>
+		</tr>
+		<tr>
+			<td><%= f.text_field :one_1, :size => '1', :maxlength => '1' %></td>
+			<td><%= f.text_field :one_2, :size => '1', :maxlength => '1' %></td>
+			<td><%= f.text_field :one_3, :size => '1', :maxlength => '1' %></td>
+			<td><%= f.text_field :one_4, :size => '1', :maxlength => '1' %></td>
+			<td><%= f.text_field :one_5, :size => '1', :maxlength => '1' %></td>
+			<td><%= f.text_field :one_6, :size => '1', :maxlength => '1' %></td>
+		</tr>
+		<tr>
+			<td><%= f.text_field :two_1, :size => '1', :maxlength => '1' %></td>
+			<td><%= f.text_field :two_2, :size => '1', :maxlength => '1' %></td>
+			<td><%= f.text_field :two_3, :size => '1', :maxlength => '1' %></td>
+			<td><%= f.text_field :two_4, :size => '1', :maxlength => '1' %></td>
+			<td><%= f.text_field :two_5, :size => '1', :maxlength => '1' %></td>
+			<td><%= f.text_field :two_6, :size => '1', :maxlength => '1' %></td>
+		</tr>
+		<tr>
+			<td><%= f.text_field :three_1, :size => '1', :maxlength => '1' %></td>
+			<td><%= f.text_field :three_2, :size => '1', :maxlength => '1' %></td>
+			<td><%= f.text_field :three_3, :size => '1', :maxlength => '1' %></td>
+			<td><%= f.text_field :three_4, :size => '1', :maxlength => '1' %></td>
+			<td><%= f.text_field :three_5, :size => '1', :maxlength => '1' %></td>
+			<td><%= f.text_field :three_6, :size => '1', :maxlength => '1' %></td>
+		</tr>
+		<tr>
+			<td><%= f.text_field :four_1, :size => '1', :maxlength => '1' %></td>
+			<td><%= f.text_field :four_2, :size => '1', :maxlength => '1' %></td>
+			<td><%= f.text_field :four_3, :size => '1', :maxlength => '1' %></td>
+			<td><%= f.text_field :four_4, :size => '1', :maxlength => '1' %></td>
+			<td><%= f.text_field :four_5, :size => '1', :maxlength => '1' %></td>
+			<td><%= f.text_field :four_6, :size => '1', :maxlength => '1' %></td>
+		</tr>
+		<tr>
+			<td><%= f.text_field :five_1, :size => '1', :maxlength => '1' %></td>
+			<td><%= f.text_field :five_2, :size => '1', :maxlength => '1' %></td>
+			<td><%= f.text_field :five_3, :size => '1', :maxlength => '1' %></td>
+			<td><%= f.text_field :five_4, :size => '1', :maxlength => '1' %></td>
+			<td><%= f.text_field :five_5, :size => '1', :maxlength => '1' %></td>
+			<td><%= f.text_field :five_6, :size => '1', :maxlength => '1' %></td>
+		</tr>
+		<tr>
+			<td><%= f.text_field :six_1, :size => '1', :maxlength => '1' %></td>
+			<td><%= f.text_field :six_2, :size => '1', :maxlength => '1' %></td>
+			<td><%= f.text_field :six_3, :size => '1', :maxlength => '1' %></td>
+			<td><%= f.text_field :six_4, :size => '1', :maxlength => '1' %></td>
+			<td><%= f.text_field :six_5, :size => '1', :maxlength => '1' %></td>
+			<td><%= f.text_field :six_6, :size => '1', :maxlength => '1' %></td>
+		</tr>
+	</table>
+	<div class="actions">
+		<%= f.submit %>
+	</div>
+	
+	<h2>Legend</h2>
+	<p>
+		blank = empty damage box<br />
+		X = no box<br />
+		L = left arm damage box<br />
+		R = right arm damage box<br />
+		C = cortex damage box<br />
+		M = movement damage box<br />
+		S = sub-cortex damage box<br />
+	</p>
+<% end %>

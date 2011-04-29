@@ -1,0 +1,23 @@
+<h1>Damage Grids</h1>
+
+<table>
+	<tr>
+		<th>Name</th>
+		<th></th>
+		<th></th>
+		<th></th>
+	</tr>
+	
+<% @grids.each do |grid| %>
+	<tr>
+		<td><%= grid.name %></td>
+		<td><%= link_to 'Show', grid %></td>
+		<td><%= link_to 'Edit', edit_damage_grid_path(grid) %></td>
+		<td><%= link_to 'Delete', grid, :confirm => "Are you sure?", :method => :delete %>
+	</tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Damage Grid', new_damage_grid_path %>

@@ -91,3 +91,20 @@ a {
 .warjack_weapon .weapon_stats {
 	margin-left: 15px;
 }
+
+#damage_grid {
+	background: gray;
+}
+
+#damage_grid td {
+	border: 1px solid gray;
+	background: white;
+	font-size: 10px;
+	text-align: center;
+	width: 20px;
+	height: 20px;
+}
+
+#damage_grid .no_box {
+	background: gray;
+}

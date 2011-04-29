@@ -3,6 +3,10 @@
 	<%= f.collection_select :unit_type_id, UnitType.find(2, 3), :id, :name %>
 </div>
 
-<%= f.fields_for :warjack do |form| %>	
-	
+<%= f.fields_for :warjack do |form| %>
+	<div class="field">
+		<%= form.label :damage_grid %><br />
+		<%= form.collection_select :damage_grid_id, DamageGrid.order(:name), :id, :name, :prompt => true %>
+	</div>
+	<div id="grid_example"></div>
 <% end %>

@@ -14,6 +14,7 @@ WmApp::Application.routes.draw do
   resources :feats
   resources :abilities
   resources :orders
+  resources :damage_grids
   
   resources :warcasters, :warjacks, :squads
   

@@ -79,6 +79,14 @@ $(document).ready(function() {
 		$.post($(this).attr('action'), $(this).serialize(), null, "script");
 		return false;
 	})
+	
+	// show damage grid based on select
+	$('#unit_warjack_attributes_damage_grid_id').change(function() {
+		//$('#grid_example').html('TEST');
+		$.get('/damage_grids?id=' + $(this).val());
+		return false;
+	})
+	$('#unit_warjack_attributes_damage_grid_id').trigger('change')
 		
 	$(function() { $('a[rel=updater]').ajaxUpdater() })
 });

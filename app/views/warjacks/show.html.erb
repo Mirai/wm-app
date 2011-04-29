@@ -8,6 +8,8 @@
 
 <%= render :partial => 'units/weapons', :locals => { :unit => @unit } %>
 
+<%= render :partial => 'damage_grids/grid', :locals => { :grid => @unit.warjack.damage_grid } %>
+
 Field Allowance: <%= @unit.field_allowance %><br />
 Point Cost: <%= @unit.cost %><br />
 <%= @unit.base %> Base

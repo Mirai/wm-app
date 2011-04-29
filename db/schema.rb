@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110428164114) do
+ActiveRecord::Schema.define(:version => 20110429154106) do
 
   create_table "abilities", :force => true do |t|
     t.string   "name"
@@ -22,6 +22,48 @@ ActiveRecord::Schema.define(:version => 20110428164114) do
   create_table "abilities_weapons", :id => false, :force => true do |t|
     t.integer "ability_id"
     t.integer "weapon_id"
+  end
+
+  create_table "damage_grids", :force => true do |t|
+    t.string   "name"
+    t.string   "one_1"
+    t.string   "one_2"
+    t.string   "one_3"
+    t.string   "one_4"
+    t.string   "one_5"
+    t.string   "one_6"
+    t.string   "two_1"
+    t.string   "two_2"
+    t.string   "two_3"
+    t.string   "two_4"
+    t.string   "two_5"
+    t.string   "two_6"
+    t.string   "three_1"
+    t.string   "three_2"
+    t.string   "three_3"
+    t.string   "three_4"
+    t.string   "three_5"
+    t.string   "three_6"
+    t.string   "four_1"
+    t.string   "four_2"
+    t.string   "four_3"
+    t.string   "four_4"
+    t.string   "four_5"
+    t.string   "four_6"
+    t.string   "five_1"
+    t.string   "five_2"
+    t.string   "five_3"
+    t.string   "five_4"
+    t.string   "five_5"
+    t.string   "five_6"
+    t.string   "six_1"
+    t.string   "six_2"
+    t.string   "six_3"
+    t.string   "six_4"
+    t.string   "six_5"
+    t.string   "six_6"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "equips", :force => true do |t|
@@ -138,6 +180,7 @@ ActiveRecord::Schema.define(:version => 20110428164114) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "unit_id"
+    t.integer  "damage_grid_id"
   end
 
   create_table "weapons", :force => true do |t|

@@ -1,0 +1,23 @@
+<table id="damage_grid">
+	<tr>
+		<th colspan="6">Damage</th>
+	</tr>
+	<tr>
+		<th>1</th>
+		<th>2</th>
+		<th>3</th>
+		<th>4</th>
+		<th>5</th>
+		<th>6</th>
+	</tr>
+
+<% ['one', 'two', 'three', 'four', 'five', 'six'].each do |column| %>
+	<tr>
+	<% (1..6).each do |row| %>
+		<% box = column + '_' + row.to_s %>
+		<td <%= "class='no_box'" if grid.send(box) == 'X' %>>
+			<%= grid.send(box) if grid.send(box) != 'X' %>
+		</td>
+	<% end %>
+<% end %>
+</table>
