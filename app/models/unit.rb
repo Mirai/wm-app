@@ -1,6 +1,7 @@
 class Unit < ActiveRecord::Base
   belongs_to :faction
   belongs_to :unit_type
+  belongs_to :sub_type
   has_many :equips
   has_many :weapons, :through => :equips
   has_and_belongs_to_many :spells

@@ -8,8 +8,9 @@
 		<%= f.collection_select :faction_id, Faction.all, :id, :name %>
 	</div>
 	<div class="field">
-		<%= f.label :unit_type %><br />
-		<%= f.collection_select :unit_type_id, @squad_types, :id, :name %>
+		<%= f.hidden_field :unit_type_id, :value => 4 %>
+		<%= f.label :sub_type %><br />
+		<%= f.collection_select :sub_type_id, SubType.order(:name), :id, :name, :prompt => "No Sub Type" %>
 	</div>
 	<div class="field">
 		<%= f.label :unit_attachment %>? <%= f.check_box :unit_attachment %>

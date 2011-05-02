@@ -32,16 +32,10 @@ class UnitTypesController < ApplicationController
   end
 
   def destroy
-    @unit_type.find(params[:id])
+    @unit_type = UnitType.find(params[:id])
     @unit_type.destroy
     
     redirect_to(unit_types_path)
-  end
-  
-  def cygnar
-    @unit_types = UnitType.all
-    
-    render 'faction'
   end
 
 end

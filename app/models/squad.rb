@@ -1,6 +1,7 @@
 class Squad < ActiveRecord::Base
   belongs_to :faction
   belongs_to :unit_type
+  belongs_to :sub_type
   has_and_belongs_to_many :units
   accepts_nested_attributes_for :units, :allow_destroy => true
   

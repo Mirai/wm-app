@@ -1,6 +1,8 @@
 <h1><%= @squad.name %></h1>
 
-<%= @squad.faction.name %> <%= squad_type @squad %>
+<%= @squad.faction.name %> <%= @squad.sub_type.name if !@squad.sub_type.nil? %> 
+<%= "Character" if @squad.field_allowance == 'C' %>
+<%= squad_type @squad %>
 
 <% @squad.units.each do |unit| %>
 	<%= render :partial => 'units/stats', :locals => { :unit => unit } %>

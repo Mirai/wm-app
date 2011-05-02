@@ -8,6 +8,7 @@ WmApp::Application.routes.draw do
     end
   end
   resources :unit_types
+  resources :sub_types
   resources :factions
   resources :weapons
   resources :spells
