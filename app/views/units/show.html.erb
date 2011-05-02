@@ -1,0 +1,24 @@
+<h1><%= @unit.name %></h1>
+
+<%= @unit.faction.name %> <%= @unit.unit_type.name %>
+
+<%= render :partial => 'units/stats', :locals => { :unit => @unit } %>
+
+<%= render :partial => 'units/weapons', :locals => { :unit => @unit } %>
+
+Damage: <%= @unit.damage %><br />
+Field Allowance: <%= @unit.field_allowance %><br />
+Point Cost: <%= @unit.cost %><br />
+<%= @unit.base %> Base
+
+<%= render :partial => 'units/rules', :locals => { :unit => @unit } %>
+
+<div id="weapon_abilities">
+	<% @unit.weapons.each do |weapon| %>
+		<%= render :partial => 'weapons/abilities', :locals => { :weapon => weapon } %>
+	<% end %>
+</div>
+
+<br />
+
+<%= link_to 'Edit', edit_unit_path(@unit) %> | <%= link_to @unit.faction.name, '/' + @unit.faction.name.downcase.gsub(/\s+/, "") %> | <%= link_to 'All Units', units_path %>

@@ -1,8 +1,37 @@
 class UnitsController < ApplicationController
+  def new
+    @unit = Unit.new
+  end
+  
+  def create
+    @unit = Unit.new(params[:unit])
+    
+    if @unit.save
+      redirect_to @unit, :notice => "Solo created successfully."
+    else
+      render 'new'
+    end
+  end
+  
+  def edit
+    @unit = Unit.find(params[:id])
+  end
+  
+  def update
+    @unit = Unit.find(params[:id])
+    
+    if @unit.update_attributes(params[:unit])
+      redirect_to @unit, :notice => "Solo updated successfully."
+    else
+      render 'edit'
+    end
+  end
+  
   def index
     @warcasters = Unit.where("unit_type_id = 1").order(:short_name)
     @warjacks = Unit.where("unit_type_id = 2 OR unit_type_id = 3").order(:unit_type_id, :name)
     @troops = Squad.order(:name)
+    @solos = Unit.where("unit_type_id = 5").order(:name)
   end
   
   def show

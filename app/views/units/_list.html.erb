@@ -1,0 +1,24 @@
+<table>
+  <tr>
+    <th>Name</th>
+	<th>Faction</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @solos.each do |solo| %>
+
+  <tr>
+    <td><%= solo.name %></td>
+	<td><%= solo.faction.name %></td>
+    <td><%= link_to 'Show', solo %></td>
+    <td><%= link_to 'Edit', edit_unit_path(solo) %></td>
+    <td><%= link_to 'Delete', solo, :confirm => "Are you sure?", :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Solo', new_unit_path %>

@@ -8,6 +8,10 @@
 
 <%= render :partial => 'warjacks/list', :locals => { :units => @warjacks } %>
 
-<h3>Troops</h3>
+<h3>Units</h3>
 
 <%= render :partial => 'squads/list', :locals => { :units => @troops } %>
+
+<h3>Solos</h3>
+
+<%= render 'units/list' %>

@@ -22,7 +22,11 @@
 		<%= f.text_field :short_name %>
 	</div>
 	<div id="additional_fields">
-		<%= render :partial => type_name + '/form', :locals => { :f => f, :unit_type => unit_type } %>
+		<% if type_name == 'units' %>
+			<%= f.hidden_field :unit_type_id, :value => 5 %>
+		<% else %>
+			<%= render :partial => type_name + '/form', :locals => { :f => f, :unit_type => unit_type } %>
+		<% end %>
 	</div>
 	<div class="field">
 		<%= f.label :spd %><br />
