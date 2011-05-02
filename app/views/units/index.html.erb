@@ -2,16 +2,16 @@
 
 <h3>Warcasters</h3>
 	
-<%= render :partial => 'warcasters/list', :locals => { :units => @warcasters } %>
+<%= render :partial => 'units/list', :locals => { :units => @warcasters, :unit_type => 'warcasters', :unit_name => 'Warcaster' } %>
 
 <h3>Warjacks</h3>
 
-<%= render :partial => 'warjacks/list', :locals => { :units => @warjacks } %>
+<%= render :partial => 'units/list', :locals => { :units => @warjacks, :unit_type => 'warjacks', :unit_name => 'Warjack' } %>
 
 <h3>Units</h3>
 
-<%= render :partial => 'squads/list', :locals => { :units => @troops } %>
+<%= render :partial => 'units/list', :locals => { :units => @troops, :unit_type => 'squads', :unit_name => 'Unit' } %>
 
 <h3>Solos</h3>
 
-<%= render 'units/list' %>
+<%= render :partial => 'units/list', :locals => { :units => @solos, :unit_type => 'units', :unit_name => 'Solo' } %>
