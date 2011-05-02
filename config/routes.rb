@@ -18,8 +18,8 @@ WmApp::Application.routes.draw do
   
   resources :warcasters, :warjacks, :squads
   
-  match 'cygnar' => 'cygnar#index'
-  match 'khador' => 'khador#index'
-  match 'protectorateofmenoth' => 'protectorate#index'
-  match 'cryx' => 'cryx#index'
+  match 'cygnar' => 'units#index', :id => 1
+  match 'khador' => 'units#index', :id => 2
+  match 'protectorateofmenoth' => 'units#index', :id => 3
+  match 'cryx' => 'units#index', :id => 4
 end

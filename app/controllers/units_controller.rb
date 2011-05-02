@@ -28,10 +28,17 @@ class UnitsController < ApplicationController
   end
   
   def index
-    @warcasters = Unit.where("unit_type_id = 1").order(:short_name)
-    @warjacks = Unit.where("unit_type_id = 2 OR unit_type_id = 3").order(:unit_type_id, :name)
-    @troops = Squad.order(:name)
-    @solos = Unit.where("unit_type_id = 5").order(:name)
+    if params[:id].nil?
+      @warcasters = Unit.where("unit_type_id = 1").order(:short_name)
+      @warjacks = Unit.where("unit_type_id = 2 OR unit_type_id = 3").order(:unit_type_id, :name)
+      @troops = Squad.order(:name)
+      @solos = Unit.where("unit_type_id = 5").order(:name)
+    else
+      @warcasters = Unit.where("unit_type_id = 1 AND faction_id = #{params[:id]}").order(:short_name)
+      @warjacks = Unit.where("(unit_type_id = 2 OR unit_type_id = 3) AND faction_id = #{params[:id]}").order(:unit_type_id, :name)
+      @troops = Squad.where("faction_id = #{params[:id]}").order(:name)
+      @solos = Unit.where("unit_type_id = 5 AND faction_id = #{params[:id]}").order(:name)
+    end
   end
   
   def show
