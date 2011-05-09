@@ -54,4 +54,38 @@ module SquadsHelper
     
     sanitize html
   end
+  
+  def squad_base squad
+    html = ""
+    prev_unit = ""
+    prev_base = ""
+    multi_unit = false
+    
+    squad.units.each do |unit|
+      if !prev_unit.empty?
+        if unit.base != prev_base
+          multi_unit = true
+        
+          if multi_unit
+            html += "#{prev_unit.singularize} #{prev_base} Base<br />"
+          else
+            if !prev_unit.empty?
+              html += "#{prev_base} Base<br />"
+            end
+          end
+        end
+      end
+      
+      prev_unit = unit.short_name
+      prev_base = unit.base
+    end
+    
+    if multi_unit
+      html += "#{prev_unit.singularize} #{prev_base} Base<br />"
+    else
+      html += "#{prev_base} Base<br />"
+    end
+    
+    sanitize html
+  end
 end

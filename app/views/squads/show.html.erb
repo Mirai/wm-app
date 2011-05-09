@@ -16,7 +16,7 @@ Field Allowance: <%= @squad.field_allowance %><br />
 <% if !@squad.max_models.empty? %>
 	<%= @squad.max_models %>: <%= @squad.max_cost %><br />
 <% end %>
-<%= @squad.units.first.base %> Base
+<%= squad_base @squad %>
 
 <% @squad.units.each do |unit| %>
 	<%= render :partial => 'units/rules', :locals => { :unit => unit } %>
