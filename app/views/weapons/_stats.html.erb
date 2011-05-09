@@ -3,10 +3,11 @@
 		<%= hand %>
 	</div>	
 	<div class="weapon_stats">
+		<%= weapon.name %> <%= 'x2' if x2 %>
 		<% if weapon.ranged %>
-			<%= render :partial => 'weapons/ranged', :locals => { :weapon => weapon, :x2 => x2 } %>
+			<%= render :partial => 'weapons/ranged', :locals => { :weapon => weapon } %>
 		<% else %>
-			<%= render :partial => 'weapons/melee', :locals => { :weapon => weapon, :str => unit_str, :x2 => x2 } %>
+			<%= render :partial => 'weapons/melee', :locals => { :weapon => weapon, :str => unit_str } %>
 		<% end %>
 	</div>
 </div>

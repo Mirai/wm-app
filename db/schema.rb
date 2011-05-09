@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110502203654) do
+ActiveRecord::Schema.define(:version => 20110509162110) do
 
   create_table "abilities", :force => true do |t|
     t.string   "name"
@@ -200,6 +200,7 @@ ActiveRecord::Schema.define(:version => 20110502203654) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "ranged"
+    t.boolean  "spray"
   end
 
 end
