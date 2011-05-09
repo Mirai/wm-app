@@ -8,8 +8,10 @@
 
 <%= render :partial => 'units/weapons', :locals => { :unit => @unit } %>
 
+<%= render :partial => 'damage_grids/grid', :locals => { :grid => @unit.warjack.damage_grid } if !@unit.warjack.nil? %>
+
 Focus: <%= @unit.warcaster.focus %><br />
-Damage: <%= @unit.damage %><br />
+<%= sanitize "Damage: #{@unit.damage}<br />" if @unit.warjack.nil? %>
 Field Allowance: <%= @unit.field_allowance %><br />
 Warjack Points: +<%= @unit.warcaster.wj_points %><br />
 <%= @unit.base %> Base
