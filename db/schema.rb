@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110509162110) do
+ActiveRecord::Schema.define(:version => 20110509173405) do
 
   create_table "abilities", :force => true do |t|
     t.string   "name"
@@ -171,6 +171,8 @@ ActiveRecord::Schema.define(:version => 20110509162110) do
     t.string   "base"
     t.string   "short_name"
     t.integer  "sub_type_id"
+    t.string   "add_name"
+    t.integer  "add_stat"
   end
 
   create_table "warcasters", :force => true do |t|

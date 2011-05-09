@@ -6,6 +6,7 @@
 
 <%= render :partial => 'units/weapons', :locals => { :unit => @unit } %>
 
+<%= sanitize "#{@unit.add_name}: #{@unit.add_stat}<br />" if !@unit.add_name.empty? %>
 Damage: <%= @unit.damage %><br />
 Field Allowance: <%= @unit.field_allowance %><br />
 Point Cost: <%= @unit.cost %><br />
@@ -18,6 +19,8 @@ Point Cost: <%= @unit.cost %><br />
 		<%= render :partial => 'weapons/abilities', :locals => { :weapon => weapon } %>
 	<% end %>
 </div>
+
+<%= render :partial => 'spells/stats', :locals => { :spells => @unit.spells } if !@unit.spells.empty? %>
 
 <br />
 

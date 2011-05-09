@@ -73,6 +73,10 @@
 		<%= f.select :base, [['Small', 'Small'], ['Medium', 'Medium'], ['Large', 'Large']] %>
 	</div>
 	<div class="field">
+		Additional Note<br />
+		<%= f.text_field :add_name %>: <%= f.text_field :add_stat %>
+	</div>
+	<div class="field">
 		<%= f.label :orders %><br />
 		<%= f.collection_select :order_ids, Order.order(:name), :id, :name, {}, :multiple => true %>
 	</div>
