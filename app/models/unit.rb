@@ -1,4 +1,6 @@
 class Unit < ActiveRecord::Base
+  include DashToNull
+  
   belongs_to :faction
   belongs_to :unit_type
   belongs_to :sub_type
