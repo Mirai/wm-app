@@ -11,22 +11,22 @@
 	<div id="ranged_fields" style="display: none">
 		<div class="field">
 			<%= f.label :rng %><br />
-			<%= f.text_field :rng %>
+			<%= f.text_field :rng, :size => 2, :maxlength => 2 %>
 			Spray? <%= f.check_box :spray %>
 		</div>
 		<div class="field">
 			<%= f.label :rof %><br />
-			<%= f.text_field :rof %>
+			<%= f.text_field :rof, :size => 2, :maxlength => 2 %>
 		</div>
 		<div class="field">
 			<%= f.label :aoe %><br />
-			<%= f.text_field :aoe %>
+			<%= f.text_field :aoe, :size => 2, :maxlength => 2 %>
 		</div>
 	</div>
 	
 	<div class="field">
 		<%= f.label :pow %><br />
-		<%= f.text_field :pow %>
+		<%= f.text_field :pow, :size => 2, :maxlength => 2 %>
 	</div>
 	
 	<div class="field">
