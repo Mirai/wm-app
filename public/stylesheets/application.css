@@ -82,6 +82,12 @@ a {
 	text-align: left;
 }
 
+.stat_table th {
+	background: black;
+	color: white;
+	font-weight: normal;
+}
+
 .warjack_weapon .weapon_hand {
 	float: left;
 	text-align: center;
@@ -90,11 +96,10 @@ a {
 
 .warjack_weapon .weapon_stats {
 	margin-left: 15px;
-	width: 150px;
 }
 
 .weapon_stats .stat_table {
-	width: 100%;
+	width: 150px;
 }
 
 #damage_grid {
