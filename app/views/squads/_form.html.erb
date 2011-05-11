@@ -10,7 +10,7 @@
 	<div class="field">
 		<%= f.hidden_field :unit_type_id, :value => 4 %>
 		<%= f.label :sub_type %><br />
-		<%= f.collection_select :sub_type_id, SubType.order(:name), :id, :name, :prompt => "No Sub Type" %>
+		<%= f.collection_select :sub_type_id, SubType.order(:name), :id, :name, :include_blank => "No Sub Type" %>
 	</div>
 	<div class="field">
 		<%= f.label :unit_attachment %>? <%= f.check_box :unit_attachment %>
