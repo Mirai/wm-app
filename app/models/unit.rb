@@ -26,6 +26,16 @@ class Unit < ActiveRecord::Base
     return false
   end
   
+  def cavalry?
+    return true if self.cavalry
+    return false
+  end
+  
+  def character?
+    return true if self.field_allowance == 'C'
+    return false
+  end
+  
   def unique_weapons
     unique_weapons = []
     

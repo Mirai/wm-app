@@ -1,6 +1,7 @@
 module SquadsHelper
   def squad_type squad
     html = ""
+    html += "Cavalry" if squad.cavalry?
     
     if squad.unit_attachment
        html += " Unit Attachment"

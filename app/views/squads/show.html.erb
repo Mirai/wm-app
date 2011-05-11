@@ -1,7 +1,7 @@
 <h1><%= @squad.name %></h1>
 
 <%= @squad.faction.name %> <%= @squad.sub_type.name if !@squad.sub_type.nil? %> 
-<%= "Character" if @squad.field_allowance == 'C' %>
+<%= "Character" if @squad.character? %>
 <%= squad_type @squad %>
 
 <% @squad.units.each do |unit| %>

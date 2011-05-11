@@ -4,10 +4,14 @@
 	</div>	
 	<div class="weapon_stats">
 		<%= weapon.name %> <%= 'x2' if x2 %> <%= link_to '[>]', weapon %> <%= link_to '[x]', { :controller => 'units', :action => 'remove_weapon', :id => unit_id, :weapon_id => weapon.id }, :class => 'remove' %>
-		<% if weapon.ranged %>
-			<%= render :partial => 'weapons/ranged', :locals => { :weapon => weapon } %>
+		<% if weapon.mount? %>
+			<%= render :partial => 'weapons/mount', :locals => { :weapon => weapon } %>
 		<% else %>
-			<%= render :partial => 'weapons/melee', :locals => { :weapon => weapon, :str => unit_str } %>
+			<% if weapon.ranged %>
+				<%= render :partial => 'weapons/ranged', :locals => { :weapon => weapon } %>
+			<% else %>
+				<%= render :partial => 'weapons/melee', :locals => { :weapon => weapon, :str => unit_str } %>
+			<% end %>
 		<% end %>
 	</div>
 </div>

@@ -13,6 +13,9 @@
 		<%= f.collection_select :sub_type_id, SubType.order(:name), :id, :name, :include_blank => "No Sub Type" %>
 	</div>
 	<div class="field">
+		<%= f.label :cavalry %>? <%= f.check_box :cavalry %>
+	</div>
+	<div class="field">
 		<%= f.label :unit_attachment %>? <%= f.check_box :unit_attachment %>
 	</div>
 	<div class="field">

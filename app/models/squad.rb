@@ -21,6 +21,16 @@ class Squad < ActiveRecord::Base
     unique_weapons.uniq
   end
   
+  def cavalry?
+    return true if self.cavalry
+    return false
+  end
+  
+  def character?
+    return true if self.field_allowance == 'C'
+    return false
+  end
+  
   private
     def destroy_units
       self.units.each do |unit|

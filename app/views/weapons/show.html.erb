@@ -2,7 +2,7 @@
 <% if @weapon.ranged %>
 	<%= render :partial => 'ranged', :locals => { :weapon => @weapon } %>
 <% else %>
-	<%= render :partial => 'melee', :locals => { :weapon => @weapon, :str => 0 } %>
+	<%= render :partial => 'mount', :locals => { :weapon => @weapon } %>
 <% end %>
 
 <%= render :partial => 'abilities', :locals => { :weapon => @weapon } %>

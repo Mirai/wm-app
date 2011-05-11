@@ -2,6 +2,7 @@
 
 <%= @unit.faction.name %>
 <%= 'Epic' if @unit.warcaster.epic? %>
+<%= 'Cavalry' if @unit.cavalry? %>
 <%= @unit.unit_type.name %>
 
 <%= render :partial => 'units/stats', :locals => { :unit => @unit } %>

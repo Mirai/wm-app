@@ -90,6 +90,11 @@ a {
 
 .warjack_weapon .weapon_stats {
 	margin-left: 15px;
+	width: 150px;
+}
+
+.weapon_stats .stat_table {
+	width: 100%;
 }
 
 #damage_grid {
