@@ -1,7 +1,9 @@
 <h1><%= @unit.name %></h1>
 
 <%= @unit.faction.name %>
+<%= @unit.sub_type.name if !@unit.sub_type.nil? %>
 <%= 'Character' if @unit.character? %>
+<%= 'Dragoon' if @unit.cavalry? %>
 <%= @unit.unit_type.name %>
 
 <%= render :partial => 'units/stats', :locals => { :unit => @unit } %>

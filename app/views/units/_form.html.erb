@@ -11,7 +11,12 @@
 	<% end %>
 
 	<div class="field">
-		<%= collection_select(:unit, :faction_id, Faction.all, :id, :name) %>
+		<%= f.label :faction %><br />
+		<%= f.collection_select(:faction_id, Faction.all, :id, :name) %>
+	</div>
+	<div class="field">
+		<%= f.label :sub_type %><br />
+		<%= f.collection_select :sub_type_id, SubType.order(:name), :id, :name, :include_blank => "No Sub Type" %>
 	</div>
 	<div class="field">
 		<%= f.label :name %><br />
