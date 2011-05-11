@@ -7,4 +7,4 @@
 
 <%= render :partial => 'abilities', :locals => { :weapon => @weapon } %>
 
-<%= link_to 'Back', weapons_path %>
+<%= link_to 'Back', weapons_path %> | <%= link_to 'Edit', edit_weapon_path(@weapon) %>

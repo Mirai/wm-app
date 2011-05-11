@@ -1,6 +1,6 @@
 <div id="weapons_stats_<%= unit.id %>">
 	<% unit.equips.each do |equip| %>
-		<%= render :partial => 'weapons/stats', :locals => { :unit_str => unit.str, :weapon => equip.weapon, :x2 => equip.x2, :hand => equip.hand } %>
+		<%= render :partial => 'weapons/stats', :locals => { :unit_str => unit.str, :weapon => equip.weapon, :unit_id => unit.id, :x2 => equip.x2, :hand => equip.hand } %>
 	<% end %>
 </div>
 <%= form_tag add_weapon_units_path, :class => 'unit_addition' do %>

@@ -80,9 +80,14 @@ $(document).ready(function() {
 		return false;
 	})
 	
+	//when remove spell or weapon link is clicked
+	$('.remove').live('click', function() {
+		$.get($(this).attr('href'), null, null, "script");
+		return false;
+	})
+	
 	// show damage grid based on select
 	$('#unit_warjack_attributes_damage_grid_id').change(function() {
-		//$('#grid_example').html('TEST');
 		$.get('/damage_grids?id=' + $(this).val());
 		return false;
 	})

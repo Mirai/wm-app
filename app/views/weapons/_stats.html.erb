@@ -1,9 +1,9 @@
-<div class="warjack_weapon">
+<div id="weapon_<%= weapon.id %>" class="warjack_weapon">
 	<div class="weapon_hand">
 		<%= hand %>
 	</div>	
 	<div class="weapon_stats">
-		<%= weapon.name %> <%= 'x2' if x2 %>
+		<%= weapon.name %> <%= 'x2' if x2 %> <%= link_to '[>]', weapon %> <%= link_to '[x]', { :controller => 'units', :action => 'remove_weapon', :id => unit_id, :weapon_id => weapon.id }, :class => 'remove' %>
 		<% if weapon.ranged %>
 			<%= render :partial => 'weapons/ranged', :locals => { :weapon => weapon } %>
 		<% else %>

@@ -78,4 +78,28 @@ class UnitsController < ApplicationController
       format.js
     end
   end
+  
+  def remove_weapon
+    @unit = Unit.find(params[:id])
+    @removed_weapon = Equip.find_by_unit_id_and_weapon_id(params[:id], params[:weapon_id])
+    
+    @unit.equips.delete(@removed_weapon)
+    
+    respond_to do |format|
+      format.html { redirect_to @unit, :notice => "Weapon successfully removed." }
+      format.js
+    end
+  end
+  
+  def remove_spell
+    @unit = Unit.find(params[:id])
+    @removed_spell = Spell.find(params[:spell_id])
+    
+    @unit.spells.delete(@removed_spell)
+    
+    respond_to do |format|
+      format.html { redirect_to @unit, :notice => "Spell successfully removed." }
+      format.js
+    end
+  end
 end

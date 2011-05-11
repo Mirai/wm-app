@@ -13,8 +13,8 @@
 
 	<tbody>
 <% spells.each do |spell| %>
-	<tr>
-		<td class="left_align"><%= spell.name %></td>
+	<tr class="spell_<%= spell.id %>">
+		<td class="left_align"><%= spell.name %> <%= link_to '[>]', spell %> <%= link_to '[x]', { :controller => 'units', :action => 'remove_spell', :spell_id => spell.id }, :class => 'remove' %></td>
 		<td><%= spell.cost %></td>
 		<td><%= spell.rng %></td>
 		<td><%= statDash spell.aoe %></td>
@@ -22,7 +22,7 @@
 		<td><%= bool2Affirm spell.up %></td>
 		<td><%= bool2Affirm spell.off %></td>
 	</tr>
-	<tr>
+	<tr class="spell_<%= spell.id %>">
 		<td colspan="7" class="left_align"><%= spell.desc %></td>
 	</tr>
 <% end %>

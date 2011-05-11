@@ -3,8 +3,7 @@ WmApp::Application.routes.draw do
 
   resources :units do
     collection do
-      post :add_weapon
-      post :add_spell
+      post :add_weapon, :add_spell
     end
   end
   resources :unit_types
@@ -23,4 +22,7 @@ WmApp::Application.routes.draw do
   match 'khador' => 'units#index', :id => 2
   match 'protectorateofmenoth' => 'units#index', :id => 3
   match 'cryx' => 'units#index', :id => 4
+  
+  match 'units/:id/remove_weapon/:weapon_id' => 'units#remove_weapon'
+  match 'units/:id/remove_spell/:spell_id' => 'units#remove_spell'
 end
