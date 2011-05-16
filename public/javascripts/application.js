@@ -86,12 +86,30 @@ $(document).ready(function() {
 		return false;
 	})
 	
+	$('.remove').live('click', function() {
+		$(this).parent().remove();
+	})
+	
 	// show damage grid based on select
 	$('#unit_warjack_attributes_damage_grid_id').change(function() {
 		$.get('/damage_grids?id=' + $(this).val());
 		return false;
 	})
 	$('#unit_warjack_attributes_damage_grid_id').trigger('change')
+	
+	// order dropdown
+	$('.order_select').live('change', function() {
+		/*var optionsArr = "<option value=''>No parent</option>";
+		
+		$('.order_select option:selected').each(function () {
+			optionsArr += "<option value='" + $(this).val() + "'>" + $(this).text() + "</option>\n";
+		})
+		
+		$('.parent_select').html(optionsArr)*/
+		
+		var option = "<option value='" + $(this).val() + "'>" + $(this).children(":selected").text() + "</option>";
+		$('.parent_select').append(option);
+	})
 		
 	$(function() { $('a[rel=updater]').ajaxUpdater() })
 });

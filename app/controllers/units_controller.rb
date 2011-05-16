@@ -1,6 +1,7 @@
 class UnitsController < ApplicationController
   def new
     @unit = Unit.new
+    @available_orders = Order.find(@unit.order_ids)
   end
   
   def create
@@ -15,6 +16,7 @@ class UnitsController < ApplicationController
   
   def edit
     @unit = Unit.find(params[:id])
+    @available_orders = Order.find(@unit.order_ids)
   end
   
   def update

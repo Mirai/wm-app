@@ -47,10 +47,11 @@
 		<%= f.label :base %><br />
 		<%= f.select :base, [['Small', 'Small'], ['Medium', 'Medium'], ['Large', 'Large']] %>
 	</div>
-	<div class="field">
-		<%= f.label :orders %><br />
-		<%= f.collection_select :order_ids, Order.order(:name), :id, :name, {}, :multiple => true %>
-	</div>
+	<%= f.label :orders %>
+	<%= f.fields_for :unit_orders do |builder| %>
+		<%= render :partial => 'units/unit_order_fields', :locals => { :f => builder } %>
+	<% end %>
+	<p><%= link_to_add_fields "Add Order", f, :unit_orders, 'units' %></p>
 	<%= f.fields_for :rules do |builder| %>
 		<%= render :partial => 'units/rule_fields', :locals => { :f => builder } %>
 	<% end %>

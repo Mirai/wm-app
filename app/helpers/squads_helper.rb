@@ -81,4 +81,15 @@ module SquadsHelper
     
     sanitize html
   end
+  
+  def dragoon_damage damage
+    html = ""
+    
+    damageArr = damage.split('/')
+    
+    html += "Mounted Damage: #{damageArr[0]}<br />"
+    html += "Unmounted Damage: #{damageArr[1]}<br />"
+    
+    sanitize html
+  end
 end

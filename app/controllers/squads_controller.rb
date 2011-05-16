@@ -2,6 +2,7 @@ class SquadsController < ApplicationController
   def new
     @squad = Squad.new
     @squad.units.build
+    @available_orders = Order.all
   end
   
   def create
@@ -16,6 +17,7 @@ class SquadsController < ApplicationController
   
   def edit
     @squad = Squad.find(params[:id])
+    @available_orders = Order.all
   end
   
   def update

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110511170228) do
+ActiveRecord::Schema.define(:version => 20110512141039) do
 
   create_table "abilities", :force => true do |t|
     t.string   "name"
@@ -88,11 +88,6 @@ ActiveRecord::Schema.define(:version => 20110511170228) do
     t.datetime "updated_at"
   end
 
-  create_table "orders_units", :id => false, :force => true do |t|
-    t.integer "order_id"
-    t.integer "unit_id"
-  end
-
   create_table "rules", :force => true do |t|
     t.string   "name"
     t.text     "desc"
@@ -143,6 +138,15 @@ ActiveRecord::Schema.define(:version => 20110511170228) do
 
   create_table "sub_types", :force => true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "unit_orders", :force => true do |t|
+    t.integer  "unit_id"
+    t.integer  "order_id"
+    t.integer  "skill_check"
+    t.integer  "parent_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

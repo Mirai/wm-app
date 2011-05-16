@@ -1,9 +1,15 @@
 <%= sanitize "<h2>#{unit.short_name}</h2>" if !unit.rules.empty? || !unit.orders.empty? %>
 
-<% unit.orders.each do |order| %>
+<% unit.parent_orders.each do |order| %>
 	<p>
-		<strong><%= order.name %></strong>
-		<%= " - #{order.desc}" if !order.desc.empty? %>
+		<strong><%= order_name order %></strong>
+		<%= " - #{order.order.desc}" if !order.order.desc.empty? %>
+		
+		<ul>
+			<% order.order.sub_orders.each do |sub| %>
+				<li><strong><%= sub.name %></strong> - <%= sub.desc %></li>
+			<% end %>
+		</ul>
 	</p>
 <% end %>
 

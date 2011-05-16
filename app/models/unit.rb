@@ -14,7 +14,9 @@ class Unit < ActiveRecord::Base
   has_and_belongs_to_many :squads
   has_many :rules
   accepts_nested_attributes_for :rules, :allow_destroy => true
-  has_and_belongs_to_many :orders
+  has_many :unit_orders
+  has_many :orders, :through => :unit_orders
+  accepts_nested_attributes_for :unit_orders
   
   def warcaster?
     return true if self.unit_type_id == 1
@@ -44,5 +46,18 @@ class Unit < ActiveRecord::Base
     end
     
     unique_weapons.uniq
+  end
+  
+  def parent_orders
+    #order_ids = []
+    
+    #orders = UnitOrder.find_all_by_unit_id_and_parent_id(self.id, nil)
+    
+    #orders.each do |order|
+     # order_ids << order.order_id
+    #end
+    
+    #Order.find(order_ids)
+    UnitOrder.find_all_by_unit_id_and_parent_id(self.id, nil)
   end
 end
