@@ -3,10 +3,10 @@
 <% unit.parent_orders.each do |order| %>
 	<p>
 		<strong><%= order_name order %></strong>
-		<%= " - #{order.order.desc}" if !order.order.desc.empty? %>
+		<%= " - #{order.desc}" if !order.desc.empty? %>
 		
 		<ul>
-			<% order.order.sub_orders.each do |sub| %>
+			<% order.sub_orders.each do |sub| %>
 				<li><strong><%= sub.name %></strong> - <%= sub.desc %></li>
 			<% end %>
 		</ul>

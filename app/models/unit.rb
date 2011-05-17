@@ -48,6 +48,11 @@ class Unit < ActiveRecord::Base
     unique_weapons.uniq
   end
   
+  def multi_orders
+    orders = Order.find_all_by_id_and_multi(self.order_ids, true)
+    UnitOrder.find_all_by_order_id(orders)
+  end
+  
   def parent_orders
     #order_ids = []
     

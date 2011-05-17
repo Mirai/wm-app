@@ -2,6 +2,7 @@ class WarjacksController < ApplicationController
   def new
     @unit = Unit.new
     @unit.build_warjack
+    @available_orders = UnitOrder.find(@unit.multi_orders)
   end
   
   def create
@@ -17,6 +18,7 @@ class WarjacksController < ApplicationController
   def edit
     @unit = Unit.find(params[:id])
     @unit.build_warjack if @unit.warjack.nil?
+    @available_orders = UnitOrder.find(@unit.multi_orders)
   end
   
   def update

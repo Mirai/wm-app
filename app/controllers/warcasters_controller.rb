@@ -2,6 +2,7 @@ class WarcastersController < ApplicationController
   def new
     @unit = Unit.new
     @unit.build_warcaster
+    @available_orders = UnitOrder.find(@unit.multi_orders)
   end
   
   def create
@@ -17,6 +18,7 @@ class WarcastersController < ApplicationController
   def edit
     @unit = Unit.find(params[:id])
     @unit.build_warcaster if @unit.warcaster.nil?
+    @available_orders = UnitOrder.find(@unit.multi_orders)
   end
   
   def update
