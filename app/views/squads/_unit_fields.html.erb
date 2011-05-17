@@ -51,7 +51,7 @@
 	<%= f.fields_for :unit_orders do |builder| %>
 		<%= render :partial => 'units/unit_order_fields', :locals => { :f => builder } %>
 	<% end %>
-	<p><%= link_to_add_fields "Add Order", f, :unit_orders, 'units' %></p>
+	<p id="add_order"><%= link_to_add_fields "Add Order", f, :unit_orders, 'units' %></p>
 	<%= f.fields_for :rules do |builder| %>
 		<%= render :partial => 'units/rule_fields', :locals => { :f => builder } %>
 	<% end %>

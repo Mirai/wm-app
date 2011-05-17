@@ -110,6 +110,10 @@ $(document).ready(function() {
 		var option = "<option value='" + $(this).val() + "'>" + $(this).children(":selected").text() + "</option>";
 		$('.parent_select').append(option);
 	})
+	
+	$('#add_order a').click(function() {
+		$('.order_select').trigger('change');
+	})
 		
 	$(function() { $('a[rel=updater]').ajaxUpdater() })
 });
