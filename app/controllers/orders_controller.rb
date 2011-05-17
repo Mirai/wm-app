@@ -28,7 +28,7 @@ class OrdersController < ApplicationController
   end
   
   def index
-    @orders = Order.order(:name)
+    @orders = Order.order(:name).page(params[:page])
   end
   
   def show

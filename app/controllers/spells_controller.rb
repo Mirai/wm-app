@@ -36,7 +36,7 @@ class SpellsController < ApplicationController
   end
   
   def index
-    @spells = Spell.order(:name)
+    @spells = Spell.order(:name).page(params[:page])
   end
   
   def show

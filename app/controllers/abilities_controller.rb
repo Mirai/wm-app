@@ -28,7 +28,7 @@ class AbilitiesController < ApplicationController
   end
   
   def index
-    @abilities = Ability.order(:name)
+    @abilities = Ability.order(:name).page(params[:page])
   end
   
   def show

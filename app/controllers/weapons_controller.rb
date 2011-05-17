@@ -36,7 +36,7 @@ class WeaponsController < ApplicationController
   end
   
   def index
-    @weapons = Weapon.order(:name)
+    @weapons = Weapon.order(:name).page(params[:page])
   end
   
   def show
