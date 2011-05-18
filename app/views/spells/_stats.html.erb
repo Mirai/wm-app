@@ -14,7 +14,7 @@
 	<tbody>
 <% spells.each do |spell| %>
 	<tr class="spell_<%= spell.id %>">
-		<td class="left_align"><%= spell.name %> <%= link_to '[>]', spell %> <%= link_to '[x]', { :controller => 'units', :action => 'remove_spell', :spell_id => spell.id }, :class => 'remove' %></td>
+		<td class="left_align"><strong><%= spell.name %></strong> <%= link_to '[>]', spell %> <%= link_to '[x]', { :controller => 'units', :action => 'remove_spell', :spell_id => spell.id }, :class => 'remove' %></td>
 		<td><%= spell.cost %></td>
 		<td><%= spell.rng %></td>
 		<td><%= statDash spell.aoe %></td>
