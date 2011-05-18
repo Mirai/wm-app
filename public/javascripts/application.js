@@ -114,6 +114,11 @@ $(document).ready(function() {
 	$('#add_order a').click(function() {
 		$('.order_select').trigger('change');
 	})
+	
+	$('.attachment_check').change(function() {
+		$('.attachment_check').is(':checked') ? $('#attachment_field').show("fast") : $('#attachment_field').hide("fast");
+	})
+	$('.attachment_check').trigger('change')
 		
 	$(function() { $('a[rel=updater]').ajaxUpdater() })
 });

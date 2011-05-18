@@ -16,10 +16,14 @@
 		<%= f.label :cavalry %>? <%= f.check_box :cavalry %>
 	</div>
 	<div class="field">
-		<%= f.label :unit_attachment %>? <%= f.check_box :unit_attachment %>
+		<%= f.label :unit_attachment %>? <%= f.check_box :unit_attachment, :class => 'attachment_check' %>
 	</div>
 	<div class="field">
-		<%= f.label :weapon_attachment %>? <%= f.check_box :weapon_attachment %>
+		<%= f.label :weapon_attachment %>? <%= f.check_box :weapon_attachment, :class => 'attachment_check' %>
+	</div>
+	<div id="attachment_field" class="field hidden">
+		<%= f.label :attachment %><br />
+		<%= f.collection_select :attachment_id, @squad.in_faction, :id, :name, :include_blank => "None" %>
 	</div>
 	<div class="field">
 		<%= f.label :field_allowance %><br />

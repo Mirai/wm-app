@@ -6,6 +6,8 @@ class Squad < ActiveRecord::Base
   belongs_to :sub_type
   has_and_belongs_to_many :units
   accepts_nested_attributes_for :units, :allow_destroy => true
+  belongs_to :attachment, :class_name => 'Squad'
+  has_many :attachments, :class_name => 'Squad'
   
   before_destroy :destroy_units
   
@@ -29,6 +31,15 @@ class Squad < ActiveRecord::Base
   def character?
     return true if self.field_allowance == 'C'
     return false
+  end
+  
+  def attachment?
+    return true if self.unit_attachment || self.weapon_attachment
+    return false
+  end
+  
+  def in_faction
+    Squad.order(:name).find_all_by_faction_id(self.faction_id)
   end
   
   private

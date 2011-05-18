@@ -118,3 +118,7 @@ a {
 #damage_grid .no_box {
 	background: gray;
 }
+
+.hidden {
+	display: none;
+}
