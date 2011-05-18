@@ -10,7 +10,7 @@
 			<%= "SP" if weapon.spray %>
 			<%= weapon.rng %>
 		</td>
-		<td><%= weapon.rof %></td>
+		<td><%= weapon.rof.nil? ? '∞' : weapon.rof %></td>
 		<td><%= statDash weapon.aoe %></td>
 		<td><%= weapon.pow %></td>
 	</tr>
