@@ -23,4 +23,11 @@
 	</tr>
 </table>
 
+<h2>Models with this spell</h2>
+<% @spell.units.each do |unit| %>
+	<%= unit_link unit %><br />
+<% end %>
+
+<br />
+
 <%= link_to 'Back', spells_path %> | <%= link_to 'Edit', edit_spell_path(@spell) %>

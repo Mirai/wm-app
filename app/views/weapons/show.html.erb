@@ -7,4 +7,11 @@
 
 <%= render :partial => 'abilities', :locals => { :weapon => @weapon } %>
 
+<h2>Models with this weapon</h2>
+<% @weapon.units.each do |unit| %>
+	<%= unit_link unit %><br />
+<% end %>
+
+<br />
+
 <%= link_to 'Back', weapons_path %> | <%= link_to 'Edit', edit_weapon_path(@weapon) %>

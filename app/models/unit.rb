@@ -53,6 +53,10 @@ class Unit < ActiveRecord::Base
     UnitOrder.find_all_by_order_id(orders)
   end
   
+  def squad
+    self.squads.first
+  end
+  
   def parent_orders
     #order_ids = []
     

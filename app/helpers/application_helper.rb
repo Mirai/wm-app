@@ -22,4 +22,20 @@ module ApplicationHelper
     end  
     link_to_function(name, "add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\")")
   end 
+  
+  def unit_link unit
+    unit_type = unit.unit_type.name if !unit.unit_type.nil?
+    
+    case unit_type
+    when "Warcaster"
+      link_to unit.name, warcaster_path(unit.id)
+    when "Heavy Warjack"
+    when "Light Warjack"
+      link_to unit.name, warjack_path(unit.id)
+    when "Solo"
+      link_to unit.name, unit_path(unit.id)
+    else
+      link_to unit.squad.name, squad_path(unit.squad.id)
+    end
+  end
 end
