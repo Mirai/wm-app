@@ -22,6 +22,8 @@
   <%= @unit.base %> Base
 </p>
 
+<%= unit_feat @unit %>
+
 <%= render :partial => 'units/rules', :locals => { :unit => @unit } %>
 
 <div id="weapon_abilities">

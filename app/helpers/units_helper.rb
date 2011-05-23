@@ -27,4 +27,8 @@ module UnitsHelper
     render :partial => 'damage_grids/grid', :locals => { :grid => unit.warjack.damage_grid } if unit.warjack?
   end
 
+  def unit_feat unit
+    sanitize "<h2>#{unit.warcaster.feat_name}</h2><p>#{unit.warcaster.feat_desc}</p>" if unit.warcaster?
+  end
+
 end
