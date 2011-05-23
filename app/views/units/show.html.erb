@@ -1,31 +1,5 @@
-<h1><%= @unit.name %></h1>
-
-<%= @unit.faction.name %>
-<%= @unit.sub_type.name if !@unit.sub_type.nil? %>
-<%= 'Character' if @unit.character? %>
-<%= 'Dragoon' if @unit.cavalry? %>
-<%= @unit.unit_type.name %>
-
-<%= render :partial => 'units/stats', :locals => { :unit => @unit } %>
-
-<%= render :partial => 'units/weapons', :locals => { :unit => @unit } %>
-
-<%= sanitize "#{@unit.add_name}: #{@unit.add_stat}<br />" if !@unit.add_name.empty? %>
-Damage: <%= @unit.damage %><br />
-Field Allowance: <%= @unit.field_allowance %><br />
-Point Cost: <%= @unit.cost %><br />
-<%= @unit.base %> Base
-
-<%= render :partial => 'units/rules', :locals => { :unit => @unit } %>
-
-<div id="weapon_abilities">
-	<% @unit.weapons.each do |weapon| %>
-		<%= render :partial => 'weapons/abilities', :locals => { :weapon => weapon } %>
-	<% end %>
-</div>
-
-<%= render :partial => 'spells/stats', :locals => { :spells => @unit.spells } if !@unit.spells.empty? %>
+<%= render 'unit' %>
 
 <br />
 
-<%= link_to 'Edit', edit_unit_path(@unit) %> | <%= link_to @unit.faction.name, '/' + @unit.faction.name.downcase.gsub(/\s+/, "") %> | <%= link_to 'All Units', units_path %>
+<%= link_to 'Edit', edit_unit_path(@unit) %> | <%= faction_link @unit.faction.name %> | <%= link_to 'All Units', units_path %>

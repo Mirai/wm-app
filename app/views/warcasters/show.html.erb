@@ -1,42 +1,5 @@
-<h1><%= @unit.name %></h1>
-
-<%= @unit.faction.name %>
-<%= 'Epic' if @unit.warcaster.epic? %>
-<%= 'Cavalry' if @unit.cavalry? %>
-<%= @unit.unit_type.name %>
-
-<%= render :partial => 'units/stats', :locals => { :unit => @unit } %>
-
-<%= render :partial => 'units/weapons', :locals => { :unit => @unit } %>
-
-<%= render :partial => 'damage_grids/grid', :locals => { :grid => @unit.warjack.damage_grid } if !@unit.warjack.nil? %>
-
-Focus: <%= @unit.warcaster.focus %><br />
-<%= sanitize "Damage: #{@unit.damage}<br />" if @unit.warjack.nil? %>
-Field Allowance: <%= @unit.field_allowance %><br />
-Warjack Points: +<%= @unit.warcaster.wj_points %><br />
-<%= @unit.base %> Base
-
-<h2>Feat: <%= @unit.warcaster.feat_name %></h2>
-<p><%= @unit.warcaster.feat_desc %></p>
-
-<%= render :partial => 'units/rules', :locals => { :unit => @unit } %>
-
-<div id="weapon_abilities">
-	<% @unit.weapons.each do |weapon| %>
-		<%= render :partial => 'weapons/abilities', :locals => { :weapon => weapon } %>
-	<% end %>
-</div>
-
-<%= render :partial => 'spells/stats', :locals => { :spells => @unit.spells } %>
-<%= form_tag add_spell_units_path, :class => 'unit_addition' do %>
-	<%= hidden_field 'unit', 'id' %>
-	<%= collection_select(:unit, :spells, @available_spells, :id, :name) %>
-	<%= submit_tag "Add Spell" %>
-<% end %>
-<%= link_to 'New Spell', new_spell_path, :id => 'newspell', :rel => 'updater' %>
-<div id="x_newspell"></div>
+<%= render 'units/unit' %>
 
 <br />
 
-<%= link_to 'Edit', edit_warcaster_path(@unit) %> | <%= link_to @unit.faction.name, '/' + @unit.faction.name.downcase.gsub(/\s+/, "") %> | <%= link_to 'All Units', units_path %>
+<%= link_to 'Edit', edit_warcaster_path(@unit) %> | <%= faction_link @unit.faction.name %> | <%= link_to 'All Units', units_path %>

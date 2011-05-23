@@ -1,0 +1,33 @@
+<h1><%= @unit.name %></h1>
+
+<%= @unit.faction.name %>
+<%= 'Epic' if @unit.warcaster? && @unit.warcaster.epic %>
+<%= @unit.sub_type.name if !@unit.sub_type.nil? %>
+<%= 'Character' if @unit.character? && !@unit.warcaster? %>
+<%= @unit.solo? ? 'Dragoon' : 'Cavalry' if @unit.cavalry? %>
+<%= @unit.unit_type.name %>
+
+<%= render :partial => 'units/stats', :locals => { :unit => @unit } %>
+
+<%= render :partial => 'units/weapons', :locals => { :unit => @unit } %>
+
+<p>
+  <%= unit_wjdamage @unit %>
+  <%= unit_focus @unit %>
+  <%= extra_stat @unit %>
+  <%= unit_damage @unit %>
+  <%= unit_allowance @unit %>
+  <%= unit_cost @unit %>
+  <%= unit_wjpoints @unit %>
+  <%= @unit.base %> Base
+</p>
+
+<%= render :partial => 'units/rules', :locals => { :unit => @unit } %>
+
+<div id="weapon_abilities">
+	<% @unit.weapons.each do |weapon| %>
+		<%= render :partial => 'weapons/abilities', :locals => { :weapon => weapon } %>
+	<% end %>
+</div>
+
+<%= render :partial => 'spells/stats', :locals => { :spells => @unit.spells } if !@unit.spells.empty? %>

@@ -21,7 +21,11 @@ module ApplicationHelper
       render(view + "/" + association.to_s.singularize + "_fields", :f => builder)  
     end  
     link_to_function(name, "add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\")")
-  end 
+  end
+  
+  def faction_link faction
+    link_to faction, '/' + faction.downcase.gsub(/\s+/, "")
+  end
   
   def unit_link unit
     unit_type = unit.unit_type.name if !unit.unit_type.nil?
