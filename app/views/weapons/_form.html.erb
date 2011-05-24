@@ -7,7 +7,7 @@
 		<%= f.label :ranged %><br />
 		<%= f.check_box :ranged %>
 	</div>
-	
+
 	<div id="ranged_fields" style="display: none">
 		<div class="field">
 			<%= f.label :rng %><br />
@@ -23,17 +23,20 @@
 			<%= f.text_field :aoe, :size => 2, :maxlength => 2 %>
 		</div>
 	</div>
-	
+
 	<div class="field">
 		<%= f.label :pow %><br />
 		<%= f.text_field :pow, :size => 2, :maxlength => 2 %>
 	</div>
-	
+
 	<div class="field">
 		<%= f.label :abilities %><br />
-		<%= f.collection_select :ability_ids, Ability.order(:name), :id, :name, {}, :multiple => true %>
+		<%= f.collection_select :ability_ids, Ability.order(:name), :id, :name, {}, :multiple => true %><br />
+		<%= link_to 'Add Ability', new_ability_path, :id => 'newability', :rel => 'updater' %>
 	</div>
 	<div class="actions">
 		<%= f.submit %>
 	</div>
 <% end %>
+
+<div id="x_newability"></div>
