@@ -33,3 +33,10 @@
 </div>
 
 <%= render :partial => 'spells/stats', :locals => { :spells => @unit.spells } if !@unit.spells.empty? %>
+<%= form_tag add_spell_units_path, :class => 'unit_addition' do %>
+	<%= hidden_field 'unit', 'id', :value => @unit.id %>
+	<%= collection_select(:unit, :spells, @available_spells, :id, :name) %>
+	<%= submit_tag "Add Spell" %>
+<% end %>
+<p><%= link_to 'New Spell', new_spell_path, :id => 'newspell', :rel => 'updater' %></p>
+<div id="x_newspell"></div>
