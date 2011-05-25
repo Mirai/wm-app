@@ -17,6 +17,8 @@ class Unit < ActiveRecord::Base
   has_many :unit_orders
   has_many :orders, :through => :unit_orders
   accepts_nested_attributes_for :unit_orders
+  has_many :sub_units, :foreign_key => :parent_id, :class_name => 'Unit'
+  belongs_to :parent, :class_name => 'Unit'
 
   def warcaster?
     #return true if self.unit_type.name == "Warcaster"
@@ -42,6 +44,11 @@ class Unit < ActiveRecord::Base
 
   def character?
     return true if self.field_allowance == 'C'
+    return false
+  end
+
+  def sub_unit?
+    return true if !self.parent.nil?
     return false
   end
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110518145411) do
+ActiveRecord::Schema.define(:version => 20110525151433) do
 
   create_table "abilities", :force => true do |t|
     t.string   "name"
@@ -181,6 +181,7 @@ ActiveRecord::Schema.define(:version => 20110518145411) do
     t.string   "add_name"
     t.integer  "add_stat"
     t.boolean  "cavalry"
+    t.integer  "parent_id"
   end
 
   create_table "warcasters", :force => true do |t|

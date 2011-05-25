@@ -1,19 +1,21 @@
 <h1><%= @squad.name %></h1>
 
-<%= @squad.faction.name %> <%= @squad.sub_type.name if !@squad.sub_type.nil? %> 
+<%= @squad.faction.name %> <%= @squad.sub_type.name if !@squad.sub_type.nil? %>
 <%= "Character" if @squad.character? %>
 <%= squad_type @squad %>
 
 <% @squad.units.each do |unit| %>
 	<%= render :partial => 'units/stats', :locals => { :unit => unit } %>
-	
+
 	<%= render :partial => 'units/weapons', :locals => { :unit => unit } %>
 <% end %>
 
 <%= squad_damage @squad %>
 Field Allowance: <%= @squad.field_allowance %><br />
-<%= @squad.min_models %>: <%= @squad.min_cost %><br />
-<% if !@squad.max_models.empty? %>
+<% if !@squad.min_models.nil? %>
+  <%= @squad.min_models %>: <%= @squad.min_cost %><br />
+<% end %>
+<% if !@squad.max_models.nil? %>
 	<%= @squad.max_models %>: <%= @squad.max_cost %><br />
 <% end %>
 <%= squad_base @squad %>

@@ -1,42 +1,42 @@
-<h1><%= @unit.name %></h1>
+<% if unit.parent.nil? %>
+  <h1><%= unit.name %><br />
+  <small><%= unit_title unit %></small></h1>
+<% end %>
 
-<%= @unit.faction.name %>
-<%= 'Epic' if @unit.warcaster? && @unit.warcaster.epic %>
-<%= @unit.sub_type.name if !@unit.sub_type.nil? %>
-<%= 'Character' if @unit.character? && !@unit.warcaster? %>
-<%= @unit.solo? ? 'Dragoon' : 'Cavalry' if @unit.cavalry? %>
-<%= @unit.unit_type.name %>
+<%= render :partial => 'units/stats', :locals => { :unit => unit } %>
 
-<%= render :partial => 'units/stats', :locals => { :unit => @unit } %>
-
-<%= render :partial => 'units/weapons', :locals => { :unit => @unit } %>
+<%= render :partial => 'units/weapons', :locals => { :unit => unit } %>
 
 <p>
-  <%= unit_wjdamage @unit %>
-  <%= unit_focus @unit %>
-  <%= extra_stat @unit %>
-  <%= unit_damage @unit %>
-  <%= unit_allowance @unit %>
-  <%= unit_cost @unit %>
-  <%= unit_wjpoints @unit %>
-  <%= @unit.base %> Base
+  <%= unit_wjdamage unit %>
+  <%= unit_focus unit %>
+  <%= extra_stat unit %>
+  <%= unit_damage unit %>
+  <%= unit_allowance unit %>
+  <%= unit_cost unit %>
+  <%= unit_wjpoints unit %>
+  <%= unit.base %> Base
 </p>
 
-<%= unit_feat @unit %>
+<%= unit_feat unit %>
 
-<%= render :partial => 'units/rules', :locals => { :unit => @unit } %>
+<%= render :partial => 'units/rules', :locals => { :unit => unit } %>
 
 <div id="weapon_abilities">
-	<% @unit.weapons.each do |weapon| %>
+	<% unit.weapons.each do |weapon| %>
 		<%= render :partial => 'weapons/abilities', :locals => { :weapon => weapon } %>
 	<% end %>
 </div>
 
-<%= render :partial => 'spells/stats', :locals => { :spells => @unit.spells } if !@unit.spells.empty? %>
+<%= render :partial => 'spells/stats', :locals => { :spells => unit.spells } if !unit.spells.empty? %>
 <%= form_tag add_spell_units_path, :class => 'unit_addition' do %>
-	<%= hidden_field 'unit', 'id', :value => @unit.id %>
+	<%= hidden_field 'unit', 'id', :value => unit.id %>
 	<%= collection_select(:unit, :spells, @available_spells, :id, :name) %>
 	<%= submit_tag "Add Spell" %>
 <% end %>
 <p><%= link_to 'New Spell', new_spell_path, :id => 'newspell', :rel => 'updater' %></p>
 <div id="x_newspell"></div>
+
+<% unit.sub_units.each do |sub| %>
+  <%= render :partial => 'units/profile', :locals => { :unit => sub } %>
+<% end %>

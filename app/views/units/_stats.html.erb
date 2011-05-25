@@ -1,6 +1,6 @@
 <table class="stat_table">
 	<tr>
-		<td class="left_align" colspan="7"><%= unit.short_name %></td>
+		<td class="left_align" colspan="7"><%= unit.short_name %> <%= unit_link unit, 'edit' if unit.sub_unit? %></td>
 	</tr>
 	<tr>
 		<th>SPD</th>
