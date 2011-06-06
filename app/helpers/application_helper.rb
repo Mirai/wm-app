@@ -23,8 +23,10 @@ module ApplicationHelper
     link_to_function(name, "add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\")")
   end
 
-  def faction_link faction
-    link_to faction, '/' + faction.downcase.gsub(/\s+/, "")
+  def faction_link faction, text=nil
+    text ||= faction
+
+    link_to text, '/' + faction.downcase.gsub(/\s+/, "")
   end
 
   def unit_link unit, action

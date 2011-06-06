@@ -2,4 +2,4 @@
 
 <%= render :partial => 'form', :locals => { :unit_type => 5, :type_name => 'units', :action => 'update' } %>
 
-<%= link_to 'Back', units_path %>
+<%= faction_link @unit.faction.name, 'Back' %>
