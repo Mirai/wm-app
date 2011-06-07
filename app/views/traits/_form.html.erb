@@ -1,9 +1,9 @@
-<%= form_for @ability do |f| %>
-	<% if @ability.errors.any? %>
+<%= form_for @trait do |f| %>
+	<% if @trait.errors.any? %>
 	<div id="errorExplanation">
-		<h2><%= pluralize(@ability.errors.count, "error") %> prohibited this model from being saved:</h2>
+		<h2><%= pluralize(@trait.errors.count, "error") %> prohibited this model from being saved:</h2>
 		<ul>
-		<% @ability.errors.full_messages.each do |msg| %>
+		<% @trait.errors.full_messages.each do |msg| %>
 			<li><%= msg %></li>
 		<% end %>
 		</ul>

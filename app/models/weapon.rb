@@ -3,7 +3,7 @@ class Weapon < ActiveRecord::Base
 
   has_many :equips
   has_many :models, :through => :equips
-  has_and_belongs_to_many :abilities
+  has_and_belongs_to_many :traits
 
   has_many :warjacks
 

@@ -85,13 +85,13 @@ $(document).ready(function() {
 		$('#x_neworder').html('');
 	})
 
-	$('#x_newability #new_ability').live('submit', function() {
+	$('#x_newtrait #new_trait').live('submit', function() {
 		$.post($(this).attr('action'), $(this).serialize(), null, "script");
 		return false;
 	})
 
-	$('#x_newability #cancel').live('click', function() {
-		$('#x_newability').html('');
+	$('#x_newtrait #cancel').live('click', function() {
+		$('#x_newtrait').html('');
 	})
 
 	//when add spell or add weapon submitted on model page

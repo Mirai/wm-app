@@ -30,13 +30,13 @@
 	</div>
 
 	<div class="field">
-		<%= f.label :abilities %><br />
-		<%= f.collection_select :ability_ids, Ability.order(:name), :id, :name, {}, :multiple => true %><br />
-		<%= link_to 'Add Ability', new_ability_path, :id => 'newability', :rel => 'updater' %>
+		<%= f.label :traits %><br />
+		<%= f.collection_select :trait_ids, Trait.order(:name), :id, :name, {}, :multiple => true %><br />
+		<%= link_to 'Add Trait', new_trait_path, :id => 'newtrait', :rel => 'updater' %>
 	</div>
 	<div class="actions">
 		<%= f.submit %>
 	</div>
 <% end %>
 
-<div id="x_newability"></div>
+<div id="x_newtrait"></div>

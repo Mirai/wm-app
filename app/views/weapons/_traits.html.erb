@@ -1,0 +1,11 @@
+<% if !weapon.traits.empty? %>
+	<div id="trait_<%= weapon.id %>">
+		<h2><%= weapon.name %></h2>
+		<% weapon.traits.each do |trait| %>
+			<p>
+				<strong><%= trait.name %></strong>
+				<%= " - #{trait.desc}" if !trait.desc.empty? %>
+			</p>
+		<% end %>
+	</div>
+<% end %>

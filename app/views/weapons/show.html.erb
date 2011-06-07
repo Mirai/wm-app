@@ -5,7 +5,7 @@
 	<%= render :partial => 'mount', :locals => { :weapon => @weapon } %>
 <% end %>
 
-<%= render :partial => 'abilities', :locals => { :weapon => @weapon } %>
+<%= render :partial => 'traits', :locals => { :weapon => @weapon } %>
 
 <h2>Models with this weapon</h2>
 <% @weapon.models.each do |model| %>

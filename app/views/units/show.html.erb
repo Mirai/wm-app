@@ -26,9 +26,9 @@ Field Allowance: <%= @unit.field_allowance %><br />
 	<%= render :partial => 'models/rules', :locals => { :model => model } %>
 <% end %>
 
-<div id="weapon_abilities">
+<div id="weapon_traits">
 	<% @unit.unique_weapons.each do |weapon| %>
-		<%= render :partial => 'weapons/abilities', :locals => { :weapon => weapon } %>
+		<%= render :partial => 'weapons/traits', :locals => { :weapon => weapon } %>
 	<% end %>
 </div>
 

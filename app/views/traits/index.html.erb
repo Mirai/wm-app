@@ -1,0 +1,27 @@
+<h1>Weapon Traits</h1>
+
+<p><%= paginate @traits %></p>
+
+<table>
+	<tr>
+		<th>Name</th>
+		<th></th>
+		<th></th>
+		<th></th>
+	</tr>
+
+<% @traits.each do |trait| %>
+	<tr>
+		<td><%= trait.name %></td>
+		<td><%= link_to 'Show', trait %>
+		<td><%= link_to 'Edit', edit_trait_path(trait) %></td>
+		<td><%= link_to 'Delete', trait, :confirm => "Are you sure?", :method => :delete %></td>
+	</tr>
+<% end %>
+</table>
+
+<p><%= paginate @traits %></p>
+
+<br />
+
+<%= link_to 'New Trait', new_trait_path %>

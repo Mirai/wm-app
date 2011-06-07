@@ -22,9 +22,9 @@
 
 <%= render :partial => 'models/rules', :locals => { :model => model } %>
 
-<div id="weapon_abilities">
+<div id="weapon_traits">
 	<% model.weapons.each do |weapon| %>
-		<%= render :partial => 'weapons/abilities', :locals => { :weapon => weapon } %>
+		<%= render :partial => 'weapons/traits', :locals => { :weapon => weapon } %>
 	<% end %>
 </div>
 
