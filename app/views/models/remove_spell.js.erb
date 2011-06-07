@@ -1,0 +1,3 @@
+$('.spell_<%= @removed_spell.id %>').remove();
+
+$('#model_spells').append("<option value='<%= @removed_spell.id %>' selected='selected'><%= @removed_spell.name %></option>");

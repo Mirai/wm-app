@@ -1,6 +1,6 @@
 <div class="field">
-	<%= f.label :unit_type %><br />
-	<%= f.collection_select :unit_type_id, UnitType.find(2, 3), :id, :name %>
+	<%= f.label :model_type %><br />
+	<%= f.collection_select :model_type_id, ModelType.find(2, 3), :id, :name %>
 </div>
 
 <%= f.fields_for :warjack do |form| %>

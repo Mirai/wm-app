@@ -1,0 +1,24 @@
+<table class="stat_table">
+	<tr>
+		<td class="left_align" colspan="7"><%= model.short_name %> <%= model_link model, 'edit' if model.sub_model? %></td>
+	</tr>
+	<tr>
+		<th>SPD</th>
+		<th>STR</th>
+		<th>MAT</th>
+		<th>RAT</th>
+		<th>DEF</th>
+		<th>ARM</th>
+		<th>CMD</th>
+	</tr>
+	<tr>
+		<td><%= model.spd %></td>
+		<td><%= model.str %></td>
+		<td><%= model.mat %></td>
+		<td><%= model.rat %></td>
+		<td><%= model.def %></td>
+		<td><%= model.arm %></td>
+		<td><%= statDash model.cmd %></td>
+	</tr>
+</table>
+<br />

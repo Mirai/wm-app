@@ -1,3 +1,3 @@
 class Rule < ActiveRecord::Base
-  belongs_to :unit
+  belongs_to :model
 end

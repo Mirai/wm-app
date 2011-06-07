@@ -1,9 +1,9 @@
-<%= form_for(@unit_type) do |f| %>
-	<% if @unit_type.errors.any? %>
+<%= form_for(@model_type) do |f| %>
+	<% if @model_type.errors.any? %>
 	<div id="errorExplanation">
-		<h2><%= pluralize(@unit_type.errors.count, "error") %> prohibited this unit from being saved:</h2>
+		<h2><%= pluralize(@model_type.errors.count, "error") %> prohibited this model from being saved:</h2>
 		<ul>
-		<% @unit_type.errors.full_messages.each do |msg| %>
+		<% @model_type.errors.full_messages.each do |msg| %>
 			<li><%= msg %></li>
 		<% end %>
 		</ul>

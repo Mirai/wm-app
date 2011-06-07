@@ -1,7 +1,7 @@
-<div class="unit_fields">
+<div class="model_fields">
 	<div class="field">
 		<%= f.hidden_field :_destroy %>
-		<%= link_to_function 'Remove', 'remove_fields(this, "unit_fields")' %>
+		<%= link_to_function 'Remove', 'remove_fields(this, "model_fields")' %>
 	</div>
 	<div class="field">
 		<%= f.label :name %><br />
@@ -48,12 +48,12 @@
 		<%= f.select :base, [['Small', 'Small'], ['Medium', 'Medium'], ['Large', 'Large']] %>
 	</div>
 	<%= f.label :orders %>
-	<%= f.fields_for :unit_orders do |builder| %>
-		<%= render :partial => 'units/unit_order_fields', :locals => { :f => builder } %>
+	<%= f.fields_for :model_orders do |builder| %>
+		<%= render :partial => 'models/model_order_fields', :locals => { :f => builder } %>
 	<% end %>
-	<p id="add_order"><%= link_to_add_fields "Add Order", f, :unit_orders, 'units' %> | <%= link_to 'New Order', new_order_path, :id => 'neworder', :rel => 'updater' %></p>
+	<p id="add_order"><%= link_to_add_fields "Add Order", f, :model_orders, 'models' %> | <%= link_to 'New Order', new_order_path, :id => 'neworder', :rel => 'updater' %></p>
 	<%= f.fields_for :rules do |builder| %>
-		<%= render :partial => 'units/rule_fields', :locals => { :f => builder } %>
+		<%= render :partial => 'models/rule_fields', :locals => { :f => builder } %>
 	<% end %>
-	<p><%= link_to_add_fields "Add Rule", f, :rules, 'units' %></p>
+	<p><%= link_to_add_fields "Add Rule", f, :rules, 'models' %></p>
 </div>

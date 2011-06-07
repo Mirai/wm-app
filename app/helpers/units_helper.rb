@@ -1,51 +1,95 @@
 module UnitsHelper
-  def unit_title unit
+  def unit_type unit
     html = ""
+    html += "Cavalry" if unit.cavalry?
 
-    html += unit.faction.name + ' ' if !unit.sub_unit?
-    html += 'Epic ' if unit.warcaster? && unit.warcaster.epic
-    html += unit.sub_type.name + ' ' if !unit.sub_type.nil?
-    html += 'Character ' if unit.character? && !unit.warcaster?
-    html += unit.solo? ? 'Dragoon ' : 'Cavalry ' if unit.cavalry?
-    html += unit.sub_unit? && unit.field_allowance.empty? ? unit.unit_type.name.pluralize : unit.unit_type.name
-
-    unit.sub_units.each do |sub|
-      html += ' & ' + unit_title(sub)
+    if unit.unit_attachment
+       html += " Unit Attachment"
+    else
+      if unit.weapon_attachment
+        html += " Weapon Attachment"
+      else
+        html += " Unit"
+      end
     end
 
     html
   end
 
-  def unit_focus unit
-    sanitize "Focus: #{unit.warcaster.focus}<br />" if unit.warcaster?
-  end
-
   def unit_damage unit
-    sanitize "Damage: #{unit.damage}<br />" if !unit.damage.nil? && unit.damage > 1
+    html = ""
+    prev_model = ""
+    prev_damage = 0
+    multi_model = false
+
+    unit.models.each do |model|
+      if model.damage == prev_damage
+        multi_model = true
+      else
+        if multi_model
+          html += "Damage: #{prev_damage}ea<br />"
+        else
+          if !prev_model.empty?
+            html += "#{prev_model}'s Damage: #{prev_damage}<br />"
+          end
+        end
+      end
+
+      prev_model = model.short_name
+      prev_damage = model.damage
+    end
+
+    if multi_model
+      html += "Damage: #{prev_damage}ea<br />"
+    else
+      html += "#{prev_model}'s Damage: #{prev_damage}<br />" if prev_damage > 1
+    end
+
+    sanitize html
   end
 
-  def extra_stat unit
-    sanitize "#{unit.add_name}: #{unit.add_stat}<br />" if !unit.add_name.empty?
+  def unit_base unit
+    html = ""
+    prev_model = ""
+    prev_base = ""
+    multi_model = false
+
+    unit.models.each do |model|
+      if !prev_model.empty?
+        if model.base != prev_base
+          multi_model = true
+
+          if multi_model
+            html += "#{prev_model.singularize} #{prev_base} Base<br />"
+          else
+            if !prev_model.empty?
+              html += "#{prev_base} Base<br />"
+            end
+          end
+        end
+      end
+
+      prev_model = model.short_name
+      prev_base = model.base
+    end
+
+    if multi_model
+      html += "#{prev_model.singularize} #{prev_base} Base<br />"
+    else
+      html += "#{prev_base} Base<br />"
+    end
+
+    sanitize html
   end
 
-  def unit_allowance unit
-    sanitize "Field Allowance: #{unit.field_allowance}<br />" if !unit.warcaster? && !unit.sub_unit?
-  end
+  def dragoon_damage damage
+    html = ""
 
-  def unit_cost unit
-    sanitize "Point Cost: #{unit.cost}<br />" if !unit.warcaster? && !unit.sub_unit?
-  end
+    damageArr = damage.split('/')
 
-  def unit_wjpoints unit
-    sanitize "Warjack Points: +#{unit.warcaster.wj_points}<br />" if unit.warcaster?
-  end
+    html += "Mounted Damage: #{damageArr[0]}<br />"
+    html += "Unmounted Damage: #{damageArr[1]}<br />"
 
-  def unit_wjdamage unit
-    render :partial => 'damage_grids/grid', :locals => { :grid => unit.warjack.damage_grid } if unit.warjack?
+    sanitize html
   end
-
-  def unit_feat unit
-    sanitize "<h2>#{unit.warcaster.feat_name}</h2><p>#{unit.warcaster.feat_desc}</p>" if unit.warcaster?
-  end
-
 end

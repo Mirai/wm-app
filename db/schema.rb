@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110525151433) do
+ActiveRecord::Schema.define(:version => 20110607151338) do
 
   create_table "abilities", :force => true do |t|
     t.string   "name"
@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(:version => 20110525151433) do
   end
 
   create_table "equips", :force => true do |t|
-    t.integer  "unit_id"
+    t.integer  "model_id"
     t.integer  "weapon_id"
     t.boolean  "x2"
     t.datetime "created_at"
@@ -79,6 +79,56 @@ ActiveRecord::Schema.define(:version => 20110525151433) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "model_orders", :force => true do |t|
+    t.integer  "model_id"
+    t.integer  "order_id"
+    t.integer  "skill_check"
+    t.integer  "parent_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "model_types", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "models", :force => true do |t|
+    t.string   "name"
+    t.integer  "spd"
+    t.integer  "str"
+    t.integer  "mat"
+    t.integer  "rat"
+    t.integer  "def"
+    t.integer  "arm"
+    t.integer  "cmd"
+    t.integer  "cost"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "model_type_id"
+    t.integer  "faction_id"
+    t.integer  "damage"
+    t.string   "field_allowance"
+    t.string   "base"
+    t.string   "short_name"
+    t.integer  "sub_type_id"
+    t.string   "add_name"
+    t.integer  "add_stat"
+    t.boolean  "cavalry"
+    t.integer  "parent_id"
+  end
+
+  create_table "models_spells", :id => false, :force => true do |t|
+    t.integer "spell_id"
+    t.integer "model_id"
+  end
+
+  create_table "models_units", :id => false, :force => true do |t|
+    t.integer "unit_id"
+    t.integer "model_id"
   end
 
   create_table "orders", :force => true do |t|
@@ -94,7 +144,7 @@ ActiveRecord::Schema.define(:version => 20110525151433) do
     t.text     "desc"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "unit_id"
+    t.integer  "model_id"
   end
 
   create_table "spells", :force => true do |t|
@@ -110,12 +160,13 @@ ActiveRecord::Schema.define(:version => 20110525151433) do
     t.text     "desc"
   end
 
-  create_table "spells_units", :id => false, :force => true do |t|
-    t.integer "spell_id"
-    t.integer "unit_id"
+  create_table "sub_types", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  create_table "squads", :force => true do |t|
+  create_table "units", :force => true do |t|
     t.string   "name"
     t.integer  "faction_id"
     t.string   "field_allowance"
@@ -133,57 +184,6 @@ ActiveRecord::Schema.define(:version => 20110525151433) do
     t.integer  "attachment_id"
   end
 
-  create_table "squads_units", :id => false, :force => true do |t|
-    t.integer "squad_id"
-    t.integer "unit_id"
-  end
-
-  create_table "sub_types", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "unit_orders", :force => true do |t|
-    t.integer  "unit_id"
-    t.integer  "order_id"
-    t.integer  "skill_check"
-    t.integer  "parent_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "unit_types", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "units", :force => true do |t|
-    t.string   "name"
-    t.integer  "spd"
-    t.integer  "str"
-    t.integer  "mat"
-    t.integer  "rat"
-    t.integer  "def"
-    t.integer  "arm"
-    t.integer  "cmd"
-    t.integer  "cost"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "unit_type_id"
-    t.integer  "faction_id"
-    t.integer  "damage"
-    t.string   "field_allowance"
-    t.string   "base"
-    t.string   "short_name"
-    t.integer  "sub_type_id"
-    t.string   "add_name"
-    t.integer  "add_stat"
-    t.boolean  "cavalry"
-    t.integer  "parent_id"
-  end
-
   create_table "warcasters", :force => true do |t|
     t.string   "focus"
     t.integer  "wj_points"
@@ -191,14 +191,14 @@ ActiveRecord::Schema.define(:version => 20110525151433) do
     t.datetime "updated_at"
     t.string   "feat_name"
     t.text     "feat_desc"
-    t.integer  "unit_id"
+    t.integer  "model_id"
     t.boolean  "epic"
   end
 
   create_table "warjacks", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "unit_id"
+    t.integer  "model_id"
     t.integer  "damage_grid_id"
   end
 

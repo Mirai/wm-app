@@ -1,41 +1,41 @@
-class UnitTypesController < ApplicationController
+class ModelTypesController < ApplicationController
   def new
-    @unit_type = UnitType.new
+    @model_type = ModelType.new
   end
 
   def create
-    @unit_type = UnitType.new(params[:unit_type])
-    
-    if @unit_type.save
-      redirect_to(unit_types_path, :notice => "Unit successfully created.")
+    @model_type = ModelType.new(params[:model_type])
+
+    if @model_type.save
+      redirect_to(model_types_path, :notice => "Model successfully created.")
     else
       render :action => 'new'
     end
   end
 
   def edit
-    @unit_type = UnitType.find(params[:id])
+    @model_type = ModelType.find(params[:id])
   end
 
   def update
-    @unit_type = UnitType.find(params[:id])
-    
-    if @unit_type.update_attributes(params[:unit_type])
-      redirect_to(unit_types_path, :notice => "Unit was successfully updated.")
+    @model_type = ModelType.find(params[:id])
+
+    if @model_type.update_attributes(params[:model_type])
+      redirect_to(model_types_path, :notice => "Model was successfully updated.")
     else
       render :action => 'edit'
     end
   end
 
   def index
-    @unit_types = UnitType.all
+    @model_types = ModelType.all
   end
 
   def destroy
-    @unit_type = UnitType.find(params[:id])
-    @unit_type.destroy
-    
-    redirect_to(unit_types_path)
+    @model_type = ModelType.find(params[:id])
+    @model_type.destroy
+
+    redirect_to(model_types_path)
   end
 
 end

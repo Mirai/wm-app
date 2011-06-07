@@ -1,4 +1,4 @@
-<h1>Unit Types</h1>
+<h1>Model Types</h1>
 
 <table>
   <tr>
@@ -6,16 +6,16 @@
     <th></th>
     <th></th>
   </tr>
-    
-<% @unit_types.each do |unit_type| %>
+
+<% @model_types.each do |model_type| %>
   <tr>
-    <td><%= unit_type.name %></td>
-    <td><%= link_to 'Edit', edit_unit_type_path(unit_type) %></td>
-    <td><%= link_to 'Delete', unit_type, :confirm => "Are you sure?", :method => :delete %></td>
+    <td><%= model_type.name %></td>
+    <td><%= link_to 'Edit', edit_model_type_path(model_type) %></td>
+    <td><%= link_to 'Delete', model_type, :confirm => "Are you sure?", :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Unit', new_unit_type_path %>
+<%= link_to 'New Model', new_model_type_path %>

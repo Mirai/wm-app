@@ -1,0 +1,5 @@
+<%= render :partial => 'profile', :locals => { :model => @model } %>
+
+<br />
+
+<%= link_to 'Edit', edit_model_path(@model) %> | <%= faction_link @model.faction.name %> | <%= link_to 'All Models', models_path %>

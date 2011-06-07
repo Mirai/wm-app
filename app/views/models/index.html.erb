@@ -1,0 +1,17 @@
+<h1>Models</h1>
+
+<h3>Warcasters</h3>
+
+<%= render :partial => 'models/list', :locals => { :models => @warcasters, :model_type => 'warcasters', :model_name => 'Warcaster' } %>
+
+<h3>Warjacks</h3>
+
+<%= render :partial => 'models/list', :locals => { :models => @warjacks, :model_type => 'warjacks', :model_name => 'Warjack' } %>
+
+<h3>Units</h3>
+
+<%= render :partial => 'models/list', :locals => { :models => @troops, :model_type => 'units', :model_name => 'Unit' } %>
+
+<h3>Solos</h3>
+
+<%= render :partial => 'models/list', :locals => { :models => @solos, :model_type => 'models', :model_name => 'Solo' } %>

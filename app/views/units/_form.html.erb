@@ -1,101 +1,54 @@
-<%= form_for @unit, :url => { :controller => type_name, :action => action } do |f| %>
-	<% if @unit.errors.any? %>
-	<div id="errorExplanation">
-		<h2><%= pluralize(@unit.errors.count, "error") %> prohibited this unit from being saved:</h2>
-		<ul>
-		<% @unit.errors.full_messages.each do |msg| %>
-			<li><%= msg %></li>
-		<% end %>
-		</ul>
-	</div>
-	<% end %>
-
-	<div class="field">
-		<%= f.label :faction %><br />
-		<%= f.collection_select(:faction_id, Faction.all, :id, :name) %>
-	</div>
-	<div class="field">
-	  <%- f.label :parent %><br />
-	  <%= f.collection_select :parent_id, Unit.order(:name), :id, :name, :include_blank => "None" %>
-	</div>
-	<div class="field">
-		<%= f.label :sub_type %><br />
-		<%= f.collection_select :sub_type_id, SubType.order(:name), :id, :name, :include_blank => "No Sub Type" %>
-	</div>
+<%= form_for @unit do |f| %>
 	<div class="field">
 		<%= f.label :name %><br />
 		<%= f.text_field :name %>
 	</div>
 	<div class="field">
-		<%= f.label :short_name %><br />
-		<%= f.text_field :short_name %>
+		<%= f.label :faction %><br />
+		<%= f.collection_select :faction_id, Faction.all, :id, :name %>
+	</div>
+	<div class="field">
+		<%= f.hidden_field :unit_type_id, :value => 4 %>
+		<%= f.label :sub_type %><br />
+		<%= f.collection_select :sub_type_id, SubType.order(:name), :id, :name, :include_blank => "No Sub Type" %>
 	</div>
 	<div class="field">
 		<%= f.label :cavalry %>? <%= f.check_box :cavalry %>
-	<div id="additional_fields">
-		<% if type_name == 'units' %>
-			<%= f.hidden_field :unit_type_id, :value => 5 %>
-		<% else %>
-			<%= render :partial => type_name + '/form', :locals => { :f => f, :unit_type => unit_type } %>
-		<% end %>
 	</div>
 	<div class="field">
-		<%= f.label :spd %><br />
-		<%= f.text_field :spd, :size => 2, :maxlength => 2 %>
+		<%= f.label :unit_attachment %>? <%= f.check_box :unit_attachment, :class => 'attachment_check' %>
 	</div>
 	<div class="field">
-		<%= f.label :str %><br />
-		<%= f.text_field :str, :size => 2, :maxlength => 2 %>
+		<%= f.label :weapon_attachment %>? <%= f.check_box :weapon_attachment, :class => 'attachment_check' %>
 	</div>
-	<div class="field">
-		<%= f.label :mat %><br />
-		<%= f.text_field :mat, :size => 2, :maxlength => 2 %>
-	</div>
-	<div class="field">
-		<%= f.label :rat %><br />
-		<%= f.text_field :rat, :size => 2, :maxlength => 2 %>
-	</div>
-	<div class="field">
-		<%= f.label :def %><br />
-		<%= f.text_field :def, :size => 2, :maxlength => 2 %>
-	</div>
-	<div class="field">
-		<%= f.label :arm %><br />
-		<%= f.text_field :arm, :size => 2, :maxlength => 2 %>
-	</div>
-	<div class="field">
-		<%= f.label :cmd %><br />
-		<%= f.text_field :cmd, :size => 2, :maxlength => 2 %>
-	</div>
-	<div class="field">
-		<%= f.label :damage %><br />
-		<%= f.text_field :damage %>
+	<div id="attachment_field" class="field hidden">
+		<%= f.label :attachment %><br />
+		<%= f.collection_select :attachment_id, @unit.in_faction, :id, :name, :include_blank => "None" %>
 	</div>
 	<div class="field">
 		<%= f.label :field_allowance %><br />
 		<%= f.select :field_allowance, [['Character', 'C'], ['1', 1], ['2', 2], ['3', 3], ['4', 4], ['Unlimited', 'U']] %>
 	</div>
 	<div class="field">
-		<%= f.label :cost %><br />
-		<%= f.text_field :cost, :size => 2, :maxlength => 2 %>
+		<%= f.label :min_models %><br />
+		<%= f.text_field :min_models %>
 	</div>
 	<div class="field">
-		<%= f.label :base %><br />
-		<%= f.select :base, [['Small', 'Small'], ['Medium', 'Medium'], ['Large', 'Large']] %>
+		<%= f.label :min_cost %><br />
+		<%= f.text_field :min_cost%>
 	</div>
 	<div class="field">
-		Additional Note<br />
-		<%= f.text_field :add_name %>: <%= f.text_field :add_stat, :size => 2, :maxlength => 2 %>
+		<%= f.label :max_models %><br />
+		<%= f.text_field :max_models %>
 	</div>
-	<%= f.label :orders %>
-	<%= f.fields_for :unit_orders do |builder| %>
-		<%= render :partial => 'units/unit_order_fields', :locals => { :f => builder } %>
+	<div class="field">
+		<%= f.label :max_cost %><br />
+		<%= f.text_field :max_cost %>
+	</div>
+	<%= f.fields_for :models do |builder| %>
+		<%= render :partial => 'model_fields', :locals => { :f => builder } %>
 	<% end %>
-	<p id="add_order"><%= link_to_add_fields "Add Order", f, :unit_orders, 'units' %> | <%= link_to 'New Order', new_order_path, :id => 'neworder', :rel => 'updater' %></p>
-	<%= f.fields_for :rules do |builder| %>
-		<%= render :partial => 'units/rule_fields', :locals => { :f => builder } %>
-	<% end %>
-	<p><%= link_to_add_fields "Add Rule", f, :rules, 'units' %></p>
+	<p><%= link_to_add_fields "Add Model", f, :models, 'units' %></p>
 	<div class="actions">
 		<%= f.submit %>
 	</div>

@@ -5,9 +5,9 @@ class SubTypesController < ApplicationController
 
   def create
     @sub_type = SubType.new(params[:sub_type])
-    
+
     if @sub_type.save
-      redirect_to(sub_types_path, :notice => "Unit successfully created.")
+      redirect_to(sub_types_path, :notice => "Model successfully created.")
     else
       render :action => 'new'
     end
@@ -19,9 +19,9 @@ class SubTypesController < ApplicationController
 
   def update
     @sub_type = SubType.find(params[:id])
-    
+
     if @sub_type.update_attributes(params[:sub_type])
-      redirect_to(sub_types_path, :notice => "Unit was successfully updated.")
+      redirect_to(sub_types_path, :notice => "Model was successfully updated.")
     else
       render :action => 'edit'
     end
@@ -34,7 +34,7 @@ class SubTypesController < ApplicationController
   def destroy
     @sub_type = SubType.find(params[:id])
     @sub_type.destroy
-    
+
     redirect_to(sub_types_path)
   end
 end

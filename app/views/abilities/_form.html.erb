@@ -1,7 +1,7 @@
 <%= form_for @ability do |f| %>
 	<% if @ability.errors.any? %>
 	<div id="errorExplanation">
-		<h2><%= pluralize(@ability.errors.count, "error") %> prohibited this unit from being saved:</h2>
+		<h2><%= pluralize(@ability.errors.count, "error") %> prohibited this model from being saved:</h2>
 		<ul>
 		<% @ability.errors.full_messages.each do |msg| %>
 			<li><%= msg %></li>
@@ -9,7 +9,7 @@
 		</ul>
 	</div>
 	<% end %>
-	
+
 	<div class="field">
 		<%= f.label :name %><br />
 		<%= f.text_field :name %>

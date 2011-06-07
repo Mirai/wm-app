@@ -1,0 +1,21 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  spd: 1
+  str: 1
+  mat: 1
+  rat: 1
+  def: 1
+  arm: 1
+  cmd: 1
+
+two:
+  name: MyString
+  spd: 1
+  str: 1
+  mat: 1
+  rat: 1
+  def: 1
+  arm: 1
+  cmd: 1

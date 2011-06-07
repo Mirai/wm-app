@@ -4,37 +4,23 @@ class Unit < ActiveRecord::Base
   belongs_to :faction
   belongs_to :unit_type
   belongs_to :sub_type
-  has_many :equips
-  has_many :weapons, :through => :equips
-  has_and_belongs_to_many :spells
-  has_one :warcaster, :dependent => :destroy
-  accepts_nested_attributes_for :warcaster
-  has_one :warjack, :dependent => :destroy
-  accepts_nested_attributes_for :warjack
-  has_and_belongs_to_many :squads
-  has_many :rules
-  accepts_nested_attributes_for :rules, :allow_destroy => true
-  has_many :unit_orders
-  has_many :orders, :through => :unit_orders
-  accepts_nested_attributes_for :unit_orders
-  has_many :sub_units, :foreign_key => :parent_id, :class_name => 'Unit'
-  belongs_to :parent, :class_name => 'Unit'
+  has_and_belongs_to_many :models
+  accepts_nested_attributes_for :models, :allow_destroy => true
+  belongs_to :attachment, :class_name => 'Unit'
+  has_many :attachments, :class_name => 'Unit'
 
-  def warcaster?
-    #return true if self.unit_type.name == "Warcaster"
-    return true if !self.warcaster.nil?
-    return false
-  end
+  before_destroy :destroy_models
 
-  def warjack?
-    #return true if self.unit_type.name == "Light Warjack" || self.unit_type.name == "Heavy Warjack"
-    return true if !self.warjack.nil?
-    return false
-  end
+  def unique_weapons
+    unique_weapons = []
 
-  def solo?
-    return true if self.unit_type.name == "Solo"
-    return false
+    self.models.each do |model|
+      model.weapons.each do |weapon|
+        unique_weapons << weapon
+      end
+    end
+
+    unique_weapons.uniq
   end
 
   def cavalry?
@@ -47,40 +33,19 @@ class Unit < ActiveRecord::Base
     return false
   end
 
-  def sub_unit?
-    return true if !self.parent.nil?
+  def attachment?
+    return true if self.unit_attachment || self.weapon_attachment
     return false
   end
 
-  def unique_weapons
-    unique_weapons = []
+  def in_faction
+    Unit.order(:name).find_all_by_faction_id(self.faction_id)
+  end
 
-    self.weapons.each do |weapon|
-      unique_weapons << weapon
+  private
+    def destroy_models
+      self.models.each do |model|
+        model.destroy
+      end
     end
-
-    unique_weapons.uniq
-  end
-
-  def multi_orders
-    orders = Order.find_all_by_id_and_multi(self.order_ids, true)
-    UnitOrder.find_all_by_order_id(orders)
-  end
-
-  def squad
-    self.squads.first
-  end
-
-  def parent_orders
-    #order_ids = []
-
-    #orders = UnitOrder.find_all_by_unit_id_and_parent_id(self.id, nil)
-
-    #orders.each do |order|
-     # order_ids << order.order_id
-    #end
-
-    #Order.find(order_ids)
-    UnitOrder.find_all_by_unit_id_and_parent_id(self.id, nil)
-  end
 end

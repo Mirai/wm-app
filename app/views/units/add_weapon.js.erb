@@ -1,4 +1,0 @@
-$("#weapons_stats_<%= @equip.unit.id %>").append("<%= escape_javascript(render :partial => 'weapons/stats', :locals => { :unit_str => @equip.unit.str, :weapon => @equip.weapon, :unit_id => @equip.unit_id, :x2 => @equip.x2, :hand => @equip.hand }) %>");
-
-//$("#unit_weapons_<%= @equip.unit.id %> option[value='<%= @equip.weapon.id %>']").remove();
-$("#weapon_abilities").append("<%= escape_javascript(render :partial => 'weapons/abilities', :locals => { :weapon => @equip.weapon }) %>");

@@ -3,9 +3,9 @@
 one:
   name: MyString
   desc: MyText
-  unit: 
+  model:
 
 two:
   name: MyString
   desc: MyText
-  unit: 
+  model:

@@ -1,10 +1,10 @@
-<%= sanitize "<h2>#{unit.short_name}</h2>" if !unit.rules.empty? || !unit.orders.empty? %>
+<%= sanitize "<h2>#{model.short_name}</h2>" if !model.rules.empty? || !model.orders.empty? %>
 
-<% unit.parent_orders.each do |order| %>
+<% model.parent_orders.each do |order| %>
 	<p>
 		<strong><%= order_name order %></strong>
 		<%= " - #{order.desc}" if !order.desc.empty? %>
-		
+
 		<ul>
 			<% order.sub_orders.each do |sub| %>
 				<li><strong><%= sub.name %></strong> - <%= sub.desc %></li>
@@ -13,7 +13,7 @@
 	</p>
 <% end %>
 
-<% unit.rules.each do |rule| %>
+<% model.rules.each do |rule| %>
 	<p>
 		<strong><%= rule.name %></strong>
 		<%= " - #{rule.desc}" if !rule.desc.empty? %>

@@ -1,5 +1,5 @@
-<%= render :partial => 'units/profile', :locals => { :unit => @unit } %>
+<%= render :partial => 'models/profile', :locals => { :model => @model } %>
 
 <br />
 
-<%= link_to 'Edit', edit_warjack_path(@unit) %> | <%= faction_link @unit.faction.name %> | <%= link_to 'All Units', units_path %>
+<%= link_to 'Edit', edit_warjack_path(@model) %> | <%= faction_link @model.faction.name %> | <%= link_to 'All Models', models_path %>

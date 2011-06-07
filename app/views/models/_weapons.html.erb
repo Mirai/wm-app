@@ -1,0 +1,14 @@
+<div id="weapons_stats_<%= model.id %>">
+	<% model.equips.each do |equip| %>
+		<%= render :partial => 'weapons/stats', :locals => { :model_str => model.str, :weapon => equip.weapon, :model_id => model.id, :x2 => equip.x2, :hand => equip.hand } %>
+	<% end %>
+</div>
+<%= form_tag add_weapon_models_path, :class => 'model_addition' do %>
+	<%= hidden_field 'model', 'id', :value => model.id %>
+	<%= collection_select(:model, :weapons, Weapon.order(:name), :id, :name) %>
+	<%= select(:equip, :hand, [['No Hand', ''], ['Left', 'L'], ['Right', 'R']]) %>
+	X2? <%= check_box(:equip, :x2) %>
+	<%= submit_tag "Add Weapon" %>
+<% end %>
+<p><%= link_to 'New Weapon', new_weapon_path, :id => 'newweapon', :rel => 'updater' %></p>
+<div id="x_newweapon"></div>

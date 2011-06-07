@@ -1,0 +1,104 @@
+<%= form_for @model, :url => { :controller => type_name, :action => action } do |f| %>
+	<% if @model.errors.any? %>
+	<div id="errorExplanation">
+		<h2><%= pluralize(@model.errors.count, "error") %> prohibited this model from being saved:</h2>
+		<ul>
+		<% @model.errors.full_messages.each do |msg| %>
+			<li><%= msg %></li>
+		<% end %>
+		</ul>
+	</div>
+	<% end %>
+
+	<div class="field">
+		<%= f.label :faction %><br />
+		<%= f.collection_select(:faction_id, Faction.all, :id, :name) %>
+	</div>
+	<div class="field">
+	  <%- f.label :parent %><br />
+	  <%= f.collection_select :parent_id, Model.order(:name), :id, :name, :include_blank => "None" %>
+	</div>
+	<div class="field">
+		<%= f.label :sub_type %><br />
+		<%= f.collection_select :sub_type_id, SubType.order(:name), :id, :name, :include_blank => "No Sub Type" %>
+	</div>
+	<div class="field">
+		<%= f.label :name %><br />
+		<%= f.text_field :name %>
+	</div>
+	<div class="field">
+		<%= f.label :short_name %><br />
+		<%= f.text_field :short_name %>
+	</div>
+	<div class="field">
+		<%= f.label :cavalry %>? <%= f.check_box :cavalry %>
+	<div id="additional_fields">
+		<% if type_name == 'models' %>
+			<%= f.hidden_field :model_type_id, :value => 5 %>
+		<% else %>
+			<%= render :partial => type_name + '/form', :locals => { :f => f, :model_type => model_type } %>
+		<% end %>
+	</div>
+	<div class="field">
+		<%= f.label :spd %><br />
+		<%= f.text_field :spd, :size => 2, :maxlength => 2 %>
+	</div>
+	<div class="field">
+		<%= f.label :str %><br />
+		<%= f.text_field :str, :size => 2, :maxlength => 2 %>
+	</div>
+	<div class="field">
+		<%= f.label :mat %><br />
+		<%= f.text_field :mat, :size => 2, :maxlength => 2 %>
+	</div>
+	<div class="field">
+		<%= f.label :rat %><br />
+		<%= f.text_field :rat, :size => 2, :maxlength => 2 %>
+	</div>
+	<div class="field">
+		<%= f.label :def %><br />
+		<%= f.text_field :def, :size => 2, :maxlength => 2 %>
+	</div>
+	<div class="field">
+		<%= f.label :arm %><br />
+		<%= f.text_field :arm, :size => 2, :maxlength => 2 %>
+	</div>
+	<div class="field">
+		<%= f.label :cmd %><br />
+		<%= f.text_field :cmd, :size => 2, :maxlength => 2 %>
+	</div>
+	<div class="field">
+		<%= f.label :damage %><br />
+		<%= f.text_field :damage %>
+	</div>
+	<div class="field">
+		<%= f.label :field_allowance %><br />
+		<%= f.select :field_allowance, [['Character', 'C'], ['1', 1], ['2', 2], ['3', 3], ['4', 4], ['Unlimited', 'U']] %>
+	</div>
+	<div class="field">
+		<%= f.label :cost %><br />
+		<%= f.text_field :cost, :size => 2, :maxlength => 2 %>
+	</div>
+	<div class="field">
+		<%= f.label :base %><br />
+		<%= f.select :base, [['Small', 'Small'], ['Medium', 'Medium'], ['Large', 'Large']] %>
+	</div>
+	<div class="field">
+		Additional Note<br />
+		<%= f.text_field :add_name %>: <%= f.text_field :add_stat, :size => 2, :maxlength => 2 %>
+	</div>
+	<%= f.label :orders %>
+	<%= f.fields_for :model_orders do |builder| %>
+		<%= render :partial => 'models/model_order_fields', :locals => { :f => builder } %>
+	<% end %>
+	<p id="add_order"><%= link_to_add_fields "Add Order", f, :model_orders, 'models' %> | <%= link_to 'New Order', new_order_path, :id => 'neworder', :rel => 'updater' %></p>
+	<%= f.fields_for :rules do |builder| %>
+		<%= render :partial => 'models/rule_fields', :locals => { :f => builder } %>
+	<% end %>
+	<p><%= link_to_add_fields "Add Rule", f, :rules, 'models' %></p>
+	<div class="actions">
+		<%= f.submit %>
+	</div>
+<% end %>
+
+<div id="x_neworder"></div>

@@ -1,16 +1,16 @@
 <div id="weapon_<%= weapon.id %>" class="warjack_weapon">
 	<div class="weapon_hand">
 		<%= hand %>
-	</div>	
+	</div>
 	<div class="weapon_stats">
-		<%= weapon.name %> <%= 'x2' if x2 %> <%= link_to '[>]', weapon %> <%= link_to '[x]', { :controller => 'units', :action => 'remove_weapon', :id => unit_id, :weapon_id => weapon.id }, :class => 'remove' %>
+		<%= weapon.name %> <%= 'x2' if x2 %> <%= link_to '[>]', weapon %> <%= link_to '[x]', { :controller => 'models', :action => 'remove_weapon', :id => model_id, :weapon_id => weapon.id }, :class => 'remove' %>
 		<% if weapon.mount? %>
 			<%= render :partial => 'weapons/mount', :locals => { :weapon => weapon } %>
 		<% else %>
 			<% if weapon.ranged %>
 				<%= render :partial => 'weapons/ranged', :locals => { :weapon => weapon } %>
 			<% else %>
-				<%= render :partial => 'weapons/melee', :locals => { :weapon => weapon, :str => unit_str } %>
+				<%= render :partial => 'weapons/melee', :locals => { :weapon => weapon, :str => model_str } %>
 			<% end %>
 		<% end %>
 	</div>

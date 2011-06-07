@@ -1,3 +1,3 @@
 class Faction < ActiveRecord::Base
-  has_many :units
+  has_many :models
 end

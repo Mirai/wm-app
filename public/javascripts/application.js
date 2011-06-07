@@ -51,7 +51,7 @@ $(document).ready(function() {
 	})
 
 
-	//when the new weapon form is submitted on the unit page
+	//when the new weapon form is submitted on the model page
 	$('#x_newweapon').each(function() {
 		$('#new_weapon').live('submit', function() {
 			$.post($(this).attr('action'), $(this).serialize(), null, "script");
@@ -63,7 +63,7 @@ $(document).ready(function() {
 		})
 	})
 
-	//when the new spell form is submitted on the unit page
+	//when the new spell form is submitted on the model page
 	$('#x_newspell').each(function() {
 		$('#new_spell').live('submit', function() {
 			$.post($(this).attr('action'), $(this).serialize(), null, "script");
@@ -94,8 +94,8 @@ $(document).ready(function() {
 		$('#x_newability').html('');
 	})
 
-	//when add spell or add weapon submitted on unit page
-	$('.unit_addition').submit(function() {
+	//when add spell or add weapon submitted on model page
+	$('.model_addition').submit(function() {
 		$.post($(this).attr('action'), $(this).serialize(), null, "script");
 		return false;
 	})
@@ -111,11 +111,11 @@ $(document).ready(function() {
 	})
 
 	// show damage grid based on select
-	$('#unit_warjack_attributes_damage_grid_id').change(function() {
+	$('#model_warjack_attributes_damage_grid_id').change(function() {
 		$.get('/damage_grids?id=' + $(this).val());
 		return false;
 	})
-	$('#unit_warjack_attributes_damage_grid_id').trigger('change')
+	$('#model_warjack_attributes_damage_grid_id').trigger('change')
 
 	// order dropdown
 	$('.order_select').live('change', function() {

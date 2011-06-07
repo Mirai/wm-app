@@ -29,38 +29,38 @@ module ApplicationHelper
     link_to text, '/' + faction.downcase.gsub(/\s+/, "")
   end
 
-  def unit_link unit, action
-    unit_type = unit.unit_type.name if !unit.unit_type.nil?
+  def model_link model, action=nil
+    model_type = model.model_type.name if !model.model_type.nil?
 
-    case unit_type
+    case model_type
     when "Warcaster"
       case action
       when 'edit'
-        link_to 'edit', edit_warcaster_path(unit.id)
+        link_to 'edit', edit_warcaster_path(model.id)
       else
-        link_to unit.name, warcaster_path(unit.id)
+        link_to model.name, warcaster_path(model.id)
       end
     when "Heavy Warjack"
     when "Light Warjack"
       case action
       when 'edit'
-        link_to 'edit', edit_warjack_path(unit.id)
+        link_to 'edit', edit_warjack_path(model.id)
       else
-        link_to unit.name, warjack_path(unit.id)
+        link_to model.name, warjack_path(model.id)
       end
     when "Solo"
       case action
       when 'edit'
-        link_to 'edit', edit_unit_path(unit.id)
+        link_to 'edit', edit_model_path(model.id)
       else
-        link_to unit.name, unit_path(unit.id)
+        link_to model.name, model_path(model.id)
       end
     else
       case action
       when 'edit'
-        link_to 'edit', edit_squad_path(unit.squad.id)
+        link_to 'edit', edit_unit_path(model.unit.id)
       else
-        link_to unit.squad.name, squad_path(unit.squad.id)
+        link_to model.unit.name, unit_path(model.unit.id)
       end
     end
   end

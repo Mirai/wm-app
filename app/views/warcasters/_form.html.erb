@@ -1,7 +1,7 @@
 <%= f.fields_for :warcaster do |form| %>
-	<%= f.hidden_field :unit_type_id, :value => unit_type %>
+	<%= f.hidden_field :model_type_id, :value => model_type %>
 	<div class="field">
-		<%= form.label :epic %>? 
+		<%= form.label :epic %>?
 		<%= form.check_box :epic %>
 	</div>
 	<div class="field">

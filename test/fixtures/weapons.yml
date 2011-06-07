@@ -7,7 +7,7 @@ one:
   rof: 1
   aoe: 1
   power: 1
-  unit: 
+  model:
 
 two:
   name: MyString
@@ -16,4 +16,4 @@ two:
   rof: 1
   aoe: 1
   power: 1
-  unit: 
+  model:

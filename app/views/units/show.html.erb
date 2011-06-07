@@ -1,5 +1,37 @@
-<%= render :partial => 'profile', :locals => { :unit => @unit } %>
+<h1><%= @unit.name %></h1>
+
+<%= @unit.faction.name %> <%= @unit.sub_type.name if !@unit.sub_type.nil? %>
+<%= "Character" if @unit.character? %>
+<%= unit_type @unit %>
+
+<% @unit.models.each do |model| %>
+	<%= render :partial => 'models/stats', :locals => { :model => model } %>
+
+	<%= render :partial => 'models/weapons', :locals => { :model => model } %>
+<% end %>
+
+<%= unit_damage @unit %>
+Field Allowance: <%= @unit.field_allowance %><br />
+<% if !@unit.min_models.nil? %>
+  <%= @unit.min_models %>: <%= @unit.min_cost %><br />
+<% end %>
+<% if !@unit.max_models.nil? %>
+	<%= @unit.max_models %>: <%= @unit.max_cost %><br />
+<% end %>
+<%= unit_base @unit %>
+
+<%= sanitize "<p>Attachment [#{@unit.attachment.name}] - This attachment can be added to a #{@unit.attachment.name} model.</p>" if @unit.attachment? %>
+
+<% @unit.models.each do |model| %>
+	<%= render :partial => 'models/rules', :locals => { :model => model } %>
+<% end %>
+
+<div id="weapon_abilities">
+	<% @unit.unique_weapons.each do |weapon| %>
+		<%= render :partial => 'weapons/abilities', :locals => { :weapon => weapon } %>
+	<% end %>
+</div>
 
 <br />
 
-<%= link_to 'Edit', edit_unit_path(@unit) %> | <%= faction_link @unit.faction.name %> | <%= link_to 'All Units', units_path %>
+<%= link_to 'Edit', edit_unit_path(@unit) %> | <%= link_to @unit.faction.name, '/' + @unit.faction.name.downcase.gsub(/\s+/, "") %> | <%= link_to 'All Models', models_path %>

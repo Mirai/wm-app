@@ -1,7 +1,7 @@
 <%= form_for @sub_type do |f| %>
 	<% if @sub_type.errors.any? %>
 	<div id="errorExplanation">
-		<h2><%= pluralize(@sub_type.errors.count, "error") %> prohibited this unit from being saved:</h2>
+		<h2><%= pluralize(@sub_type.errors.count, "error") %> prohibited this model from being saved:</h2>
 		<ul>
 		<% @sub_type.errors.full_messages.each do |msg| %>
 			<li><%= msg %></li>
