@@ -1,6 +1,7 @@
 <div class="order_fields">
 	<div class="field">
 		<%#= f.hidden_field :model_id %>
+		<%= f.select :source, [['No Source', nil], ['Granted', 'Granted'], ['Tactics', 'Tactics']] %>
 		<%= f.collection_select :order_id, Order.order(:name), :id, :name, {}, :class => 'order_select' %>
 		<%= f.collection_select :parent_id, @available_orders, :id, :order_name, { :include_blank => "No parent" }, :class => 'parent_select' %>
 		<%= f.text_field :skill_check, :size => 2, :maxlength => 2 %>

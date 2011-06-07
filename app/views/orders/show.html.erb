@@ -2,4 +2,11 @@
 
 <p><%= @order.desc %></p>
 
+<h2>Models with this order</h2>
+<% @order.models.each do |model| %>
+	<%= model_link model %><br />
+<% end %>
+
+<br />
+
 <%= link_to 'Back', orders_path %>

@@ -7,7 +7,7 @@
 
 		<ul>
 			<% order.sub_orders.each do |sub| %>
-				<li><strong><%= sub.name %></strong> - <%= sub.desc %></li>
+				<li><strong><%= order_name sub %></strong> - <%= sub.desc %></li>
 			<% end %>
 		</ul>
 	</p>
