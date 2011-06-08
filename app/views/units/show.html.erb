@@ -12,10 +12,10 @@
 
 <%= unit_damage @unit %>
 Field Allowance: <%= @unit.field_allowance %><br />
-<% if !@unit.min_models.nil? %>
+<% if !@unit.min_cost.empty? %>
   <%= @unit.min_models %>: <%= @unit.min_cost %><br />
 <% end %>
-<% if !@unit.max_models.nil? %>
+<% if !@unit.max_cost.empty? %>
 	<%= @unit.max_models %>: <%= @unit.max_cost %><br />
 <% end %>
 <%= unit_base @unit %>

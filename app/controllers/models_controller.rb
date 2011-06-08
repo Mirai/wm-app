@@ -34,14 +34,14 @@ class ModelsController < ApplicationController
 
   def index
     if params[:id].nil?
-      @warcasters = Model.where("model_type_id = 1").order(:short_name)
-      @warjacks = Model.where("model_type_id = 2 OR model_type_id = 3").order(:model_type_id, :name)
+      @warcasters = Model.order(:short_name).find_all_by_model_type_id(1)
+      @warjacks = Model.order(:model_type_id, :name).find_all_by_model_type_id_and_parent_id([2, 3], nil)
       @troops = Unit.order(:name)
       @solos = Model.order(:name).find_all_by_model_type_id_and_parent_id(5, nil)
     else
-      @warcasters = Model.where("model_type_id = 1 AND faction_id = #{params[:id]}").order(:short_name)
-      @warjacks = Model.where("(model_type_id = 2 OR model_type_id = 3) AND faction_id = #{params[:id]}").order(:model_type_id, :name)
-      @troops = Unit.where("faction_id = #{params[:id]}").order(:name)
+      @warcasters = Model.order(:short_name).find_all_by_model_type_id_and_faction_id(1, params[:id])
+      @warjacks = Model.order(:model_type_id, :name).find_all_by_model_type_id_and_parent_id_and_faction_id([2, 3], nil, params[:id])
+      @troops = Unit.order(:name).find_all_by_faction_id(params[:id])
       @solos = Model.order(:name).find_all_by_model_type_id_and_parent_id_and_faction_id(5, nil, params[:id])
     end
   end
