@@ -14,8 +14,8 @@
 	<tr>
 		<td><%= trait.name %></td>
 		<td><%= link_to 'Show', trait %>
-		<td><%= link_to 'Edit', edit_trait_path(trait) %></td>
-		<td><%= link_to 'Delete', trait, :confirm => "Are you sure?", :method => :delete %></td>
+		<td><%= link_to 'Edit', edit_trait_path(trait) if can? :update, trait %></td>
+		<td><%= link_to 'Delete', trait, :confirm => "Are you sure?", :method => :delete if can? :destroy, trait %></td>
 	</tr>
 <% end %>
 </table>
@@ -24,4 +24,4 @@
 
 <br />
 
-<%= link_to 'New Trait', new_trait_path %>
+<%= link_to 'New Trait', new_trait_path if can? :create, @traits %>

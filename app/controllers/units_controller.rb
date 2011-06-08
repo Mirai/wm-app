@@ -1,4 +1,7 @@
 class UnitsController < ApplicationController
+  before_filter :authenticate_user!, :except => [:show]
+  load_and_authorize_resource
+
   def new
     @unit = Unit.new
     @unit.models.build

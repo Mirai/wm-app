@@ -7,7 +7,7 @@ module ModelsHelper
     html += model.sub_type.name + ' ' if !model.sub_type.nil?
     html += 'Character ' if model.character? && !model.warcaster?
     html += model.solo? ? 'Dragoon ' : 'Cavalry ' if model.cavalry?
-    html += model.sub_model? && model.field_allowance.empty? ? model.model_type.name.pluralize : model.model_type.name
+    html += model.sub_model? && model.field_allowance.to_i > 1 ? model.model_type.name.pluralize : model.model_type.name
 
     model.sub_models.each do |sub|
       html += ' & ' + model_title(sub)

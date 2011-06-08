@@ -10,12 +10,12 @@
 <% @sub_types.each do |sub_type| %>
   <tr>
     <td><%= sub_type.name %></td>
-    <td><%= link_to 'Edit', edit_sub_type_path(sub_type) %></td>
-    <td><%= link_to 'Delete', sub_type, :confirm => "Are you sure?", :method => :delete %></td>
+    <td><%= link_to 'Edit', edit_sub_type_path(sub_type) if can? :update, sub_type %></td>
+    <td><%= link_to 'Delete', sub_type, :confirm => "Are you sure?", :method => :delete if can? :destroy, sub_type %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Model Type', new_sub_type_path %>
+<%= link_to 'New Model Type', new_sub_type_path if can? :create, @sub_types %>

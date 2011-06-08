@@ -98,6 +98,10 @@ a {
 	margin-left: 15px;
 }
 
+#user_nav {
+	float: right;
+}
+
 .weapon_stats .stat_table {
 	width: 150px;
 }

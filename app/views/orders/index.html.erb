@@ -14,8 +14,8 @@
 	<tr>
 		<td><%= order.name %></td>
 		<td><%= link_to 'Show', order %></td>
-		<td><%= link_to 'Edit', edit_order_path(order) %>
-		<td><%= link_to 'Delete', order, :confirm => "Are you sure?", :method => :delete %>
+		<td><%= link_to 'Edit', edit_order_path(order) if can? :update, order %>
+		<td><%= link_to 'Delete', order, :confirm => "Are you sure?", :method => :delete if can? :destroy, order %>
 	</tr>
 <% end %>
 </table>
@@ -24,4 +24,4 @@
 
 <br />
 
-<%= link_to 'New Order', new_order_path %>
+<%= link_to 'New Order', new_order_path if can? :create, @orders %>

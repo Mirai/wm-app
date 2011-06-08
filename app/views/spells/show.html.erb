@@ -30,4 +30,5 @@
 
 <br />
 
-<%= link_to 'Back', spells_path %> | <%= link_to 'Edit', edit_spell_path(@spell) %>
+<%= link_to('Edit', edit_spell_path(@spell)) + ' |' if can? :update, @spell %>
+<%= link_to 'Back', spells_path %>

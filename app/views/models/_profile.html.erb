@@ -29,14 +29,16 @@
 </div>
 
 <%= render :partial => 'spells/stats', :locals => { :spells => model.spells } if !model.spells.empty? %>
-<%= form_tag add_spell_models_path, :class => 'model_addition' do %>
-	<%= hidden_field 'model', 'id', :value => model.id %>
-	<%#= collection_select(:model, :spells, @available_spells, :id, :name) %>
-	<%= collection_select(:model, :spells, Spell.order(:name), :id, :name) %>
-	<%= submit_tag "Add Spell" %>
+<% if can? :create, Spell %>
+  <%= form_tag add_spell_models_path, :class => 'model_addition' do %>
+  	<%= hidden_field 'model', 'id', :value => model.id %>
+  	<%#= collection_select(:model, :spells, @available_spells, :id, :name) %>
+  	<%= collection_select(:model, :spells, Spell.order(:name), :id, :name) %>
+  	<%= submit_tag "Add Spell" %>
+  <% end %>
+  <p><%= link_to 'New Spell', new_spell_path, :id => 'newspell', :rel => 'updater' %></p>
+  <div id="x_newspell"></div>
 <% end %>
-<p><%= link_to 'New Spell', new_spell_path, :id => 'newspell', :rel => 'updater' %></p>
-<div id="x_newspell"></div>
 
 <% model.sub_models.each do |sub| %>
   <%= render :partial => 'models/profile', :locals => { :model => sub } %>

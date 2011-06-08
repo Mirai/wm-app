@@ -1,4 +1,7 @@
 class ModelsController < ApplicationController
+  before_filter :authenticate_user!, :except => [:index, :show]
+  load_and_authorize_resource
+
   def new
     @model = Model.new
     @available_orders = ModelOrder.find(@model.multi_orders)

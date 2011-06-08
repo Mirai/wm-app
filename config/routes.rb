@@ -1,5 +1,5 @@
 WmApp::Application.routes.draw do
-  root :to => "factions#index"
+  devise_for :users
 
   resources :models do
     collection do
@@ -25,4 +25,6 @@ WmApp::Application.routes.draw do
 
   match 'models/:id/remove_weapon/:weapon_id' => 'models#remove_weapon'
   match 'models/:id/remove_spell/:spell_id' => 'models#remove_spell'
+
+  root :to => "factions#index"
 end

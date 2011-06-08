@@ -9,4 +9,5 @@
 
 <br />
 
+<%= link_to('Edit', edit_order_path(@order)) + ' |' if can? :update, @order %>
 <%= link_to 'Back', orders_path %>

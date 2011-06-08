@@ -1,4 +1,7 @@
 class SubTypesController < ApplicationController
+  before_filter :authenticate_user!, :except => [:index]
+  load_and_authorize_resource
+
   def new
     @sub_type = SubType.new
   end

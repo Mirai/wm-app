@@ -1,4 +1,6 @@
 class ModelTypesController < ApplicationController
+  before_filter :authenticate_user!
+
   def new
     @model_type = ModelType.new
   end

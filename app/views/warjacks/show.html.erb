@@ -2,4 +2,6 @@
 
 <br />
 
-<%= link_to 'Edit', edit_warjack_path(@model) %> | <%= faction_link @model.faction.name %> | <%= link_to 'All Models', models_path %>
+<%= link_to('Edit', edit_warjack_path(@model)) + ' |' if can? :update, @model %>
+<%= faction_link @model.faction.name %> |
+<%= link_to 'All Models', models_path %>

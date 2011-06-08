@@ -2,4 +2,5 @@
 
 <p><%= @trait.desc %></p>
 
+<%= link_to('Edit', edit_trait_path(@trait)) + ' |' if can? :update, @trait %>
 <%= link_to 'Back', traits_path %>
