@@ -15,7 +15,7 @@
 		<%= f.collection_select(:faction_id, Faction.all, :id, :name) %>
 	</div>
 	<div class="field">
-	  <%- f.label :parent %><br />
+	  <%= f.label :parent, "Parent model" %><br />
 	  <%= f.collection_select :parent_id, Model.order(:name), :id, :name, :include_blank => "None" %>
 	</div>
 	<div class="field">
