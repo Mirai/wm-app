@@ -15,7 +15,7 @@
   <%= model_allowance model %>
   <%= model_cost model %>
   <%= model_wjpoints model %>
-  <%= model.base %> Base
+  <%= model_base model %>
 </p>
 
 <%= model_feat model %>
@@ -41,5 +41,5 @@
 <% end %>
 
 <% model.sub_models.each do |sub| %>
-  <%= render :partial => 'models/profile', :locals => { :model => sub } %>
+  <%= render :partial => 'models/profile', :locals => { :model => sub } if !model.dragoon? || can?(:update, sub) %>
 <% end %>

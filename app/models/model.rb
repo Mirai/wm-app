@@ -42,6 +42,11 @@ class Model < ActiveRecord::Base
     return false
   end
 
+  def dragoon?
+    return true if self.cavalry && self.solo?
+    return false
+  end
+
   def character?
     return true if self.field_allowance == 'C'
     return false

@@ -1,6 +1,6 @@
 <table class="stat_table">
 	<tr>
-		<td class="left_align" colspan="7"><%= model.short_name %> <%= model_link model, 'edit' if model.sub_model? %></td>
+		<td class="left_align" colspan="7"><%= model.short_name %> <%= model_link model, 'edit' if model.sub_model? && can?(:update, model) %></td>
 	</tr>
 	<tr>
 		<th>SPD</th>
@@ -12,12 +12,12 @@
 		<th>CMD</th>
 	</tr>
 	<tr>
-		<td><%= model.spd %></td>
+		<td><%= model_spd model %></td>
 		<td><%= model.str %></td>
 		<td><%= model.mat %></td>
 		<td><%= model.rat %></td>
 		<td><%= model.def %></td>
-		<td><%= model.arm %></td>
+		<td><%= model_arm model %></td>
 		<td><%= statDash model.cmd %></td>
 	</tr>
 </table>
