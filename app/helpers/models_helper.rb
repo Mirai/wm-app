@@ -25,7 +25,7 @@ module ModelsHelper
       html = ""
 
       html += "Mounted Damage: #{model.damage}<br />\n"
-      html += "Dismounted Damage: #{model.sub_models.first.damage}<br />"
+      html += "Dismounted Damage: #{model.sub_models.first.damage}<br />" if !model.sub_models.empty?
 
       return sanitize html
     end
@@ -38,7 +38,7 @@ module ModelsHelper
       html = ""
 
       html += "#{model.base} Base Mounted<br />\n"
-      html += "#{model.sub_models.first.base} Base Dismounted<br />"
+      html += "#{model.sub_models.first.base} Base Dismounted<br />" if !model.sub_models.empty?
 
       return sanitize html
     end
@@ -55,6 +55,15 @@ module ModelsHelper
   end
 
   def model_cost model
+    if model.dragoon? && !model.sub_models.first.cost.nil?
+      html = ""
+
+      html += "Without Dismount: #{model.cost}<br />\n"
+      html += "With Dismount: #{model.sub_models.first.cost}<br />"
+
+      return sanitize html
+    end
+
     sanitize "Point Cost: #{model.cost}<br />" if !model.warcaster? && !model.sub_model?
   end
 
@@ -73,7 +82,7 @@ module ModelsHelper
   def model_spd model
     html = model.spd.to_s
 
-    html += "/#{model.sub_models.first.spd}" if model.dragoon?
+    html += "/#{model.sub_models.first.spd}" if model.dragoon? && !model.sub_models.empty?
 
     html
   end
@@ -81,7 +90,7 @@ module ModelsHelper
   def model_arm model
     html = model.arm.to_s
 
-    html += "/#{model.sub_models.first.arm}" if model.dragoon?
+    html += "/#{model.sub_models.first.arm}" if model.dragoon? && !model.sub_models.empty?
 
     html
   end
