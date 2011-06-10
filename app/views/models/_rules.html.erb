@@ -2,12 +2,11 @@
 
 <% model.parent_orders.each do |order| %>
 	<p>
-		<strong><%= order_name order %></strong>
-		<%= " - #{order.desc}" if !order.desc.empty? %>
+		<%= model_order order %>
 
 		<ul>
 			<% order.sub_orders.each do |sub| %>
-				<li><strong><%= order_name sub %></strong> - <%= sub.desc %></li>
+				<li><%= model_order sub %></li>
 			<% end %>
 		</ul>
 	</p>

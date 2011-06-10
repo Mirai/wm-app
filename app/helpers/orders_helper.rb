@@ -1,18 +1,26 @@
 module OrdersHelper
-  def order_name model_order
+  def model_order order
     html = ""
 
-    html += "#{model_order.source}: " if !model_order.source.empty?
+    case order.source
+    when "Granted"
+      html += "<strong>Granted: #{order.name} - </strong>While this model is in play, models in its unit gain #{order.name}."
+      html += "  (#{order.desc})" if !order.desc.empty?
+    when "Tactics"
+      html += "<strong>Tactics: #{order.name} - </strong>Models in this unit gain #{order.name}."
+      html += "  (#{order.desc})" if !order.desc.empty?
+    else
+      if !order.skill_check.nil?
+        orderArr = order.name.split('(')
 
-    order_name = model_order.order.name
-    html += order_name
+        html += "<strong>#{orderArr[0]} [#{order.skill_check}] (#{orderArr[1]}</strong>"
+      else
+        html += "<strong>#{order.name}</strong>"
+      end
 
-    if !model_order.skill_check.nil?
-      orderArr = order_name.split('(')
-
-      html += " #{orderArr[0]} [#{model_order.skill_check}] (#{orderArr[1]}"
+      html += " - #{order.desc}" if !order.desc.empty?
     end
 
-    html
+    sanitize html
   end
 end
