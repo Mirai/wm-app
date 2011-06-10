@@ -8,5 +8,10 @@
 ModelType.create(:name => 'Warcaster')
 ModelType.create(:name => 'Light Warjack')
 ModelType.create(:name => 'Heavy Warjack')
-ModelType.create(:name => 'Model')
+ModelType.create(:name => 'Unit')
 ModelType.create(:name => 'Solo')
+
+Role.create(:name => 'admin')
+Role.create(:name => 'guest')
+
+User.create(:email => 'admin@wmapp.com', :password => 'pass123', :password_confirmation => 'pass123')
