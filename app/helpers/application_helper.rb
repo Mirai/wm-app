@@ -40,8 +40,7 @@ module ApplicationHelper
       else
         link_to model.name, warcaster_path(model.id)
       end
-    when "Heavy Warjack"
-    when "Light Warjack"
+    when "Light Warjack", "Heavy Warjack"
       case action
       when 'edit'
         link_to 'edit', edit_warjack_path(model.id)
