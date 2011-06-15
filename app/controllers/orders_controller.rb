@@ -32,7 +32,7 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
 
     if @order.update_attributes(params[:order])
-      redirect_to orders_path, :notice => "Order updated successfully."
+      redirect_to @order, :notice => "Order updated successfully."
     else
       render :action => 'edit'
     end

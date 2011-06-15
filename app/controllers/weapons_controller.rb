@@ -32,7 +32,7 @@ class WeaponsController < ApplicationController
     @weapon = Weapon.find(params[:id])
 
     if(@weapon.update_attributes(params[:weapon]))
-      redirect_to weapons_path, :notice => "Weapon successfully updated."
+      redirect_to @weapon, :notice => "Weapon successfully updated."
     else
       render :action => :edit
     end
