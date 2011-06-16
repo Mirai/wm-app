@@ -1,14 +1,5 @@
 <%= form_for @model, :url => { :controller => type_name, :action => action } do |f| %>
-	<% if @model.errors.any? %>
-	<div id="errorExplanation">
-		<h2><%= pluralize(@model.errors.count, "error") %> prohibited this model from being saved:</h2>
-		<ul>
-		<% @model.errors.full_messages.each do |msg| %>
-			<li><%= msg %></li>
-		<% end %>
-		</ul>
-	</div>
-	<% end %>
+	<%= display_errors @model %>
 
 	<div class="field">
 		<%= f.label :faction %><br />

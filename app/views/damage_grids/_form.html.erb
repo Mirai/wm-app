@@ -1,4 +1,6 @@
 <%= form_for @grid do |f| %>
+  <%= display_errors @grid %>
+
 	<div class="field">
 		<%= f.label :name %><br />
 		<%= f.text_field :name %>
@@ -64,7 +66,7 @@
 	<div class="actions">
 		<%= f.submit %>
 	</div>
-	
+
 	<h2>Legend</h2>
 	<p>
 		blank = empty damage box<br />

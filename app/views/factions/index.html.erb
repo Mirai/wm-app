@@ -1,3 +1,22 @@
+<h1>Factions</h1>
+
+<table>
+  <tr>
+    <th>Faction</th>
+    <th>Game</th>
+    <th></th>
+    <th></th>
+  </tr>
 <% @factions.each do |faction| %>
-	<h3><%= link_to faction.name, faction.name.downcase.gsub(/\s+/, "") %></h3>
+  <tr>
+	  <td><%= link_to faction.name, faction.name.downcase.gsub(/\s+/, "") %></td>
+  	<td><%= faction.game %></td>
+  	<td><%= link_to 'Edit', edit_faction_path(faction) if can? :update, faction %></td>
+  	<td><%= link_to 'Delete', faction, :method => :delete, :confirm => "Are you sure?" if can? :destroy, faction %></td>
+  </tr>
 <% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Faction', new_faction_path if can? :create, @factions %>

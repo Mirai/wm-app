@@ -1,15 +1,5 @@
 <%= form_for @spell do |f| %>
-
-	<% if @spell.errors.any? %>
-	<div id="errorExplanation">
-		<h2><%= pluralize(@spell.errors.count, "error") %> prohibited this model from being saved:</h2>
-		<ul>
-		<% @spell.errors.full_messages.each do |msg| %>
-			<li><%= msg %></li>
-		<% end %>
-		</ul>
-	</div>
-	<% end %>
+  <%= display_errors @spell %>
 
 	<div class="field">
 		<%= f.label :name %><br />

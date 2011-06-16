@@ -1,4 +1,21 @@
 module ApplicationHelper
+  def display_errors object
+    html = ""
+
+    if object.errors.any?
+  	html += "<div id='errorExplanation'>"
+  		html += "<h2>#{pluralize(@model.errors.count, "error")} prohibited this model from being saved:</h2>"
+  		html += "<ul>"
+  		@model.errors.full_messages.each do |msg|
+  			html += "<li>#{msg}</li>"
+  		end
+  		html += "</ul>"
+  	html += "</div>"
+  	end
+
+  	sanitize html
+	end
+
   def bool2Affirm bool
     if bool
       'YES'

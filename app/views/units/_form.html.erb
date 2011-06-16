@@ -1,4 +1,6 @@
 <%= form_for @unit do |f| %>
+  <%= display_errors @unit %>
+
 	<div class="field">
 		<%= f.label :name %><br />
 		<%= f.text_field :name %>

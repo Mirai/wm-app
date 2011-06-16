@@ -1,4 +1,6 @@
 <%= form_for @weapon do |f| %>
+  <%= display_errors @weapon %>
+
 	<div class="field">
 		<%= f.label :name %><br />
 		<%= f.text_field :name %>

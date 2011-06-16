@@ -1,14 +1,5 @@
 <%= form_for @trait do |f| %>
-	<% if @trait.errors.any? %>
-	<div id="errorExplanation">
-		<h2><%= pluralize(@trait.errors.count, "error") %> prohibited this model from being saved:</h2>
-		<ul>
-		<% @trait.errors.full_messages.each do |msg| %>
-			<li><%= msg %></li>
-		<% end %>
-		</ul>
-	</div>
-	<% end %>
+	<%= display_errors @trait %>
 
 	<div class="field">
 		<%= f.label :name %><br />
