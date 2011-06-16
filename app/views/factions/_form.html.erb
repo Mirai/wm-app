@@ -1,0 +1,15 @@
+<%= form_for @faction do |f| %>
+  <%= display_errors @faction %>
+
+  <div id="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div id="field">
+    <%= f.label :game %><br />
+    <%= f.select :game, [['Warmachine', 'Warmachine'], ['Hordes', 'Hordes']]%>
+  </div>
+  <div id="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
