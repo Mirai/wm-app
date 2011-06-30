@@ -80,4 +80,13 @@ module ApplicationHelper
       end
     end
   end
+
+  def show_links faction
+    html = ""
+
+    html += faction_link(faction) + ' | '
+    html += link_to 'All Models', models_path
+
+    sanitize html
+  end
 end
