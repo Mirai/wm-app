@@ -1,8 +1,12 @@
-<%= link_to 'Cygnar', cygnar_path %> |
-<%= link_to 'Khador', khador_path %> |
-<%= link_to 'Protectorate of Menoth', protectorateofmenoth_path %> |
-<%= link_to 'Cryx', cryx_path %><br />
+<% factions = Faction.all %>
+
+<% factions.each do |faction| %>
+  <%= faction_link faction %> |
+<% end %>
+
 <br />
+<br />
+
 <%= link_to 'Factions', root_path %> |
 <%= link_to 'Model Types', sub_types_path %> |
 <%= link_to 'Models', models_path %> |

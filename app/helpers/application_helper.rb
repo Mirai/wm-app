@@ -41,9 +41,9 @@ module ApplicationHelper
   end
 
   def faction_link faction, text=nil
-    text ||= faction
+    text ||= faction.name
 
-    link_to text, '/' + faction.downcase.gsub(/\s+/, "")
+    link_to text, '/faction/' + faction.link
   end
 
   def model_link model, action=nil

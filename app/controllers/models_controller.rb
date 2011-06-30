@@ -33,16 +33,18 @@ class ModelsController < ApplicationController
   end
 
   def index
-    if params[:id].nil?
+    if params[:faction].nil?
       @warcasters = Model.order(:short_name).find_all_by_model_type_id(1)
       @warjacks = Model.order(:model_type_id, :name).find_all_by_model_type_id_and_parent_id([2, 3], nil)
       @troops = Unit.order(:name)
       @solos = Model.order(:name).find_all_by_model_type_id_and_parent_id(5, nil)
     else
-      @warcasters = Model.order(:short_name).find_all_by_model_type_id_and_faction_id(1, params[:id])
-      @warjacks = Model.order(:model_type_id, :name).find_all_by_model_type_id_and_parent_id_and_faction_id([2, 3], nil, params[:id])
-      @troops = Unit.order(:name).find_all_by_faction_id(params[:id])
-      @solos = Model.order(:name).find_all_by_model_type_id_and_parent_id_and_faction_id(5, nil, params[:id])
+      faction_id = Faction.find_by_url(params[:faction]).id
+
+      @warcasters = Model.order(:short_name).find_all_by_model_type_id_and_faction_id(1, faction_id)
+      @warjacks = Model.order(:model_type_id, :name).find_all_by_model_type_id_and_parent_id_and_faction_id([2, 3], nil, faction_id)
+      @troops = Unit.order(:name).find_all_by_faction_id(faction_id)
+      @solos = Model.order(:name).find_all_by_model_type_id_and_parent_id_and_faction_id(5, nil, faction_id)
     end
   end
 

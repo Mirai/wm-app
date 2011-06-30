@@ -35,5 +35,5 @@ Field Allowance: <%= @unit.field_allowance %><br />
 <br />
 
 <%= link_to('Edit', edit_unit_path(@unit)) + ' |' if can? :update, @unit %>
-<%= link_to @unit.faction.name, '/' + @unit.faction.name.downcase.gsub(/\s+/, "") %> |
+<%= faction_link @unit.faction %> |
 <%= link_to 'All Models', models_path %>

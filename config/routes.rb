@@ -23,6 +23,8 @@ WmApp::Application.routes.draw do
   match 'protectorateofmenoth' => 'models#index', :id => 3
   match 'cryx' => 'models#index', :id => 4
 
+  match 'faction/:faction' => 'models#index'
+
   match 'models/:id/remove_weapon/:weapon_id' => 'models#remove_weapon'
   match 'models/:id/remove_spell/:spell_id' => 'models#remove_spell'
 
