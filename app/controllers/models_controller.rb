@@ -39,12 +39,12 @@ class ModelsController < ApplicationController
       @troops = Unit.order(:name)
       @solos = Model.order(:name).find_all_by_model_type_id_and_parent_id(5, nil)
     else
-      faction_id = Faction.find_by_url(params[:faction]).id
+      @faction = Faction.find_by_url(params[:faction])
 
-      @warcasters = Model.order(:short_name).find_all_by_model_type_id_and_faction_id(1, faction_id)
-      @warjacks = Model.order(:model_type_id, :name).find_all_by_model_type_id_and_parent_id_and_faction_id([2, 3], nil, faction_id)
-      @troops = Unit.order(:name).find_all_by_faction_id(faction_id)
-      @solos = Model.order(:name).find_all_by_model_type_id_and_parent_id_and_faction_id(5, nil, faction_id)
+      @warcasters = Model.order(:short_name).find_all_by_model_type_id_and_faction_id(1, @faction.id)
+      @warjacks = Model.order(:model_type_id, :name).find_all_by_model_type_id_and_parent_id_and_faction_id([2, 3], nil, @faction.id)
+      @troops = Unit.order(:name).find_all_by_faction_id(@faction.id)
+      @solos = Model.order(:name).find_all_by_model_type_id_and_parent_id_and_faction_id(5, nil, @faction.id)
     end
   end
 

@@ -9,6 +9,14 @@ class Faction < ActiveRecord::Base
     return nil
   end
 
+  def self.warmachine
+    Faction.find_all_by_game('Warmachine');
+  end
+
+  def self.hordes
+    Faction.find_all_by_game('Hordes');
+  end
+
   def link
     self.name.gsub(/\s+/, '').downcase
   end

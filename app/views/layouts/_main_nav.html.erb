@@ -1,6 +1,10 @@
-<% factions = Faction.all %>
+<% Faction.warmachine.each do |faction| %>
+  <%= faction_link faction %> |
+<% end %>
 
-<% factions.each do |faction| %>
+<br />
+
+<% Faction.hordes.each do |faction| %>
   <%= faction_link faction %> |
 <% end %>
 

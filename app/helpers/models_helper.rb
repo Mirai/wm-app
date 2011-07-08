@@ -95,4 +95,28 @@ module ModelsHelper
     html
   end
 
+  def warcasterlock plural=false
+    unless @faction.nil?
+      if @faction.game == 'Warmachine'
+        return plural ? 'Warcasters' : 'Warcaster'
+      elsif @faction.game == 'Hordes'
+        return plural ? 'Warlocks' : 'Warlock'
+      end
+    end
+
+    plural ? 'Warcasters/Warlocks' : 'Warcaster/Warlock'
+  end
+
+  def warjackbeast plural=false
+    unless @faction.nil?
+      if @faction.game == 'Warmachine'
+        return plural ? 'Warjacks' : 'Warjack'
+      elsif @faction.game == 'Hordes'
+        return plural ? 'Warbeasts' : 'Warbeast'
+      end
+    end
+
+    plural ? 'Warjacks/Warbeasts' : 'Warjack/Warbeast'
+  end
+
 end

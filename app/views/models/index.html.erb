@@ -1,12 +1,12 @@
 <h1>Models</h1>
 
-<h3>Warcasters</h3>
+<h3><%= warcasterlock true %></h3>
 
-<%= render :partial => 'models/list', :locals => { :models => @warcasters, :model_type => 'warcasters', :model_name => 'Warcaster' } %>
+<%= render :partial => 'models/list', :locals => { :models => @warcasters, :model_type => 'warcasters', :model_name => warcasterlock } %>
 
-<h3>Warjacks</h3>
+<h3><%= warjackbeast true %></h3>
 
-<%= render :partial => 'models/list', :locals => { :models => @warjacks, :model_type => 'warjacks', :model_name => 'Warjack' } %>
+<%= render :partial => 'models/list', :locals => { :models => @warjacks, :model_type => 'warjacks', :model_name => warjackbeast } %>
 
 <h3>Units</h3>
 
