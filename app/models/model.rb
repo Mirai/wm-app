@@ -20,6 +20,16 @@ class Model < ActiveRecord::Base
   has_many :sub_models, :foreign_key => :parent_id, :class_name => 'Model'
   belongs_to :parent, :class_name => 'Model'
 
+  def warmachine?
+    return true if self.faction.game == 'Warmachine'
+    return false
+  end
+
+  def hordes?
+    return true if self.faction.game == 'Hordes'
+    return false
+  end
+
   def warcaster?
     #return true if self.model_type.name == "Warcaster"
     return true if !self.warcaster.nil?

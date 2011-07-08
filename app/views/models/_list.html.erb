@@ -1,7 +1,7 @@
 <table>
   <tr>
     <th>Name</th>
-	<th>Faction</th>
+    <th>Faction</th>
     <th></th>
     <th></th>
     <th></th>
@@ -11,7 +11,7 @@
 
   <tr>
     <td><%= model.name %></td>
-	<td><%= model.faction.name %></td>
+    <td><%= model.faction.name %></td>
     <td><%= link_to 'Show', "/#{model_type}/#{model.id}" %></td>
     <td><%= link_to 'Edit', "/#{model_type}/#{model.id}/edit" if can? :update, model %></td>
     <td><%= link_to 'Delete', "/#{model_type}/#{model.id}", :confirm => "Are you sure?", :method => :delete if can? :destroy, model %></td>
@@ -21,4 +21,4 @@
 
 <br />
 
-<%= link_to "New #{model_name}", "#{model_type}/new" if can? :create, Model %>
+<%= link_to "New #{model_name}", "/#{model_type}/new" if can? :create, Model %>

@@ -7,7 +7,18 @@ module ModelsHelper
     html += model.sub_type.name + ' ' if !model.sub_type.nil?
     html += 'Character ' if model.character? && !model.warcaster?
     html += model.dragoon? ? 'Dragoon ' : 'Cavalry ' if model.cavalry?
-    html += model.sub_model? && model.field_allowance.to_i > 1 ? model.model_type.name.pluralize : model.model_type.name
+
+    if model.sub_model? && model.field_allowance.to_i > 1
+      html += model.model_type.name.pluralize
+    else
+      if model.warcaster?
+        html += warcasterlock model.faction
+      elsif model.warjack?
+        html += warjackbeast model.faction
+      else
+        html += model.model_type.name
+      end
+    end
 
     model.sub_models.each do |sub|
       html += ' & ' + model_title(sub) if !model.dragoon?
@@ -17,7 +28,8 @@ module ModelsHelper
   end
 
   def model_focus model
-    sanitize "Focus: #{model.warcaster.focus}<br />" if model.warcaster?
+    return sanitize "Focus: #{model.warcaster.focus}<br />" if model.warcaster? && model.warmachine?
+    return sanitize "Fury: #{model.warcaster.focus}<br />" if model.warcaster? && model.hordes?
   end
 
   def model_damage model
@@ -68,7 +80,8 @@ module ModelsHelper
   end
 
   def model_wjpoints model
-    sanitize "Warjack Points: +#{model.warcaster.wj_points}<br />" if model.warcaster?
+    return sanitize "Warjack Points: +#{model.warcaster.wj_points}<br />" if model.warcaster? && model.warmachine?
+    return sanitize "Warbeast Points: +#{model.warcaster.wj_points}<br />" if model.warcaster? && model.hordes?
   end
 
   def model_wjdamage model
@@ -95,11 +108,11 @@ module ModelsHelper
     html
   end
 
-  def warcasterlock plural=false
-    unless @faction.nil?
-      if @faction.game == 'Warmachine'
+  def warcasterlock faction, plural=false
+    unless faction.nil?
+      if faction.game == 'Warmachine'
         return plural ? 'Warcasters' : 'Warcaster'
-      elsif @faction.game == 'Hordes'
+      elsif faction.game == 'Hordes'
         return plural ? 'Warlocks' : 'Warlock'
       end
     end
@@ -107,11 +120,11 @@ module ModelsHelper
     plural ? 'Warcasters/Warlocks' : 'Warcaster/Warlock'
   end
 
-  def warjackbeast plural=false
-    unless @faction.nil?
-      if @faction.game == 'Warmachine'
+  def warjackbeast faction, plural=false
+    unless faction.nil?
+      if faction.game == 'Warmachine'
         return plural ? 'Warjacks' : 'Warjack'
-      elsif @faction.game == 'Hordes'
+      elsif faction.game == 'Hordes'
         return plural ? 'Warbeasts' : 'Warbeast'
       end
     end
