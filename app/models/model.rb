@@ -4,7 +4,7 @@ class Model < ActiveRecord::Base
   belongs_to :faction
   belongs_to :model_type
   belongs_to :sub_type
-  has_many :equips
+  has_many :equips, :dependent => :destroy
   has_many :weapons, :through => :equips
   has_and_belongs_to_many :spells
   has_one :warcaster, :dependent => :destroy
