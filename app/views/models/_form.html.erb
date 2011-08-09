@@ -24,6 +24,10 @@
 	<div class="field">
 		<%= f.label :cavalry %>? <%= f.check_box :cavalry %>
 	</div>
+	<div class="field">
+		<%= f.label :epic %>?
+		<%= f.check_box :epic %>
+	</div>
 	<div id="additional_fields">
 		<% if type_name == 'models' %>
 			<%= f.hidden_field :model_type_id, :value => 5 %>

@@ -3,7 +3,7 @@ module ModelsHelper
     html = ""
 
     html += model.faction.name + ' ' if !model.sub_model?
-    html += 'Epic ' if model.warcaster? && model.warcaster.epic
+    html += 'Epic ' if model.epic
     html += model.sub_type.name + ' ' if !model.sub_type.nil?
     html += 'Character ' if model.character? && !model.warcaster?
     html += model.dragoon? ? 'Dragoon ' : 'Cavalry ' if model.cavalry?
