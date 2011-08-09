@@ -28,7 +28,8 @@
 	<% end %>
 </div>
 
-<%= render :partial => 'spells/stats', :locals => { :spells => model.spells } if !model.spells.empty? %>
+<%= render :partial => 'spells/stats', :locals => { :spells => model.spells } %>
+
 <% if can? :create, Spell %>
   <%= form_tag add_spell_models_path, :class => 'model_addition' do %>
   	<%= hidden_field 'model', 'id', :value => model.id %>
