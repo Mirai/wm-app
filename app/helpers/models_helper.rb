@@ -140,4 +140,8 @@ module ModelsHelper
     end
   end
 
+  def model_mercs model
+    sanitize "<strong>Mercenary - </strong>This model will work for " + model.factions.collect{ |x| x.name }.join(', ') + '.' if model.mercenary?
+  end
+
 end

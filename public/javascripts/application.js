@@ -140,5 +140,14 @@ $(document).ready(function() {
 	})
 	$('.attachment_check').trigger('change')
 
+	$("#model_faction_id").change(function() {
+	  if($(this).val() == 6 || $(this).val() == 11) {
+	    $("#mercenary_select").removeClass("hidden");
+	  } else {
+	    $("#mercenary_select").addClass("hidden");
+	  }
+	});
+	$("#model_faction_id").trigger("change");
+
 	$(function() { $('a[rel=updater]').ajaxUpdater() })
 });

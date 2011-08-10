@@ -126,3 +126,7 @@ a {
 .hidden {
 	display: none;
 }
+
+.multiselect {
+  height: 100px;
+}

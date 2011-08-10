@@ -19,6 +19,8 @@ class Model < ActiveRecord::Base
   accepts_nested_attributes_for :model_orders
   has_many :sub_models, :foreign_key => :parent_id, :class_name => 'Model'
   belongs_to :parent, :class_name => 'Model'
+  has_many :mercenaries
+  has_many :factions, :through => :mercenaries
 
   def warmachine?
     return true if self.faction.game == 'Warmachine'
@@ -64,6 +66,11 @@ class Model < ActiveRecord::Base
 
   def sub_model?
     return true if !self.parent.nil?
+    return false
+  end
+
+  def mercenary?
+    return true if self.faction.name == "Mercenaries" || self.faction.name == "Minions"
     return false
   end
 

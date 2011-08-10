@@ -33,7 +33,7 @@
 
 	<div class="field">
 		<%= f.label :traits %><br />
-		<%= f.collection_select :trait_ids, Trait.order(:name), :id, :name, {}, :multiple => true %><br />
+		<%= f.collection_select :trait_ids, Trait.order(:name), :id, :name, {}, {:multiple => true, :class => "multiselect"} %><br />
 		<p><%= link_to 'Add Trait', new_trait_path, :id => 'newtrait', :rel => 'updater' %></p>
 	</div>
 	<div class="actions">
