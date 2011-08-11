@@ -79,7 +79,7 @@ class Model < ActiveRecord::Base
 
   def multi_orders
     orders = Order.find_all_by_id_and_multi(self.order_ids, true)
-    ModelOrder.find_all_by_order_id(orders)
+    ModelOrder.find_all_by_order_id_and_model_id(orders, self.id)
   end
 
   def unit
