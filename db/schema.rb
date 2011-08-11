@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110615194611) do
+ActiveRecord::Schema.define(:version => 20110809201247) do
 
   create_table "damage_grids", :force => true do |t|
     t.string   "name"
@@ -70,6 +70,13 @@ ActiveRecord::Schema.define(:version => 20110615194611) do
     t.string   "game"
   end
 
+  create_table "mercenaries", :force => true do |t|
+    t.integer  "model_id"
+    t.integer  "faction_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "model_orders", :force => true do |t|
     t.integer  "model_id"
     t.integer  "order_id"
@@ -109,6 +116,7 @@ ActiveRecord::Schema.define(:version => 20110615194611) do
     t.integer  "add_stat"
     t.boolean  "cavalry"
     t.integer  "parent_id"
+    t.boolean  "epic"
   end
 
   create_table "models_spells", :id => false, :force => true do |t|
@@ -223,7 +231,6 @@ ActiveRecord::Schema.define(:version => 20110615194611) do
     t.string   "feat_name"
     t.text     "feat_desc"
     t.integer  "model_id"
-    t.boolean  "epic"
   end
 
   create_table "warjacks", :force => true do |t|

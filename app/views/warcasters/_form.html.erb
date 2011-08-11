@@ -1,10 +1,6 @@
 <%= f.fields_for :warcaster do |form| %>
 	<%= f.hidden_field :model_type_id, :value => model_type %>
 	<div class="field">
-		<%= form.label :epic %>?
-		<%= form.check_box :epic %>
-	</div>
-	<div class="field">
 		<%= form.label :focus %><br />
 		<%= form.text_field :focus, :size => 2, :maxlength => 2 %>
 	</div>

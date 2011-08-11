@@ -1,5 +1,7 @@
 class Faction < ActiveRecord::Base
   has_many :models
+  has_many :mercenaries
+  has_many :models, :through => :mercenaries
 
   def self.find_by_url faction_name
     Faction.all.each do |faction|

@@ -5,6 +5,10 @@
 		<%= f.label :faction %><br />
 		<%= f.collection_select(:faction_id, Faction.all, :id, :name) %>
 	</div>
+	<div id="mercenary_select" class="field hidden">
+	  <%= f.label :mercenaries %><br />
+    <%= f.collection_select(:faction_ids, Faction.all, :id, :name, {}, {:multiple => true, :class => "multiselect"}) %>
+	</div>
 	<div class="field">
 	  <%= f.label :parent, "Parent model" %><br />
 	  <%= f.collection_select :parent_id, Model.order(:name), :id, :name, :include_blank => "None" %>
@@ -23,6 +27,10 @@
 	</div>
 	<div class="field">
 		<%= f.label :cavalry %>? <%= f.check_box :cavalry %>
+	</div>
+	<div class="field">
+		<%= f.label :epic %>?
+		<%= f.check_box :epic %>
 	</div>
 	<div id="additional_fields">
 		<% if type_name == 'models' %>

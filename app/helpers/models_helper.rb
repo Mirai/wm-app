@@ -3,7 +3,7 @@ module ModelsHelper
     html = ""
 
     html += model.faction.name + ' ' if !model.sub_model?
-    html += 'Epic ' if model.warcaster? && model.warcaster.epic
+    html += 'Epic ' if model.epic
     html += model.sub_type.name + ' ' if !model.sub_type.nil?
     html += 'Character ' if model.character? && !model.warcaster?
     html += model.dragoon? ? 'Dragoon ' : 'Cavalry ' if model.cavalry?
@@ -14,7 +14,7 @@ module ModelsHelper
       if model.warcaster?
         html += warcasterlock model.faction
       elsif model.warjack?
-        html += warjackbeast model.faction
+        html += warjackbeast_title model.model_type.name, model.faction
       else
         html += model.model_type.name
       end
@@ -130,6 +130,18 @@ module ModelsHelper
     end
 
     plural ? 'Warjacks/Warbeasts' : 'Warjack/Warbeast'
+  end
+
+  def warjackbeast_title type, faction
+    if faction.game == 'Warmachine'
+      return type.split(' ')[0] + ' Warjack'
+    elsif faction.game == 'Hordes'
+      return type.split(' ')[0] + ' Warbeast'
+    end
+  end
+
+  def model_mercs model
+    sanitize "<strong>Mercenary - </strong>This model will work for " + model.factions.collect{ |x| x.name }.join(', ') + '.' if model.mercenary?
   end
 
 end
