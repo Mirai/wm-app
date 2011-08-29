@@ -11,7 +11,7 @@ class FactionsController < ApplicationController
 
   def update
     if @faction.update_attributes(params[:faction])
-      redirect_to factions_path, :message => "Faction updated successfully."
+      redirect_to factions_path, :notice => "Faction updated successfully."
     else
       render :action => 'edit'
     end
@@ -22,7 +22,7 @@ class FactionsController < ApplicationController
 
   def create
     if @faction.save(params[:faction])
-      redirect_to factions_path, :message => "Faction created successfully."
+      redirect_to factions_path, :notice => "Faction created successfully."
     else
       render :action => 'edit'
     end
