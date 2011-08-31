@@ -4,7 +4,6 @@ class ModelsController < ApplicationController
 
   def new
     @model = Model.new
-    @available_orders = ModelOrder.find(@model.multi_orders)
   end
 
   def create
@@ -19,7 +18,6 @@ class ModelsController < ApplicationController
 
   def edit
     @model = Model.find(params[:id])
-    @available_orders = ModelOrder.find(@model.multi_orders)
   end
 
   def update
