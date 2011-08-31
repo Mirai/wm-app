@@ -20,7 +20,7 @@ class Model < ActiveRecord::Base
   has_many :sub_models, :foreign_key => :parent_id, :class_name => 'Model'
   belongs_to :parent, :class_name => 'Model'
   has_many :mercenaries
-  has_many :factions, :through => :mercenaries
+  has_many :merc_factions, :through => :mercenaries, :class_name => "Faction"
 
   def warmachine?
     return true if self.faction.game == 'Warmachine'

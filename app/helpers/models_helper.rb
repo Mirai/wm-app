@@ -141,7 +141,18 @@ module ModelsHelper
   end
 
   def model_mercs model
-    sanitize "<strong>Mercenary - </strong>This model will work for " + model.factions.collect{ |x| x.name }.join(', ') + '.' if model.mercenary?
+    html = ""
+
+    unless model.merc_factions.warmachine.empty?
+      html += "<p><strong>Mercenary - </strong>This model will work for "
+      html += model.merc_factions.warmachine.collect{ |x| x.name }.join(', ') + '.</p>'
+    end
+    unless model.merc_factions.hordes.empty?
+      html += "<p><strong>Minion - </strong>This model will work for "
+      html += model.merc_factions.hordes.collect{ |x| x.name }.join(', ') + '.</p>'
+    end
+
+    sanitize html
   end
 
 end

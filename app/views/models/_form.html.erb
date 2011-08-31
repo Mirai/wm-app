@@ -7,7 +7,7 @@
 	</div>
 	<div id="mercenary_select" class="field hidden">
 	  <%= f.label :mercenaries %><br />
-    <%= f.collection_select(:faction_ids, Faction.all, :id, :name, {}, {:multiple => true, :class => "multiselect"}) %>
+    <%= f.collection_select(:merc_faction_ids, Faction.all, :id, :name, {}, {:multiple => true, :class => "multiselect"}) %>
 	</div>
 	<div class="field">
 	  <%= f.label :parent, "Parent model" %><br />

@@ -3,20 +3,15 @@ class Faction < ActiveRecord::Base
   has_many :mercenaries
   has_many :models, :through => :mercenaries
 
+  named_scope :warmachine, :conditions => { :game => "Warmachine" }
+  named_scope :hordes, :conditions => { :game => "Hordes" }
+
   def self.find_by_url faction_name
     Faction.all.each do |faction|
       return faction if faction.link == faction_name
     end
 
     return nil
-  end
-
-  def self.warmachine
-    Faction.find_all_by_game('Warmachine');
-  end
-
-  def self.hordes
-    Faction.find_all_by_game('Hordes');
   end
 
   def link
