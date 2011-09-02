@@ -27,6 +27,7 @@ WmApp::Application.routes.draw do
 
   match 'models/:id/remove_weapon/:weapon_id' => 'models#remove_weapon'
   match 'models/:id/remove_spell/:spell_id' => 'models#remove_spell'
+  match "models/:id/remove_order/:order_id" => "models#remove_order"
 
   root :to => "factions#index"
 end

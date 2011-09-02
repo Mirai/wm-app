@@ -107,4 +107,13 @@ class ModelsController < ApplicationController
       format.js
     end
   end
+
+  def remove_order
+    @model = Model.find(params[:id])
+    @removed_order = Order.find(params[:order_id])
+
+    @model.orders.delete(@removed_order)
+
+    render :nothing => true
+  end
 end

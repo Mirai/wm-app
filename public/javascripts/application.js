@@ -101,14 +101,17 @@ $(document).ready(function() {
 	})
 
 	//when remove spell or weapon link is clicked
-	$('.remove').live('click', function() {
+	$('.weapon_stats .remove, .stat_table .remove').live('click', function() {
 		$.get($(this).attr('href'), null, null, "script");
 		return false;
 	})
 
-	$('.remove').live('click', function() {
-		$(this).parent().remove();
-	})
+  $('.order_fields .remove').live('click', function() {
+    $.get("remove_order/" + $(this).siblings(".order_select").val(), null, null, "script")
+    $(this).parents(".order_fields").next().remove();
+    $(this).parents(".order_fields").remove();
+    return false;
+  })
 
 	// show damage grid based on select
 	$('#model_warjack_attributes_damage_grid_id').change(function() {
@@ -116,20 +119,6 @@ $(document).ready(function() {
 		return false;
 	})
 	$('#model_warjack_attributes_damage_grid_id').trigger('change')
-
-	// order dropdown
-	$('.order_select').live('change', function() {
-		/*var optionsArr = "<option value=''>No parent</option>";
-
-		$('.order_select option:selected').each(function () {
-			optionsArr += "<option value='" + $(this).val() + "'>" + $(this).text() + "</option>\n";
-		})
-
-		$('.parent_select').html(optionsArr)*/
-
-		var option = "<option value='" + $(this).val() + "'>" + $(this).children(":selected").text() + "</option>";
-		$('.parent_select').append(option);
-	})
 
 	$('#add_order a').click(function() {
 		$('.order_select').trigger('change');

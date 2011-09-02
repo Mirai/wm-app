@@ -3,8 +3,8 @@ class Faction < ActiveRecord::Base
   has_many :mercenaries
   has_many :models, :through => :mercenaries
 
-  named_scope :warmachine, :conditions => { :game => "Warmachine" }
-  named_scope :hordes, :conditions => { :game => "Hordes" }
+  scope :warmachine, :conditions => { :game => "Warmachine" }
+  scope :hordes, :conditions => { :game => "Hordes" }
 
   def self.find_by_url faction_name
     Faction.all.each do |faction|
