@@ -4,7 +4,6 @@ class WarcastersController < ApplicationController
   def new
     @model = Model.new
     @model.build_warcaster
-    @available_orders = ModelOrder.find(@model.multi_orders)
     authorize! :create, @model
   end
 
@@ -22,7 +21,6 @@ class WarcastersController < ApplicationController
   def edit
     @model = Model.find(params[:id])
     @model.build_warcaster if @model.warcaster.nil?
-    @available_orders = ModelOrder.find(@model.multi_orders)
     authorize! :update, @model
   end
 

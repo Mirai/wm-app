@@ -84,25 +84,21 @@ class Model < ActiveRecord::Base
     unique_weapons.uniq
   end
 
-  def multi_orders
-    orders = Order.find_all_by_id_and_multi(self.order_ids, true)
-    ModelOrder.find_all_by_order_id_and_model_id(orders, self.id)
-  end
-
   def unit
     self.units.first
   end
 
   def parent_orders
-    #order_ids = []
+    orders = []
 
-    #orders = ModelOrder.find_all_by_model_id_and_parent_id(self.id, nil)
+    ModelOrder.find_all_by_model_id(self.id).each do |model_order|
+      if !model_order.parent_id.nil?
+        orders << model_order.parent_order unless orders.include? model_order.parent_order
+      else
+        orders << model_order.order
+      end
+    end
 
-    #orders.each do |order|
-     # order_ids << order.order_id
-    #end
-
-    #Order.find(order_ids)
-    ModelOrder.find_all_by_model_id_and_parent_id(self.id, nil)
+    orders
   end
 end

@@ -1,14 +1,13 @@
 <%= sanitize "<h2>#{model.short_name}</h2>" if !model.rules.empty? || !model.orders.empty? %>
 
-<% model.orders.each do |order| %>
+<% model.parent_orders.each do |order| %>
 	<p>
-	  <%= order.name %>
-		<%#= model_order order %>
+	  <%= model_order order, model.id %>
 
 		<ul>
-			<%# order.sub_orders.each do |sub| %>
-				<li><%#= model_order sub %></li>
-			<%# end %>
+			<% order.sub_orders(model.id).each do |sub| %>
+				<li><%= model_order sub, model.id %></li>
+			<% end %>
 		</ul>
 	</p>
 <% end %>

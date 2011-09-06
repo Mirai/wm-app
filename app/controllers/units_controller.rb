@@ -5,7 +5,6 @@ class UnitsController < ApplicationController
   def new
     @unit = Unit.new
     @unit.models.build
-    @available_orders = ModelOrder.find_all_by_model_id(@unit.model_ids)
   end
 
   def create
@@ -20,7 +19,6 @@ class UnitsController < ApplicationController
 
   def edit
     @unit = Unit.find(params[:id])
-    @available_orders = ModelOrder.find_all_by_model_id(@unit.model_ids)
   end
 
   def update
