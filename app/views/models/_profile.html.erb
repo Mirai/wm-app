@@ -30,7 +30,7 @@
 	<% end %>
 </div>
 
-<%= render :partial => 'spells/stats', :locals => { :spells => model.spells } %>
+<%= render 'spells/stats', :spells => model.spells, :type => model.warjack? ? "ANIMUS" : "SPELLS" %>
 
 <% if can? :create, Spell %>
   <%= form_tag add_spell_models_path, :class => 'model_addition' do %>
