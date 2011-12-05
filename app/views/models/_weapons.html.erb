@@ -7,7 +7,7 @@
   <%= form_tag add_weapon_models_path, :class => 'model_addition' do %>
   	<%= hidden_field 'model', 'id', :value => model.id %>
   	<%= collection_select(:model, :weapons, Weapon.order(:name), :id, :name) %>
-  	<%= select(:equip, :hand, [['No Hand', ''], ['Left', 'L'], ['Right', 'R']]) %>
+  	<%= select(:equip, :hand, [['No Hand', ''], ['Left', 'L'], ['Right', 'R'], ['Head', 'H']]) %>
   	X2? <%= check_box(:equip, :x2) %>
   	<%= submit_tag "Add Weapon" %>
   <% end %>
