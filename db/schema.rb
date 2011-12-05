@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110809201247) do
+ActiveRecord::Schema.define(:version => 20111205185402) do
 
   create_table "damage_grids", :force => true do |t|
     t.string   "name"
@@ -238,6 +238,8 @@ ActiveRecord::Schema.define(:version => 20110809201247) do
     t.datetime "updated_at"
     t.integer  "model_id"
     t.integer  "damage_grid_id"
+    t.integer  "fury"
+    t.integer  "threshold"
   end
 
   create_table "weapons", :force => true do |t|

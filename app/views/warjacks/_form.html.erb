@@ -9,4 +9,14 @@
 		<%= form.collection_select :damage_grid_id, DamageGrid.order(:name), :id, :name, :prompt => true %>
 	</div>
 	<div id="grid_example"></div>
+
+	<div class="field">
+    <%= form.label :fury %><br />
+    <%= form.text_field :fury, :size => 2, :maxlength => 2 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :threshold %><br />
+    <%= form.text_field :threshold, :size => 2, :maxlength => 2 %>
+  </div>
 <% end %>

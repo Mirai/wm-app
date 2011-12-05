@@ -30,6 +30,11 @@ module ModelsHelper
   def model_focus model
     return sanitize "Focus: #{model.warcaster.focus}<br />" if model.warcaster? && model.warmachine?
     return sanitize "Fury: #{model.warcaster.focus}<br />" if model.warcaster? && model.hordes?
+    return sanitize "Fury: #{model.warjack.fury}<br />" if model.warjack? && model.hordes?
+  end
+
+  def model_threshold model
+    return sanitize "Threshold: #{model.warjack.threshold}<br />" if model.warjack? && model.hordes?
   end
 
   def model_damage model
